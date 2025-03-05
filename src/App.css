@@ -1,4 +1,4 @@
-/* src/App.css */
+
 :root {
   --primary-color: #3c6e71;
   --secondary-color: #284b63;
@@ -37,7 +37,7 @@ body {
   width: 100%;
 }
 
-/* Button Styles */
+
 button {
   padding: 10px 20px;
   background-color: var(--primary-color);
@@ -58,7 +58,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Form Styles */
+
 input, select {
   padding: 10px;
   margin-bottom: 15px;
@@ -74,7 +74,7 @@ label {
   font-weight: 500;
 }
 
-/* Loading Spinner */
+
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@ label {
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .main-content {
     padding: 15px;

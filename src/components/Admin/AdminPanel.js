@@ -3,32 +3,29 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
 import { db, auth } from '../../firebase';
-import { getRegionDisplayNames } from '../../data/historicalData';
+import { getCountryOptions, getMonthOptions } from '../../data/memeData';
 import './AdminPanel.css';
 
 function AdminPanel() {
   const [youtubeId, setYoutubeId] = useState('');
-  const [year, setYear] = useState(1500);
-  const [dynasties, setDynasties] = useState({
-    global: '',
-    europe: '',
-    asia: '',
-    middleEast: '',
-    africa: '',
-    americas: ''
-  });
+  const [year, setYear] = useState(2015);
+  const [month, setMonth] = useState(6);
+  const [memeName, setMemeName] = useState('');
+  const [country, setCountry] = useState('us');
+  const [description, setDescription] = useState('');
   const [status, setStatus] = useState('');
   const [statusType, setStatusType] = useState('');
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  const regionNames = getRegionDisplayNames();
+  const countryOptions = getCountryOptions();
+  const monthOptions = getMonthOptions();
 
   // Get a list of videos on component mount
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const videosCollection = collection(db, 'videos');
+        const videosCollection = collection(db, 'meme_videos');
         const videoSnapshot = await getDocs(videosCollection);
         const videosList = videoSnapshot.docs.map(doc => ({
           id: doc.id,
@@ -39,7 +36,7 @@ function AdminPanel() {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching videos:", error);
-        setStatus('Error fetching videos: ' + error.message);
+        setStatus('Error fetching meme videos: ' + error.message);
         setStatusType('error');
         setLoading(false);
       }
@@ -47,13 +44,6 @@ function AdminPanel() {
 
     fetchVideos();
   }, []);
-
-  const handleDynastyChange = (region, value) => {
-    setDynasties(prev => ({
-      ...prev,
-      [region]: value
-    }));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,18 +58,21 @@ function AdminPanel() {
         return;
       }
       
-      // Validate that at least the global dynasty is provided
-      if (!dynasties.global.trim()) {
-        setStatus('Please provide at least the global ruling power.');
+      // Validate that meme name is provided
+      if (!memeName.trim()) {
+        setStatus('Please provide the meme name.');
         setStatusType('error');
         return;
       }
       
       // Add a new video document to Firestore
-      const docRef = await addDoc(collection(db, 'videos'), {
+      const docRef = await addDoc(collection(db, 'meme_videos'), {
         youtubeId,
         year: parseInt(year),
-        dynasties,
+        month: parseInt(month),
+        memeName,
+        country,
+        description,
         createdAt: serverTimestamp()
       });
       
@@ -88,39 +81,36 @@ function AdminPanel() {
         id: docRef.id,
         youtubeId,
         year: parseInt(year),
-        dynasties,
+        month: parseInt(month),
+        memeName,
+        country,
+        description,
         createdAt: new Date()
       }, ...prev]);
       
-      setStatus('Video added successfully!');
+      setStatus('Meme video added successfully!');
       setStatusType('success');
       
       // Reset form
       setYoutubeId('');
-      setYear(1500);
-      setDynasties({
-        global: '',
-        europe: '',
-        asia: '',
-        middleEast: '',
-        africa: '',
-        americas: ''
-      });
+      setMemeName('');
+      setDescription('');
+      // Leave year, month, and country at their current values for convenience
     } catch (error) {
-      setStatus('Error adding video: ' + error.message);
+      setStatus('Error adding meme video: ' + error.message);
       setStatusType('error');
     }
   };
   
   const handleDeleteVideo = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this video?')) {
+    if (!window.confirm('Are you sure you want to delete this meme video?')) {
       return;
     }
     
     try {
-      await deleteDoc(doc(db, 'videos', id));
+      await deleteDoc(doc(db, 'meme_videos', id));
       setVideos(prev => prev.filter(video => video.id !== id));
-      setStatus('Video deleted successfully!');
+      setStatus('Meme video deleted successfully!');
       setStatusType('success');
     } catch (error) {
       setStatus('Error deleting video: ' + error.message);
@@ -137,7 +127,7 @@ function AdminPanel() {
   return (
     <div className="admin-panel">
       <div className="admin-header">
-        <h1>Admin Panel</h1>
+        <h1>Meme Game Admin Panel</h1>
         <button onClick={handleSignOut} className="sign-out-button">Sign Out</button>
       </div>
       
@@ -149,7 +139,7 @@ function AdminPanel() {
       
       <div className="admin-content">
         <div className="video-form-card">
-          <h2>Add New Video</h2>
+          <h2>Add New Meme Video</h2>
           
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -168,57 +158,93 @@ function AdminPanel() {
               </p>
             </div>
             
+            <div className="form-row">
+              <div className="form-group half">
+                <label htmlFor="year">Year:</label>
+                <input 
+                  id="year"
+                  type="number" 
+                  value={year} 
+                  onChange={(e) => setYear(e.target.value)} 
+                  min="1999" 
+                  max="2024" 
+                  required 
+                />
+              </div>
+              
+              <div className="form-group half">
+                <label htmlFor="month">Month:</label>
+                <select
+                  id="month"
+                  value={month}
+                  onChange={(e) => setMonth(parseInt(e.target.value))}
+                  required
+                >
+                  {Object.entries(monthOptions).map(([value, name]) => (
+                    <option key={value} value={value}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            
             <div className="form-group">
-              <label htmlFor="year">Year:</label>
+              <label htmlFor="memeName">Meme Name:</label>
               <input 
-                id="year"
-                type="number" 
-                value={year} 
-                onChange={(e) => setYear(e.target.value)} 
-                min="-3000" 
-                max="2023" 
+                id="memeName"
+                type="text" 
+                value={memeName} 
+                onChange={(e) => setMemeName(e.target.value)} 
+                placeholder="Rickroll"
                 required 
               />
               <p className="form-help">
-                The historical year depicted in the video
+                The commonly known name of the meme
               </p>
             </div>
             
             <div className="form-group">
-              <h3>Dynasties/Powers by Region:</h3>
+              <label htmlFor="country">Country of Origin:</label>
+              <select
+                id="country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                required
+              >
+                {Object.entries(countryOptions).map(([code, name]) => (
+                  <option key={code} value={code}>
+                    {name}
+                  </option>
+                ))}
+              </select>
               <p className="form-help">
-                Enter the ruling dynasty, empire, or power for each relevant region
+                The country where the meme originated or became famous first
               </p>
-              
-              {Object.keys(regionNames).map(region => (
-                <div key={region} className="dynasty-input">
-                  <label htmlFor={`dynasty-${region}`}>
-                    {regionNames[region]}
-                    {region === 'global' && ' (Required)'}:
-                  </label>
-                  <input 
-                    id={`dynasty-${region}`}
-                    type="text" 
-                    value={dynasties[region]} 
-                    onChange={(e) => handleDynastyChange(region, e.target.value)} 
-                    placeholder={region === 'global' ? "Required" : "Optional"}
-                    required={region === 'global'} 
-                  />
-                </div>
-              ))}
             </div>
             
-            <button type="submit" className="submit-button">Add Video</button>
+            <div className="form-group">
+              <label htmlFor="description">Description (Optional):</label>
+              <textarea 
+                id="description"
+                value={description} 
+                onChange={(e) => setDescription(e.target.value)} 
+                placeholder="Brief description of the meme's context or history"
+                rows="3"
+              />
+            </div>
+            
+            <button type="submit" className="submit-button">Add Meme Video</button>
           </form>
         </div>
         
         <div className="video-list-card">
-          <h2>Existing Videos</h2>
+          <h2>Existing Meme Videos</h2>
           
           {loading ? (
             <div className="loading-videos">Loading videos...</div>
           ) : videos.length === 0 ? (
-            <div className="no-videos">No videos added yet.</div>
+            <div className="no-videos">No meme videos added yet.</div>
           ) : (
             <div className="video-list">
               {videos.map(video => (
@@ -236,8 +262,11 @@ function AdminPanel() {
                     </a>
                   </div>
                   <div className="video-details">
-                    <h3>{video.year}</h3>
-                    <p><strong>Global Power:</strong> {video.dynasties.global}</p>
+                    <h3>{video.memeName}</h3>
+                    <p>
+                      <strong>{monthOptions[video.month]} {video.year}</strong> • 
+                      {countryOptions[video.country]}
+                    </p>
                     <button 
                       onClick={() => handleDeleteVideo(video.id)}
                       className="delete-button"

@@ -1,4 +1,4 @@
-/* src/components/Game/GameScreen.css */
+
 .game-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -62,7 +62,7 @@
 
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 ratio */
+  padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
   border-radius: 8px;
