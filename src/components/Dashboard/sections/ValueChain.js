@@ -4,7 +4,7 @@ import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Cell,
 } from 'recharts';
 
-const STAGE_COLORS = ['#4cc9f0','#5fb3e3','#7fbcd0','#92c7b6','#a8d49b','#cfd76f','#f4d35e','#f4a261','#ef476f','#9b5de5'];
+const STAGE_COLORS = ['#0d3b66','#5fb3e3','#7fbcd0','#92c7b6','#a8d49b','#cfd76f','#b8860b','#c5a565','#a8322d','#7a5b8c'];
 
 export default function ValueChain() {
   const totalCostPerKg = vannameiCostStack.reduce((s,r) => s + r.inrPerKg, 0);
@@ -56,10 +56,10 @@ export default function ValueChain() {
           <h3>Cost stack — vannamei HLSO 31/40 (₹/kg, FOB-ready)</h3>
           <ResponsiveContainer width="100%" height={310}>
             <BarChart data={vannameiCostStack} layout="vertical" margin={{top:10, right:30, left:10, bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-              <XAxis type="number" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis type="category" dataKey="stage" stroke="#9eb0c9" fontSize={11} width={170}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+              <XAxis type="number" stroke="#5c6272" fontSize={11}/>
+              <YAxis type="category" dataKey="stage" stroke="#5c6272" fontSize={11} width={170}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
               <Bar dataKey="inrPerKg" name="₹/kg">
                 {vannameiCostStack.map((_, i) => <Cell key={i} fill={STAGE_COLORS[i % STAGE_COLORS.length]} />)}
               </Bar>

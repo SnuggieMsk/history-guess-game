@@ -7,7 +7,7 @@ import {
   PieChart, Pie, Cell,
 } from 'recharts';
 
-const COLORS = ['#4cc9f0','#f4a261','#2ec27e','#f4d35e','#ef476f','#9b5de5','#00bbf9','#ff7b54'];
+const COLORS = ['#0d3b66','#c5a565','#2d6a4f','#b8860b','#a8322d','#7a5b8c','#0d3b66','#c5a565'];
 
 export default function ExecutiveSummary() {
   const top6 = [...marketDestinations].sort((a,b) => b.shareValue - a.shareValue).slice(0, 6);
@@ -44,7 +44,7 @@ export default function ExecutiveSummary() {
         <div className="grid grid-3">
           <div className="card">
             <h3>Geographic Moat</h3>
-            <p style={{fontSize:13, color:'#cbd6e8'}}>
+            <p style={{fontSize:13, color:'#1a1f36'}}>
               We process the only multi-species mix that buyers actually want in a single
               container: Konkan wild (pomfret · lobster · squid · octopus) + AP farmed
               (vannamei). AP majors do shrimp. Maharashtra incumbents do mixed but at sub-scale.
@@ -53,7 +53,7 @@ export default function ExecutiveSummary() {
           </div>
           <div className="card">
             <h3>Cost Moat</h3>
-            <p style={{fontSize:13, color:'#cbd6e8'}}>
+            <p style={{fontSize:13, color:'#1a1f36'}}>
               1.2 MWp rooftop solar cuts power 25-30%. PMMSY + PMKSY + MNRE subsidy stack
               cuts effective capex 22%. Owned reefer fleet locks the AP-Purandar long-haul.
               Combined: 4-6 ppt EBITDA advantage by Y3.
@@ -61,7 +61,7 @@ export default function ExecutiveSummary() {
           </div>
           <div className="card">
             <h3>Channel Moat</h3>
-            <p style={{fontSize:13, color:'#cbd6e8'}}>
+            <p style={{fontSize:13, color:'#1a1f36'}}>
               Live lobster + live mud crab via PNQ daily air cargo. Few Maharashtra peers
               do this. 25-30% margins on small but high-$/kg volumes — and these become
               the relationship anchors with Hong Kong, Singapore, Tokyo importers.
@@ -87,11 +87,11 @@ export default function ExecutiveSummary() {
           <h3>Top destinations (FY26)</h3>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={top6} margin={{top:10,right:10,left:0,bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757" />
-              <XAxis dataKey="country" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis stroke="#9eb0c9" fontSize={11}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
-              <Bar dataKey="valueUSDmn" name="Value (USD mn)" fill="#4cc9f0" radius={[6,6,0,0]} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8" />
+              <XAxis dataKey="country" stroke="#5c6272" fontSize={11}/>
+              <YAxis stroke="#5c6272" fontSize={11}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
+              <Bar dataKey="valueUSDmn" name="Value (USD mn)" fill="#0d3b66" radius={[6,6,0,0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -110,12 +110,12 @@ export default function ExecutiveSummary() {
                 ]}
                 outerRadius={90}
                 label={({name, value}) => `${name} ${value}%`}
-                labelLine={{stroke:'#9eb0c9'}}
+                labelLine={{stroke:'#5c6272'}}
                 fontSize={11}
               >
                 {[0,1,2,3,4,5].map(i => <Cell key={i} fill={COLORS[i]} />)}
               </Pie>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
             </PieChart>
           </ResponsiveContainer>
         </div>

@@ -35,7 +35,7 @@ export default function Moat() {
               <div style={{fontSize:11,color:'var(--c-text-dim)',marginTop:4}}>Build time: {m.timeToBuild}</div>
             </div>
           </div>
-          <p style={{fontSize:13.5,color:'#cbd6e8',lineHeight:1.6}}>{m.description}</p>
+          <p style={{fontSize:13.5,color:'#1a1f36',lineHeight:1.6}}>{m.description}</p>
         </div>
       ))}
 

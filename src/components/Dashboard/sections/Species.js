@@ -83,11 +83,11 @@ export default function Species() {
               <h3>{yr} mix</h3>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={mix} layout="vertical" margin={{top:5,right:8,left:8,bottom:0}}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-                  <XAxis type="number" stroke="#9eb0c9" fontSize={10}/>
-                  <YAxis type="category" dataKey="species" stroke="#9eb0c9" fontSize={10} width={130}/>
-                  <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
-                  <Bar dataKey="revenueShare" name="% revenue" fill="#4cc9f0" radius={[0,5,5,0]} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+                  <XAxis type="number" stroke="#5c6272" fontSize={10}/>
+                  <YAxis type="category" dataKey="species" stroke="#5c6272" fontSize={10} width={130}/>
+                  <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
+                  <Bar dataKey="revenueShare" name="% revenue" fill="#0d3b66" radius={[0,5,5,0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -97,7 +97,7 @@ export default function Species() {
 
       <style>{`
         .sp-tab { background:transparent; color:var(--c-text-dim); border:1px solid var(--c-border); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:12px; }
-        .sp-tab.active { background:var(--c-accent); color:#0b1220; border-color:var(--c-accent); }
+        .sp-tab.active { background:var(--c-accent); color:#ffffff; border-color:var(--c-accent); }
         .sp-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
         @media (max-width:880px){ .sp-grid{grid-template-columns:1fr;} }
         .sp-card-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; gap:12px; }
@@ -106,9 +106,9 @@ export default function Species() {
         .sp-stat-k { font-size:10px; color:var(--c-text-dim); letter-spacing:.5px; text-transform:uppercase; }
         .sp-stat-v { font-size:14px; font-weight:600; color:var(--c-text); margin-top:2px; }
         .sp-section { margin-bottom:8px; }
-        .sp-section p { font-size:12.5px; color:#cbd6e8; }
+        .sp-section p { font-size:12.5px; color:#1a1f36; }
         .sp-mini-label { font-size:10.5px; color:var(--c-text-dim); text-transform:uppercase; letter-spacing:1px; }
-        .sp-note { font-size:12px; color:#9eb0c9; font-style:italic; padding:10px 12px; background:rgba(76,201,240,.05); border-radius:8px; margin-top:10px; }
+        .sp-note { font-size:12px; color:#5c6272; font-style:italic; padding:10px 12px; background:var(--c-surface-2); border:1px solid var(--c-border); border-radius:6px; margin-top:10px; }
       `}</style>
     </>
   );

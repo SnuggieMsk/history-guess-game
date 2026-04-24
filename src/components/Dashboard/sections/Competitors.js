@@ -20,11 +20,11 @@ export default function Competitors() {
         <div className="card">
           <ResponsiveContainer width="100%" height={320}>
             <BarChart data={nationalCompetitors} layout="vertical" margin={{top:5,right:10,left:10,bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-              <XAxis type="number" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis type="category" dataKey="name" stroke="#9eb0c9" fontSize={10} width={210}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
-              <Bar dataKey="revenueINRcr" name="Revenue (₹ cr)" fill="#4cc9f0" radius={[0,5,5,0]}/>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+              <XAxis type="number" stroke="#5c6272" fontSize={11}/>
+              <YAxis type="category" dataKey="name" stroke="#5c6272" fontSize={10} width={210}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
+              <Bar dataKey="revenueINRcr" name="Revenue (₹ cr)" fill="#0d3b66" radius={[0,5,5,0]}/>
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -55,8 +55,8 @@ export default function Competitors() {
             <div className="card" key={i}>
               <h3 style={{fontSize:15,color:'var(--c-text)',fontWeight:600,marginBottom:6}}>{c.name}</h3>
               <p style={{fontSize:12,color:'var(--c-text-dim)',marginBottom:4}}><strong>HQ:</strong> {c.HQ} · <strong>Plant:</strong> {c.plant}</p>
-              <p style={{fontSize:12.5,color:'#cbd6e8',marginBottom:4}}><strong style={{color:'var(--c-accent)'}}>Species:</strong> {c.species}</p>
-              <p style={{fontSize:12.5,color:'#cbd6e8'}}><strong style={{color:'var(--c-accent)'}}>Edge:</strong> {c.edge}</p>
+              <p style={{fontSize:12.5,color:'#1a1f36',marginBottom:4}}><strong style={{color:'var(--c-accent)'}}>Species:</strong> {c.species}</p>
+              <p style={{fontSize:12.5,color:'#1a1f36'}}><strong style={{color:'var(--c-accent)'}}>Edge:</strong> {c.edge}</p>
             </div>
           ))}
         </div>

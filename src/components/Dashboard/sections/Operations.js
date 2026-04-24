@@ -145,7 +145,7 @@ export default function Operations() {
               <h3 style={{fontSize:14,color:'var(--c-text)',fontWeight:600}}>{s.sop}</h3>
               <span className={`pill ${s.criticality==='Critical'?'pill-bad':s.criticality==='High'?'pill-warn':'pill-info'}`}>{s.criticality}</span>
             </div>
-            <p style={{fontSize:12.5,color:'#cbd6e8'}}>{s.summary}</p>
+            <p style={{fontSize:12.5,color:'#1a1f36'}}>{s.summary}</p>
           </div>
         ))}
       </div>

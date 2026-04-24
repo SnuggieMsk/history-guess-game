@@ -40,14 +40,14 @@ export default function FinancialModel() {
           <div className="card">
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={capexByCategory} margin={{top:10,right:10,left:0,bottom:30}}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-                <XAxis dataKey="category" stroke="#9eb0c9" fontSize={10} angle={-15} textAnchor="end" height={50}/>
-                <YAxis stroke="#9eb0c9" fontSize={11}/>
-                <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+                <XAxis dataKey="category" stroke="#5c6272" fontSize={10} angle={-15} textAnchor="end" height={50}/>
+                <YAxis stroke="#5c6272" fontSize={11}/>
+                <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
                 <Legend wrapperStyle={{fontSize:11}}/>
-                <Bar dataKey="gross" name="Gross (₹L)" fill="#4cc9f0"/>
-                <Bar dataKey="sub"   name="Subsidy (₹L)" fill="#2ec27e"/>
-                <Bar dataKey="net"   name="Net (₹L)"   fill="#f4a261"/>
+                <Bar dataKey="gross" name="Gross (₹L)" fill="#0d3b66"/>
+                <Bar dataKey="sub"   name="Subsidy (₹L)" fill="#2d6a4f"/>
+                <Bar dataKey="net"   name="Net (₹L)"   fill="#c5a565"/>
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -104,14 +104,14 @@ export default function FinancialModel() {
           <h3>Revenue + EBITDA trajectory</h3>
           <ResponsiveContainer width="100%" height={290}>
             <ComposedChart data={pnl} margin={{top:10,right:10,left:0,bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-              <XAxis dataKey="year" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis stroke="#9eb0c9" fontSize={11}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+              <XAxis dataKey="year" stroke="#5c6272" fontSize={11}/>
+              <YAxis stroke="#5c6272" fontSize={11}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
               <Legend wrapperStyle={{fontSize:11}}/>
-              <Bar dataKey="revenue" name="Revenue (₹L)" fill="#4cc9f0"/>
-              <Line dataKey="ebitda" name="EBITDA (₹L)" stroke="#2ec27e" strokeWidth={3} dot={{r:5}}/>
-              <Line dataKey="pat" name="PAT (₹L)" stroke="#f4a261" strokeWidth={3} dot={{r:5}}/>
+              <Bar dataKey="revenue" name="Revenue (₹L)" fill="#0d3b66"/>
+              <Line dataKey="ebitda" name="EBITDA (₹L)" stroke="#2d6a4f" strokeWidth={3} dot={{r:5}}/>
+              <Line dataKey="pat" name="PAT (₹L)" stroke="#c5a565" strokeWidth={3} dot={{r:5}}/>
             </ComposedChart>
           </ResponsiveContainer>
         </div>
@@ -119,14 +119,14 @@ export default function FinancialModel() {
           <h3>Cash flow</h3>
           <ResponsiveContainer width="100%" height={290}>
             <BarChart data={cashFlow} margin={{top:10,right:10,left:0,bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-              <XAxis dataKey="year" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis stroke="#9eb0c9" fontSize={11}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+              <XAxis dataKey="year" stroke="#5c6272" fontSize={11}/>
+              <YAxis stroke="#5c6272" fontSize={11}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
               <Legend wrapperStyle={{fontSize:11}}/>
-              <Bar dataKey="operatingCF" name="Operating CF" fill="#4cc9f0"/>
-              <Bar dataKey="investingCF" name="Investing CF" fill="#ef476f"/>
-              <Bar dataKey="financingCF" name="Financing CF" fill="#f4a261"/>
+              <Bar dataKey="operatingCF" name="Operating CF" fill="#0d3b66"/>
+              <Bar dataKey="investingCF" name="Investing CF" fill="#a8322d"/>
+              <Bar dataKey="financingCF" name="Financing CF" fill="#c5a565"/>
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -137,14 +137,14 @@ export default function FinancialModel() {
           <h3>Working capital (₹ lakh)</h3>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={workingCapital} margin={{top:10,right:10,left:0,bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-              <XAxis dataKey="year" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis stroke="#9eb0c9" fontSize={11}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+              <XAxis dataKey="year" stroke="#5c6272" fontSize={11}/>
+              <YAxis stroke="#5c6272" fontSize={11}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
               <Legend wrapperStyle={{fontSize:11}}/>
-              <Bar dataKey="inventory" name="Inventory (12d)" stackId="a" fill="#4cc9f0"/>
-              <Bar dataKey="receivables" name="Receivables (35d)" stackId="a" fill="#f4a261"/>
-              <Bar dataKey="payables" name="Payables (-18d)" stackId="b" fill="#ef476f"/>
+              <Bar dataKey="inventory" name="Inventory (12d)" stackId="a" fill="#0d3b66"/>
+              <Bar dataKey="receivables" name="Receivables (35d)" stackId="a" fill="#c5a565"/>
+              <Bar dataKey="payables" name="Payables (-18d)" stackId="b" fill="#a8322d"/>
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -195,15 +195,15 @@ export default function FinancialModel() {
         <div className="card">
           <ResponsiveContainer width="100%" height={250}>
             <ComposedChart data={productionPlan} margin={{top:10,right:10,left:0,bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-              <XAxis dataKey="year" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis yAxisId="l" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis yAxisId="r" orientation="right" stroke="#9eb0c9" fontSize={11}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+              <XAxis dataKey="year" stroke="#5c6272" fontSize={11}/>
+              <YAxis yAxisId="l" stroke="#5c6272" fontSize={11}/>
+              <YAxis yAxisId="r" orientation="right" stroke="#5c6272" fontSize={11}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
               <Legend wrapperStyle={{fontSize:11}}/>
-              <Bar yAxisId="l" dataKey="throughputMT" name="Throughput (MT)" fill="#4cc9f0"/>
-              <Line yAxisId="r" dataKey="utilisation" name="Utilisation %" stroke="#f4a261" strokeWidth={3}/>
-              <Line yAxisId="r" dataKey="valueAddShare" name="Value-add %" stroke="#2ec27e" strokeWidth={3}/>
+              <Bar yAxisId="l" dataKey="throughputMT" name="Throughput (MT)" fill="#0d3b66"/>
+              <Line yAxisId="r" dataKey="utilisation" name="Utilisation %" stroke="#c5a565" strokeWidth={3}/>
+              <Line yAxisId="r" dataKey="valueAddShare" name="Value-add %" stroke="#2d6a4f" strokeWidth={3}/>
             </ComposedChart>
           </ResponsiveContainer>
         </div>

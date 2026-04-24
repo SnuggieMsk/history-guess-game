@@ -33,7 +33,7 @@ export default function GapSpeciesView() {
       <div className="callout">
         <strong>Why this is bulletproof: </strong>
         <ul style={{marginTop:6, paddingLeft:18}}>
-          {bulletproofRationale.map((r,i) => <li key={i} style={{margin:'4px 0',color:'#d8e3f4',fontSize:13}}>{r}</li>)}
+          {bulletproofRationale.map((r,i) => <li key={i} style={{margin:'4px 0',color:'#1a1f36',fontSize:13}}>{r}</li>)}
         </ul>
       </div>
 
@@ -42,12 +42,12 @@ export default function GapSpeciesView() {
           <h3>Y3 revenue contribution by species ($mn)</h3>
           <ResponsiveContainer width="100%" height={320}>
             <BarChart data={[...gapSpecies].sort((a,b)=>b.revenueY3USDmn-a.revenueY3USDmn)} layout="vertical" margin={{top:5,right:10,left:10,bottom:0}}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-              <XAxis type="number" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis type="category" dataKey="name" stroke="#9eb0c9" fontSize={10} width={170}
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+              <XAxis type="number" stroke="#5c6272" fontSize={11}/>
+              <YAxis type="category" dataKey="name" stroke="#5c6272" fontSize={10} width={170}
                 tickFormatter={n => n.length > 28 ? n.slice(0,28)+'…' : n}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
-              <Bar dataKey="revenueY3USDmn" name="$mn revenue Y3" fill="#f4a261" radius={[0,5,5,0]}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
+              <Bar dataKey="revenueY3USDmn" name="$mn revenue Y3" fill="#c5a565" radius={[0,5,5,0]}/>
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -56,13 +56,13 @@ export default function GapSpeciesView() {
           <h3>Margin × FOB price scatter</h3>
           <ResponsiveContainer width="100%" height={320}>
             <ScatterChart margin={{top:10,right:30,bottom:10,left:10}}>
-              <CartesianGrid stroke="#243757"/>
-              <XAxis type="number" dataKey="fobUSDperKg" name="FOB $/kg" stroke="#9eb0c9" fontSize={11}/>
-              <YAxis type="number" dataKey="grossMarginPct" name="GM %" stroke="#9eb0c9" fontSize={11}/>
+              <CartesianGrid stroke="#e0d9c8"/>
+              <XAxis type="number" dataKey="fobUSDperKg" name="FOB $/kg" stroke="#5c6272" fontSize={11}/>
+              <YAxis type="number" dataKey="grossMarginPct" name="GM %" stroke="#5c6272" fontSize={11}/>
               <ZAxis type="number" dataKey="revenueY3USDmn" range={[60, 400]} name="Y3 $mn"/>
-              <Tooltip cursor={{strokeDasharray:'3 3'}} contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}
+              <Tooltip cursor={{strokeDasharray:'3 3'}} contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}
                 formatter={(v,n)=>[v, n]} labelFormatter={(_,d)=>d?.[0]?.payload?.name||''}/>
-              <Scatter data={gapSpecies} fill="#4cc9f0"/>
+              <Scatter data={gapSpecies} fill="#0d3b66"/>
             </ScatterChart>
           </ResponsiveContainer>
           <p style={{fontSize:11,color:'var(--c-text-dim)',marginTop:6}}>
@@ -94,11 +94,11 @@ export default function GapSpeciesView() {
 
               <div style={{marginBottom:10}}>
                 <strong style={{fontSize:12,color:'var(--c-accent)'}}>Why the gap exists:</strong>
-                <p style={{fontSize:13,color:'#cbd6e8',marginTop:4}}>{g.why}</p>
+                <p style={{fontSize:13,color:'#1a1f36',marginTop:4}}>{g.why}</p>
               </div>
               <div style={{marginBottom:10}}>
                 <strong style={{fontSize:12,color:'var(--c-accent)'}}>India\'s state today:</strong>
-                <p style={{fontSize:13,color:'#cbd6e8',marginTop:4}}>{g.indiaState}</p>
+                <p style={{fontSize:13,color:'#1a1f36',marginTop:4}}>{g.indiaState}</p>
               </div>
 
               <div className="grid grid-2" style={{gap:12}}>
@@ -113,7 +113,7 @@ export default function GapSpeciesView() {
               </div>
               <div style={{marginTop:12,paddingTop:10,borderTop:'1px solid var(--c-border)'}}>
                 <strong style={{fontSize:12,color:'var(--c-bad)'}}>Risks: </strong>
-                <span style={{fontSize:12.5,color:'#cbd6e8'}}>{g.risks.join(' · ')}</span>
+                <span style={{fontSize:12.5,color:'#1a1f36'}}>{g.risks.join(' · ')}</span>
               </div>
               <div className="callout" style={{marginTop:10}}>
                 <strong>Y3 revenue target:</strong> ${g.revenueY3USDmn.toFixed(1)} mn

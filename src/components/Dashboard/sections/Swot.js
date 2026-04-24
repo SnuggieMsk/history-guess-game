@@ -2,10 +2,10 @@ import React from 'react';
 import { swot } from '../../../data/strategy';
 
 const QUADS = [
-  { key:'strengths',     title:'Strengths',     color:'#2ec27e', cls:'pill-good' },
-  { key:'weaknesses',    title:'Weaknesses',    color:'#ef476f', cls:'pill-bad'  },
-  { key:'opportunities', title:'Opportunities', color:'#4cc9f0', cls:'pill-info' },
-  { key:'threats',       title:'Threats',       color:'#f4d35e', cls:'pill-warn' },
+  { key:'strengths',     title:'Strengths',     color:'#2d6a4f', cls:'pill-good' },
+  { key:'weaknesses',    title:'Weaknesses',    color:'#a8322d', cls:'pill-bad'  },
+  { key:'opportunities', title:'Opportunities', color:'#0d3b66', cls:'pill-info' },
+  { key:'threats',       title:'Threats',       color:'#b8860b', cls:'pill-warn' },
 ];
 
 export default function Swot() {

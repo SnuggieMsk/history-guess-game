@@ -2,15 +2,15 @@ import React from 'react';
 import { sourcingNodes, outboundNodes, purandarPlant } from '../../../data/sourcing';
 
 const TYPE_COLOR = {
-  'Major fish market':    '#f4a261',
-  'Major landing':        '#4cc9f0',
+  'Major fish market':    '#c5a565',
+  'Major landing':        '#0d3b66',
   'Mid landing':          '#7fbcd0',
-  'Vannamei farm cluster':'#ff7b54',
-  'Mixed shrimp + wild':  '#9b5de5',
-  'Pole-and-line tuna':   '#2ec27e',
-  'Wild black tiger':     '#ef476f',
-  'Sea port':             '#f4d35e',
-  'Air cargo':            '#4cc9f0',
+  'Vannamei farm cluster':'#c5a565',
+  'Mixed shrimp + wild':  '#7a5b8c',
+  'Pole-and-line tuna':   '#2d6a4f',
+  'Wild black tiger':     '#a8322d',
+  'Sea port':             '#b8860b',
+  'Air cargo':            '#0d3b66',
 };
 
 // Crude SVG bounding box for India west coast view: lat 8-25, lng 65-90
@@ -34,17 +34,17 @@ export default function Sourcing() {
       <div className="grid grid-2">
         <div className="card">
           <h3>Schematic map (Konkan + AP belt)</h3>
-          <svg viewBox="0 0 760 540" style={{width:'100%',height:'auto',background:'#0a1224',borderRadius:10,border:'1px solid var(--c-border)'}}>
+          <svg viewBox="0 0 760 540" style={{width:'100%',height:'auto',background:'#fbf8f1',borderRadius:10,border:'1px solid var(--c-border)'}}>
             {/* simple coastline guide */}
             <path d="M 230 60 Q 240 200 215 270 Q 195 330 195 380 Q 200 420 220 470 Q 250 510 290 520"
-                  stroke="#243757" strokeWidth="2" fill="none" strokeDasharray="3 4"/>
+                  stroke="#e0d9c8" strokeWidth="2" fill="none" strokeDasharray="3 4"/>
             {/* AP coast */}
-            <path d="M 380 380 Q 470 350 550 280 Q 600 220 600 160" stroke="#243757" strokeWidth="2" fill="none" strokeDasharray="3 4"/>
+            <path d="M 380 380 Q 470 350 550 280 Q 600 220 600 160" stroke="#e0d9c8" strokeWidth="2" fill="none" strokeDasharray="3 4"/>
 
             {/* Plant marker */}
             <g>
-              <circle cx={projectX(purandarPlant.lng)} cy={projectY(purandarPlant.lat)} r="11" fill="#4cc9f0" stroke="#fff" strokeWidth="2"/>
-              <text x={projectX(purandarPlant.lng)+15} y={projectY(purandarPlant.lat)+4} fontSize="11" fill="#e6edf7" fontWeight="600">
+              <circle cx={projectX(purandarPlant.lng)} cy={projectY(purandarPlant.lat)} r="11" fill="#0d3b66" stroke="#fff" strokeWidth="2"/>
+              <text x={projectX(purandarPlant.lng)+15} y={projectY(purandarPlant.lat)+4} fontSize="11" fill="#1a1f36" fontWeight="600">
                 Purandar Plant (3 ac)
               </text>
             </g>
@@ -52,13 +52,13 @@ export default function Sourcing() {
             {/* Konkan + AP nodes */}
             {sourcingNodes.filter(n => typeof n.lat === 'number').map(n => {
               const x = projectX(n.lng), y = projectY(n.lat);
-              const c = TYPE_COLOR[n.type] || '#9eb0c9';
+              const c = TYPE_COLOR[n.type] || '#5c6272';
               return (
                 <g key={n.id}>
                   <line x1={projectX(purandarPlant.lng)} y1={projectY(purandarPlant.lat)} x2={x} y2={y}
                         stroke={c} strokeOpacity=".25" strokeWidth="1"/>
-                  <circle cx={x} cy={y} r="5" fill={c} stroke="#0a1224" strokeWidth="1.5"/>
-                  <text x={x+8} y={y+3} fontSize="9.5" fill="#cbd6e8">{n.name.split(' (')[0]}</text>
+                  <circle cx={x} cy={y} r="5" fill={c} stroke="#fbf8f1" strokeWidth="1.5"/>
+                  <text x={x+8} y={y+3} fontSize="9.5" fill="#1a1f36">{n.name.split(' (')[0]}</text>
                 </g>
               );
             })}
@@ -124,7 +124,7 @@ export default function Sourcing() {
                 <span style={{color:'var(--c-text-dim)'}}>Distance: <strong style={{color:'var(--c-text)'}}>{o.km} km</strong></span>
                 <span style={{color:'var(--c-text-dim)'}}>Drive: <strong style={{color:'var(--c-text)'}}>{o.hrs} hrs</strong></span>
               </div>
-              <p style={{fontSize:12.5,color:'#cbd6e8'}}>{o.role}</p>
+              <p style={{fontSize:12.5,color:'#1a1f36'}}>{o.role}</p>
             </div>
           ))}
         </div>

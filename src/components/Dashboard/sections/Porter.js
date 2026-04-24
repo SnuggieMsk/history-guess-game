@@ -26,11 +26,11 @@ export default function Porter() {
           <h3>Force intensity (1-5)</h3>
           <ResponsiveContainer width="100%" height={320}>
             <RadarChart data={radarData}>
-              <PolarGrid stroke="#243757"/>
-              <PolarAngleAxis dataKey="force" stroke="#9eb0c9" fontSize={11}/>
-              <PolarRadiusAxis stroke="#243757" angle={90} domain={[0, 5]}/>
-              <Radar name="Intensity" dataKey="score" stroke="#4cc9f0" fill="#4cc9f0" fillOpacity={0.5}/>
-              <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+              <PolarGrid stroke="#e0d9c8"/>
+              <PolarAngleAxis dataKey="force" stroke="#5c6272" fontSize={11}/>
+              <PolarRadiusAxis stroke="#e0d9c8" angle={90} domain={[0, 5]}/>
+              <Radar name="Intensity" dataKey="score" stroke="#0d3b66" fill="#0d3b66" fillOpacity={0.5}/>
+              <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
             </RadarChart>
           </ResponsiveContainer>
         </div>

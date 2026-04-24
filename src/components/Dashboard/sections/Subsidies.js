@@ -44,9 +44,9 @@ export default function Subsidies() {
                 <ul className="bullets" style={{marginTop:4}}>{s.benefits.map((b,k)=><li key={k}>{b}</li>)}</ul>
               </div>
               <div>
-                <p style={{fontSize:12.5,color:'#cbd6e8',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>Relevance:</strong> {s.relevance}</p>
-                <p style={{fontSize:12.5,color:'#cbd6e8',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>How to apply:</strong> {s.applicationProcess}</p>
-                <p style={{fontSize:12.5,color:'#cbd6e8'}}><strong style={{color:'var(--c-accent)'}}>Timeline:</strong> {s.typicalTimeline}</p>
+                <p style={{fontSize:12.5,color:'#1a1f36',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>Relevance:</strong> {s.relevance}</p>
+                <p style={{fontSize:12.5,color:'#1a1f36',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>How to apply:</strong> {s.applicationProcess}</p>
+                <p style={{fontSize:12.5,color:'#1a1f36'}}><strong style={{color:'var(--c-accent)'}}>Timeline:</strong> {s.typicalTimeline}</p>
               </div>
             </div>
           </div>
@@ -64,8 +64,8 @@ export default function Subsidies() {
                 <ul className="bullets" style={{marginTop:4}}>{s.benefits.map((b,k)=><li key={k}>{b}</li>)}</ul>
               </div>
               <div>
-                <p style={{fontSize:12.5,color:'#cbd6e8',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>Relevance:</strong> {s.relevance}</p>
-                <p style={{fontSize:12.5,color:'#cbd6e8'}}><strong style={{color:'var(--c-accent)'}}>How to apply:</strong> {s.applicationProcess}</p>
+                <p style={{fontSize:12.5,color:'#1a1f36',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>Relevance:</strong> {s.relevance}</p>
+                <p style={{fontSize:12.5,color:'#1a1f36'}}><strong style={{color:'var(--c-accent)'}}>How to apply:</strong> {s.applicationProcess}</p>
               </div>
             </div>
           </div>

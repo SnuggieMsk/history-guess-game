@@ -33,15 +33,15 @@ export default function CostCalculator() {
   }, [farmGate, yieldPct, processCost, iqfCost, storageCost, packCost, coldChainCost, freight, overhead, finance, fobUSD, fx, rodtepPct]);
 
   const breakdown = [
-    { stage:'Raw material (yield-adjusted)', val: Math.round(calc.adjustedRaw), color:'#4cc9f0' },
+    { stage:'Raw material (yield-adjusted)', val: Math.round(calc.adjustedRaw), color:'#0d3b66' },
     { stage:'First-mile cold chain',         val: coldChainCost,                color:'#5fb3e3' },
     { stage:'Processing',                    val: processCost,                  color:'#7fbcd0' },
     { stage:'IQF freezing',                  val: iqfCost,                      color:'#92c7b6' },
     { stage:'Cold storage',                  val: storageCost,                  color:'#a8d49b' },
     { stage:'Packing & docs',                val: packCost,                     color:'#cfd76f' },
-    { stage:'Outbound freight',              val: freight,                      color:'#f4d35e' },
-    { stage:'Overheads',                     val: overhead,                     color:'#f4a261' },
-    { stage:'Finance cost',                  val: finance,                      color:'#ef476f' },
+    { stage:'Outbound freight',              val: freight,                      color:'#b8860b' },
+    { stage:'Overheads',                     val: overhead,                     color:'#c5a565' },
+    { stage:'Finance cost',                  val: finance,                      color:'#a8322d' },
   ];
 
   return (
@@ -85,10 +85,10 @@ export default function CostCalculator() {
             <h3>Cost stack waterfall</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={breakdown} margin={{top:10,right:10,left:0,bottom:35}}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#243757"/>
-                <XAxis dataKey="stage" stroke="#9eb0c9" fontSize={10} angle={-22} textAnchor="end" height={60}/>
-                <YAxis stroke="#9eb0c9" fontSize={11}/>
-                <Tooltip contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}/>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e0d9c8"/>
+                <XAxis dataKey="stage" stroke="#5c6272" fontSize={10} angle={-22} textAnchor="end" height={60}/>
+                <YAxis stroke="#5c6272" fontSize={11}/>
+                <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
                 <Bar dataKey="val" name="₹/kg">
                   {breakdown.map((b,i) => <Cell key={i} fill={b.color}/>)}
                 </Bar>

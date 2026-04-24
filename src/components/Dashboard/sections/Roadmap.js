@@ -2,11 +2,11 @@ import React from 'react';
 import { implementationRoadmap } from '../../../data/operations';
 
 const PHASE_COLOR = {
-  'Pre-construction':'#9b5de5',
-  'Construction':'#4cc9f0',
-  'Commissioning':'#f4a261',
-  'Y1 Operations':'#2ec27e',
-  'Y2 Expansion':'#f4d35e',
+  'Pre-construction':'#7a5b8c',
+  'Construction':'#0d3b66',
+  'Commissioning':'#c5a565',
+  'Y1 Operations':'#2d6a4f',
+  'Y2 Expansion':'#b8860b',
 };
 
 export default function Roadmap() {

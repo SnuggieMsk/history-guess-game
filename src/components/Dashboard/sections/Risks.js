@@ -2,7 +2,7 @@ import React from 'react';
 import { risks } from '../../../data/risks';
 import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip } from 'recharts';
 
-const SCORE_COLOR = (s) => s >= 12 ? '#ef476f' : s >= 9 ? '#f4a261' : s >= 6 ? '#f4d35e' : '#2ec27e';
+const SCORE_COLOR = (s) => s >= 12 ? '#a8322d' : s >= 9 ? '#c5a565' : s >= 6 ? '#b8860b' : '#2d6a4f';
 const SCORE_PILL = (s) => s >= 12 ? 'pill-bad' : s >= 9 ? 'pill-warn' : s >= 6 ? 'pill-warn' : 'pill-good';
 
 const LIKE_TO_NUM = { 'Low':1, 'Medium':2, 'Medium-High':2.5, 'High':3, 'Certain':4 };
@@ -32,15 +32,15 @@ export default function Risks() {
         <h3>Risk heatmap (size = severity score)</h3>
         <ResponsiveContainer width="100%" height={360}>
           <ScatterChart margin={{top:20,right:30,left:10,bottom:30}}>
-            <CartesianGrid stroke="#243757"/>
-            <XAxis type="number" dataKey="likelihood" name="Likelihood" stroke="#9eb0c9" fontSize={11} domain={[0,5]}
+            <CartesianGrid stroke="#e0d9c8"/>
+            <XAxis type="number" dataKey="likelihood" name="Likelihood" stroke="#5c6272" fontSize={11} domain={[0,5]}
               ticks={[1,2,3,4]} tickFormatter={n=>['','Low','Med','High','Cert.'][n]||''}/>
-            <YAxis type="number" dataKey="impact" name="Impact" stroke="#9eb0c9" fontSize={11} domain={[0,5]}
+            <YAxis type="number" dataKey="impact" name="Impact" stroke="#5c6272" fontSize={11} domain={[0,5]}
               ticks={[1,2,3,4]} tickFormatter={n=>['','Low','Med','High','Crit.'][n]||''}/>
             <ZAxis type="number" dataKey="score" range={[80, 700]} name="Score"/>
-            <Tooltip cursor={{strokeDasharray:'3 3'}} contentStyle={{background:'#0b1220',border:'1px solid #243757',color:'#e6edf7'}}
+            <Tooltip cursor={{strokeDasharray:'3 3'}} contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}
               formatter={(v,n)=>[v,n]} labelFormatter={(_,d)=>d?.[0]?.payload?.risk||''}/>
-            <Scatter data={heatData} fill="#ef476f"/>
+            <Scatter data={heatData} fill="#a8322d"/>
           </ScatterChart>
         </ResponsiveContainer>
       </div>

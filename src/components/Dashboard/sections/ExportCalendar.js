@@ -1,7 +1,7 @@
 import React from 'react';
 import { months, calendarHeatmap, buyingSpikes } from '../../../data/calendar';
 
-const HEAT = ['#0e1a2d','#1e3a5f','#2563eb','#f4a261','#ef476f'];
+const HEAT = ['#f0ead9','#dac99c','#c5a565','#b0833f','#8c5a2b'];
 
 export default function ExportCalendar() {
   return (
@@ -31,7 +31,7 @@ export default function ExportCalendar() {
                 <td className="prod">{row.product}</td>
                 {row.data.map((v,i) => (
                   <td key={i} title={`${row.product} · ${months[i]} · intensity ${v}/3`}
-                      style={{background: HEAT[v+1] || HEAT[1], color: v>=2?'#0b1220':'#cbd6e8', fontWeight:v===3?700:400}}>
+                      style={{background: HEAT[v+1] || HEAT[1], color: v>=2?'#ffffff':'#1a1f36', fontWeight:v===3?700:400}}>
                     {v === 0 ? '·' : v}
                   </td>
                 ))}
@@ -59,8 +59,8 @@ export default function ExportCalendar() {
                 <span className="pill pill-good">+{s.surchargePct}%</span>
               </div>
               <p style={{fontSize:12,color:'var(--c-text-dim)',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>Window:</strong> {s.window}</p>
-              <p style={{fontSize:12,color:'#cbd6e8',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>Markets:</strong> {s.markets.join(' · ')}</p>
-              <p style={{fontSize:12,color:'#cbd6e8'}}><strong style={{color:'var(--c-accent)'}}>Best species:</strong> {s.species.join(' · ')}</p>
+              <p style={{fontSize:12,color:'#1a1f36',marginBottom:6}}><strong style={{color:'var(--c-accent)'}}>Markets:</strong> {s.markets.join(' · ')}</p>
+              <p style={{fontSize:12,color:'#1a1f36'}}><strong style={{color:'var(--c-accent)'}}>Best species:</strong> {s.species.join(' · ')}</p>
             </div>
           ))}
         </div>
@@ -68,7 +68,7 @@ export default function ExportCalendar() {
 
       <style>{`
         .cal-tbl { width:100%; border-collapse:collapse; font-size:12px; }
-        .cal-tbl th { background:rgba(0,0,0,.3); color:var(--c-text-dim); font-weight:600; padding:8px 6px; text-align:center; border-bottom:1px solid var(--c-border); font-size:11px; text-transform:uppercase; letter-spacing:.5px;}
+        .cal-tbl th { background:var(--c-surface-2); color:var(--c-text-dim); font-weight:600; padding:8px 6px; text-align:center; border-bottom:2px solid var(--c-border-strong); font-size:11px; text-transform:uppercase; letter-spacing:.8px;}
         .cal-tbl td { padding:8px 6px; text-align:center; border-bottom:1px solid var(--c-border); font-size:11.5px; }
         .cal-tbl td.prod { text-align:left; font-weight:500; color:var(--c-text); }
         .cal-tbl td.notes { text-align:left; font-size:11px; color:var(--c-text-dim); font-style:italic; }
