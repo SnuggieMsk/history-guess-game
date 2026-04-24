@@ -38,6 +38,11 @@ import MarketsV2 from './components/Dashboard/v2/MarketsV2';
 import CompeteV2 from './components/Dashboard/v2/CompeteV2';
 import StressV2 from './components/Dashboard/v2/StressV2';
 import DprV2 from './components/Dashboard/v2/DprV2';
+import PlaybookV2 from './components/Dashboard/v2/PlaybookV2';
+import NightmaresV2 from './components/Dashboard/v2/NightmaresV2';
+import JargonV2 from './components/Dashboard/v2/JargonV2';
+import VendorsV2 from './components/Dashboard/v2/VendorsV2';
+import BalanceV2 from './components/Dashboard/v2/BalanceV2';
 
 import './App.css';
 
@@ -60,6 +65,11 @@ function App() {
           <Route path="/v2/compete"   element={<CompeteV2 />} />
           <Route path="/v2/stress"    element={<StressV2 />} />
           <Route path="/v2/dpr"       element={<DprV2 />} />
+          <Route path="/v2/playbook"  element={<PlaybookV2 />} />
+          <Route path="/v2/nightmares" element={<NightmaresV2 />} />
+          <Route path="/v2/jargon"    element={<JargonV2 />} />
+          <Route path="/v2/vendors"   element={<VendorsV2 />} />
+          <Route path="/v2/balance"   element={<BalanceV2 />} />
 
           {/* V1 reference */}
           <Route path="/"             element={<ThesisV2 />} />
