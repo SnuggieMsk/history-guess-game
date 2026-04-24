@@ -3,7 +3,22 @@ import { Outlet, NavLink } from 'react-router-dom';
 import './DashboardLayout.css';
 
 const sections = [
-  { group: 'Overview',     items: [
+  { group: 'V2 · Investor Build',     items: [
+    { path: '/v2/thesis',    label: 'Sharpened Thesis',  icon: '◆' },
+    { path: '/v2/teardown',  label: 'Investor Teardown', icon: '⎔' },
+    { path: '/v2/map',       label: 'Maharashtra Map',   icon: '⌖' },
+    { path: '/v2/suppliers', label: 'Named Suppliers',   icon: '⇐' },
+    { path: '/v2/buyers',    label: 'Named Buyers',      icon: '⇒' },
+    { path: '/v2/ops',       label: 'Ops & Quality',     icon: '⚙' },
+    { path: '/v2/live',      label: 'Live-Cargo Calc',   icon: '✈' },
+    { path: '/v2/certs',     label: 'Certifications',    icon: '✓' },
+    { path: '/v2/schemes',   label: 'Govt Schemes',      icon: '₹' },
+    { path: '/v2/markets',   label: 'Destination Countries', icon: '⌘' },
+    { path: '/v2/compete',   label: 'Competitor Forensics', icon: '⚔' },
+    { path: '/v2/stress',    label: 'Stress-Tested Financials', icon: '📈' },
+    { path: '/v2/dpr',       label: 'PMMSY DPR Skeleton', icon: '📄' },
+  ]},
+  { group: 'V1 Reference',     items: [
     { path: '/',             label: 'Executive Summary', icon: '◆' },
     { path: '/value-chain',  label: 'Value Chain',       icon: '⇄' },
   ]},
