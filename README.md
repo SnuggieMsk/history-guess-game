@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Konkan Seafoods — Investor Dashboard & Business Plan
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An investor-grade planning artifact for a **₹32 cr seafood export venture** based at
+Purandar (Pune district, Maharashtra). Processes Konkan coast wild catch + Andhra
+Pradesh farmed shrimp into FOB-ready exports to USA, EU, Japan, China, GCC, SEA.
 
-## Available Scripts
+This repository contains two complementary artifacts:
 
-In the project directory, you can run:
+1. **`BUSINESS_PLAN.md`** — Full investor-grade narrative (~1,000 lines): market
+   context, value chain, 10-species gap analysis, 5-year financials, PESTEL, Porter,
+   SWOT, 7-layer MOAT strategy, competitor deep dive, subsidy stack, risk register,
+   case studies, and 36-month implementation roadmap.
 
-### `npm start`
+2. **Interactive React Dashboard** (`src/`) — 19 navigable sections with charts,
+   sortable tables, an interactive cost calculator, heatmaps, and a scatter-plot
+   gap-species opportunity map. Built with React 18 + Recharts + React Router.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Quick start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+npm start
+# open http://localhost:3000
+```
 
-### `npm test`
+## Dashboard sections
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Executive Summary** — KPIs, thesis, top destinations, Y1 revenue mix
+- **Value Chain** — 10-stage flow, ₹/kg cost stack, yield recoveries
+- **Species Portfolio** — 16 species (CORE/VOLUME/GAP) with revenue mix evolution
+- **Gap Species** — Bulletproof opportunity map, tiered species deep-dive
+- **Sourcing & Map** — 18 inbound nodes + 5 outbound nodes, schematic map
+- **Cost Calculator** — Interactive sliders, live margin recomputation
+- **5-Year Financials** — Capex, P&L, WC, cash flow, sensitivity matrix
+- **Export Calendar** — Monthly heatmap + cultural buying windows
+- **Competitors** — 11 national + 5 Maharashtra peers; where we win / lose
+- **PESTEL / Porter / SWOT / MOAT** — Four strategic frameworks
+- **Subsidies** — PMMSY, PMKSY, MNRE, RoDTEP, state schemes
+- **Risks** — 12-entry register with likelihood × impact heatmap
+- **Case Studies** — 7 successes (Avanti, Apex, Gadre, Thai Union, Mowi, Minh Phu, OMARSA) + 2 anonymised failures
+- **Operations** — Org chart, hiring playbook, 16 regulatory approvals, buyer profiles
+- **Roadmap** — 36-month phased implementation
+- **References** — Source list
 
-### `npm run build`
+## Build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Scope & disclaimer
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Numbers are indicative and sourced from publicly available data (MPEDA, DGCI&S,
+MoFPI, NFDB, Eurostat, FAO/GLOBEFISH, company annual reports) through April 2026.
+Validate against primary supplier quotes and current MPEDA monthly bulletins
+before any investment commitment. Subsidy quantum and timelines are subject to
+scheme guideline updates.
