@@ -43,6 +43,9 @@ import NightmaresV2 from './components/Dashboard/v2/NightmaresV2';
 import JargonV2 from './components/Dashboard/v2/JargonV2';
 import VendorsV2 from './components/Dashboard/v2/VendorsV2';
 import BalanceV2 from './components/Dashboard/v2/BalanceV2';
+import TemplatesV2 from './components/Dashboard/v2/TemplatesV2';
+import TechStackV2 from './components/Dashboard/v2/TechStackV2';
+import InsuranceV2 from './components/Dashboard/v2/InsuranceV2';
 
 import './App.css';
 
@@ -70,6 +73,9 @@ function App() {
           <Route path="/v2/jargon"    element={<JargonV2 />} />
           <Route path="/v2/vendors"   element={<VendorsV2 />} />
           <Route path="/v2/balance"   element={<BalanceV2 />} />
+          <Route path="/v2/templates" element={<TemplatesV2 />} />
+          <Route path="/v2/tech"      element={<TechStackV2 />} />
+          <Route path="/v2/insurance" element={<InsuranceV2 />} />
 
           {/* V1 reference */}
           <Route path="/"             element={<ThesisV2 />} />

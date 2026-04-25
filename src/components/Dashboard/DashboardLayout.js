@@ -31,6 +31,13 @@ const sections = [
     { path: '/v2/dpr',       label: 'PMMSY DPR Skeleton',      icon: '📄' },
     { path: '/v2/teardown',  label: 'Investor Teardown',       icon: '⎔' },
   ]},
+  { group: 'V2 · Tools & Templates',     items: [
+    { path: '/v2/templates', label: 'Document Templates',     icon: '✎' },
+    { path: '/v2/tech',      label: 'Software Stack',         icon: '◊' },
+    { path: '/v2/insurance', label: 'Insurance Program',      icon: '⛨' },
+    { path: '/v2/vendors',   label: 'Vendor Directory',       icon: '⎆' },
+    { path: '/v2/jargon',    label: 'Jargon Cheatsheet',      icon: 'A' },
+  ]},
   { group: 'V1 Reference',     items: [
     { path: '/',             label: 'Executive Summary', icon: '◆' },
     { path: '/value-chain',  label: 'Value Chain',       icon: '⇄' },
