@@ -17,6 +17,7 @@ const sections = [
     { path: '/v2/buyers',    label: 'Named Buyers',           icon: '⇒' },
     { path: '/v2/markets',   label: 'Destination Countries',  icon: '⌘' },
     { path: '/v2/compete',   label: 'Competitor Forensics',   icon: '⚔' },
+    { path: '/v2/compete-deep', label: 'Competitor Deep Stories', icon: '🔬' },
   ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
