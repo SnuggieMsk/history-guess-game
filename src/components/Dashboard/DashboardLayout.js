@@ -37,6 +37,7 @@ const sections = [
     { path: '/v2/insurance', label: 'Insurance Program',      icon: '⛨' },
     { path: '/v2/vendors',   label: 'Vendor Directory',       icon: '⎆' },
     { path: '/v2/jargon',    label: 'Jargon Cheatsheet',      icon: 'A' },
+    { path: '/v2/closeout',  label: 'ESG · Wargame · JDs · Outreach', icon: '⊕' },
   ]},
   { group: 'V1 Reference',     items: [
     { path: '/',             label: 'Executive Summary', icon: '◆' },
