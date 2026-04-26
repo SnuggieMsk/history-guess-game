@@ -60,6 +60,8 @@ import MonteCarloSimV2 from './components/Dashboard/v2/MonteCarloSimV2';
 import WeatherSimV2 from './components/Dashboard/v2/WeatherSimV2';
 import DistributorOptV2 from './components/Dashboard/v2/DistributorOptV2';
 import GraveyardV2 from './components/Dashboard/v2/GraveyardV2';
+import GlobalFlowsV2 from './components/Dashboard/v2/GlobalFlowsV2';
+import CompoundShockSimV2 from './components/Dashboard/v2/CompoundShockSimV2';
 
 import './App.css';
 
@@ -104,6 +106,8 @@ function App() {
           <Route path="/v2/weather"      element={<WeatherSimV2 />} />
           <Route path="/v2/distributor"  element={<DistributorOptV2 />} />
           <Route path="/v2/graveyard"    element={<GraveyardV2 />} />
+          <Route path="/v2/global-flows" element={<GlobalFlowsV2 />} />
+          <Route path="/v2/compound-shock" element={<CompoundShockSimV2 />} />
 
           {/* V1 reference */}
           <Route path="/"             element={<ThesisV2 />} />

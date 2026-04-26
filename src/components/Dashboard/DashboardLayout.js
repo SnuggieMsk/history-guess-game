@@ -41,6 +41,10 @@ const sections = [
     { path: '/v2/weather',      label: 'Weather + Climate',      icon: '🌪' },
     { path: '/v2/distributor',  label: 'Distributor Optimizer',  icon: '🔗' },
   ]},
+  { group: 'V2 · L7 Global Flows',     items: [
+    { path: '/v2/global-flows', label: 'World Trade Flow Map',  icon: '🌐' },
+    { path: '/v2/compound-shock', label: 'Compound Shock Sim', icon: '☂' },
+  ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },
