@@ -62,6 +62,11 @@ import DistributorOptV2 from './components/Dashboard/v2/DistributorOptV2';
 import GraveyardV2 from './components/Dashboard/v2/GraveyardV2';
 import GlobalFlowsV2 from './components/Dashboard/v2/GlobalFlowsV2';
 import CompoundShockSimV2 from './components/Dashboard/v2/CompoundShockSimV2';
+import DprDeepDiveV2 from './components/Dashboard/v2/DprDeepDiveV2';
+import DprFinModelV2 from './components/Dashboard/v2/DprFinModelV2';
+import FiveYearSimV2 from './components/Dashboard/v2/FiveYearSimV2';
+import DprAnnexuresV2 from './components/Dashboard/v2/DprAnnexuresV2';
+import SimNarrationV2 from './components/Dashboard/v2/SimNarrationV2';
 
 import './App.css';
 
@@ -108,6 +113,11 @@ function App() {
           <Route path="/v2/graveyard"    element={<GraveyardV2 />} />
           <Route path="/v2/global-flows" element={<GlobalFlowsV2 />} />
           <Route path="/v2/compound-shock" element={<CompoundShockSimV2 />} />
+          <Route path="/v2/dpr-deep"     element={<DprDeepDiveV2 />} />
+          <Route path="/v2/dpr-finmodel" element={<DprFinModelV2 />} />
+          <Route path="/v2/five-year-sim" element={<FiveYearSimV2 />} />
+          <Route path="/v2/dpr-annex"    element={<DprAnnexuresV2 />} />
+          <Route path="/v2/sim-narration" element={<SimNarrationV2 />} />
 
           {/* V1 reference */}
           <Route path="/"             element={<ThesisV2 />} />

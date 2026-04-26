@@ -45,6 +45,13 @@ const sections = [
     { path: '/v2/global-flows', label: 'World Trade Flow Map',  icon: '🌐' },
     { path: '/v2/compound-shock', label: 'Compound Shock Sim', icon: '☂' },
   ]},
+  { group: 'V2 · L8 DPR + 5-Yr Sim',     items: [
+    { path: '/v2/dpr-deep',     label: 'DPR Walkthrough (18-ch)', icon: '📑' },
+    { path: '/v2/dpr-finmodel', label: 'DPR Financial Model',     icon: '📊' },
+    { path: '/v2/dpr-annex',    label: 'DPR Annexures (10)',      icon: '📎' },
+    { path: '/v2/five-year-sim',label: '5-Year Forecast Sim',     icon: '🔮' },
+    { path: '/v2/sim-narration',label: 'Sim Narration + Decisions', icon: '🧭' },
+  ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },
