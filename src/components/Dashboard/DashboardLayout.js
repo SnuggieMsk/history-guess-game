@@ -59,6 +59,8 @@ const sections = [
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
     { path: '/v2/wc-ramp',   label: 'WC Cycle + Plant Ramp',  icon: '⟳' },
+    { path: '/v2/critical-path', label: 'Regulatory Critical Path', icon: '⏱' },
+    { path: '/v2/insurance-schedule', label: 'Insurance Schedule', icon: '⛨' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },
     { path: '/v2/certs',     label: 'Certifications',         icon: '✓' },
     { path: '/v2/nightmares', label: 'Nightmare Playbook',    icon: '☠' },
@@ -68,6 +70,7 @@ const sections = [
     { path: '/v2/stress',    label: 'Stress-Tested Financials', icon: '📈' },
     { path: '/v2/balance',   label: 'Balance Sheet + Exit',   icon: '⊞' },
     { path: '/v2/cap-table', label: 'Cap Table + Exit Comps', icon: '⚖' },
+    { path: '/v2/reaction-case', label: 'Adani/Reliance Reaction Case', icon: '⚡' },
     { path: '/v2/capex',     label: 'CapEx BOQ + Quotes',     icon: '∑' },
     { path: '/v2/dpr',       label: 'PMMSY DPR Skeleton',      icon: '📄' },
     { path: '/v2/teardown',  label: 'Investor Teardown',       icon: '⎔' },

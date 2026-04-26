@@ -75,6 +75,9 @@ const TeamOrgV2           = lazy(() => import('./components/Dashboard/v2/TeamOrg
 const WCRampV2            = lazy(() => import('./components/Dashboard/v2/WCRampV2'));
 const CapExV2             = lazy(() => import('./components/Dashboard/v2/CapExV2'));
 const BuyerEvidenceV2     = lazy(() => import('./components/Dashboard/v2/BuyerEvidenceV2'));
+const ReactionCaseV2      = lazy(() => import('./components/Dashboard/v2/ReactionCaseV2'));
+const CriticalPathV2      = lazy(() => import('./components/Dashboard/v2/CriticalPathV2'));
+const InsuranceScheduleV2 = lazy(() => import('./components/Dashboard/v2/InsuranceScheduleV2'));
 
 // Skeleton loader for in-flight chunks
 const Loading = () => (
@@ -152,6 +155,9 @@ function App() {
           <Route path="/v2/wc-ramp"   element={L(WCRampV2)} />
           <Route path="/v2/capex"     element={L(CapExV2)} />
           <Route path="/v2/buyer-evidence" element={L(BuyerEvidenceV2)} />
+          <Route path="/v2/reaction-case"  element={L(ReactionCaseV2)} />
+          <Route path="/v2/critical-path"  element={L(CriticalPathV2)} />
+          <Route path="/v2/insurance-schedule" element={L(InsuranceScheduleV2)} />
 
           {/* V1 reference — all lazy */}
           <Route path="/exec"         element={L(ExecutiveSummary)} />
