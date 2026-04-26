@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import ErrorBoundary from '../ErrorBoundary';
+import CommandPalette from './CommandPalette';
 import './DashboardLayout.css';
 
 const sections = [
@@ -121,9 +122,11 @@ export default function DashboardLayout() {
           </div>
         </div>
         <p className="dash-tag">10-Cr Seafood Export Venture · Investor Dashboard</p>
-        {sections.map(g => (
-          <div key={g.group} className="dash-nav-group">
-            <div className="dash-nav-group-title">{g.group}</div>
+        {sections.map(g => {
+          const groupActive = g.items.some(it => it.path === location.pathname);
+          return (
+          <div key={g.group} className={`dash-nav-group ${groupActive ? 'group-active' : ''}`}>
+            <div className="dash-nav-group-title" style={groupActive ? {color:'var(--c-accent)'} : {}}>{g.group}</div>
             {g.items.map(it => (
               <NavLink
                 key={it.path}
@@ -137,7 +140,8 @@ export default function DashboardLayout() {
               </NavLink>
             ))}
           </div>
-        ))}
+        );
+        })}
         <div className="dash-foot">
           <p>v1.0 · Apr 2026</p>
           <p>Research-grade · MPEDA-aligned</p>
@@ -153,6 +157,8 @@ export default function DashboardLayout() {
           <Outlet />
         </ErrorBoundary>
       </main>
+
+      <CommandPalette routes={sections.flatMap(g => g.items.map(it => ({ ...it, group: g.group })))} />
     </div>
   );
 }
