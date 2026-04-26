@@ -8,6 +8,7 @@ const sections = [
   { group: 'V2 · Start Here',     items: [
     { path: '/v2/playbook',  label: 'Operator Playbook (Day 0→Y1)',  icon: '▶' },
     { path: '/v2/thesis',    label: 'Sharpened Thesis',      icon: '◆' },
+    { path: '/v2/team',      label: 'Team · Advisory · Org',  icon: '☻' },
     { path: '/v2/jargon',    label: 'Jargon Cheatsheet',     icon: 'A' },
   ]},
   { group: 'V2 · Geography & Supply',     items: [
