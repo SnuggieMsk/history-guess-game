@@ -23,6 +23,9 @@ const sections = [
   { group: 'V2 · Simulator',     items: [
     { path: '/v2/simulator',    label: '★ Market Simulator',     icon: '⚡' },
   ]},
+  { group: 'V2 · L3 Contacts',     items: [
+    { path: '/v2/contacts',     label: 'Phone/Email Directory',  icon: '☎' },
+  ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },
