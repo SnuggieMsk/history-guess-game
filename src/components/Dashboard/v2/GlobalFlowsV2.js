@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { indiaPortFlows, destinationCountries, lanes, competitorPrimaryLanes, monthlyExportPattern, shippingLineMarketShare, refrigeratedAirCarriers } from '../../../data/v2GlobalFlows';
+import { continentOutlines } from '../../../data/worldOutlines';
 import { ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line } from 'recharts';
 
 // World map projection: simple equirectangular for visual clarity
@@ -42,18 +43,40 @@ export default function GlobalFlowsV2() {
           <input type="checkbox" checked={showCompetitor} onChange={e=>setShowCompetitor(e.target.checked)}/> Show competitor flows
         </label>
         <svg viewBox={`0 0 ${WORLD_W} ${WORLD_H}`} style={{width:'100%', height:'auto', background:'#fbf8f1', borderRadius:4, border:'1px solid var(--c-border)', marginTop:10}}>
-          {/* Equator + tropics guide lines */}
-          <line x1="0" y1={projectWorld(0,0)[1]} x2={WORLD_W} y2={projectWorld(0,0)[1]} stroke="#cdc4ae" strokeWidth="0.5" strokeDasharray="2 2"/>
-          <line x1="0" y1={projectWorld(23.5,0)[1]} x2={WORLD_W} y2={projectWorld(23.5,0)[1]} stroke="#cdc4ae" strokeWidth="0.4" strokeDasharray="1 3"/>
-          <line x1="0" y1={projectWorld(-23.5,0)[1]} x2={WORLD_W} y2={projectWorld(-23.5,0)[1]} stroke="#cdc4ae" strokeWidth="0.4" strokeDasharray="1 3"/>
+          {/* Ocean fill */}
+          <rect x="0" y="0" width={WORLD_W} height={WORLD_H} fill="#f3ede0"/>
+
+          {/* Graticule — every 30° lng / 30° lat */}
+          {[-150,-120,-90,-60,-30,0,30,60,90,120,150].map(lng => (
+            <line key={`mer-${lng}`} x1={projectWorld(0,lng)[0]} y1="0" x2={projectWorld(0,lng)[0]} y2={WORLD_H}
+              stroke="#e6dfcd" strokeWidth="0.3"/>
+          ))}
+          {[60,30,0,-30,-60].map(lat => (
+            <line key={`par-${lat}`} x1="0" y1={projectWorld(lat,0)[1]} x2={WORLD_W} y2={projectWorld(lat,0)[1]}
+              stroke="#e6dfcd" strokeWidth="0.3"/>
+          ))}
+
+          {/* Continent landmasses — drawn from real lat/lng polygon outlines */}
+          {Object.entries(continentOutlines).map(([name, coords]) => {
+            const points = coords.map(([lat,lng]) => projectWorld(lat,lng).join(',')).join(' ');
+            return (
+              <polygon key={name} points={points}
+                fill="#e0d9c8" stroke="#cdc4ae" strokeWidth="0.6" strokeLinejoin="round"/>
+            );
+          })}
+
+          {/* Equator + tropics guide lines (drawn over land for context) */}
+          <line x1="0" y1={projectWorld(0,0)[1]} x2={WORLD_W} y2={projectWorld(0,0)[1]} stroke="#b8a878" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.6"/>
+          <line x1="0" y1={projectWorld(23.5,0)[1]} x2={WORLD_W} y2={projectWorld(23.5,0)[1]} stroke="#b8a878" strokeWidth="0.4" strokeDasharray="1 3" opacity="0.5"/>
+          <line x1="0" y1={projectWorld(-23.5,0)[1]} x2={WORLD_W} y2={projectWorld(-23.5,0)[1]} stroke="#b8a878" strokeWidth="0.4" strokeDasharray="1 3" opacity="0.5"/>
 
           {/* Continent text labels */}
-          <text x="200" y="180" fontSize="11" fill="#cdc4ae" fontFamily="Georgia,serif" fontStyle="italic">North America</text>
-          <text x="100" y="320" fontSize="11" fill="#cdc4ae" fontFamily="Georgia,serif" fontStyle="italic">South America</text>
-          <text x="540" y="200" fontSize="11" fill="#cdc4ae" fontFamily="Georgia,serif" fontStyle="italic">Europe</text>
-          <text x="600" y="280" fontSize="11" fill="#cdc4ae" fontFamily="Georgia,serif" fontStyle="italic">Africa</text>
-          <text x="780" y="240" fontSize="13" fill="#5c6272" fontFamily="Georgia,serif" fontWeight="700">Asia</text>
-          <text x="920" y="380" fontSize="11" fill="#cdc4ae" fontFamily="Georgia,serif" fontStyle="italic">Australia</text>
+          <text x="200" y="180" fontSize="11" fill="#8a8f9a" fontFamily="Georgia,serif" fontStyle="italic">North America</text>
+          <text x="280" y="380" fontSize="11" fill="#8a8f9a" fontFamily="Georgia,serif" fontStyle="italic">South America</text>
+          <text x="540" y="170" fontSize="11" fill="#8a8f9a" fontFamily="Georgia,serif" fontStyle="italic">Europe</text>
+          <text x="540" y="320" fontSize="11" fill="#8a8f9a" fontFamily="Georgia,serif" fontStyle="italic">Africa</text>
+          <text x="760" y="170" fontSize="13" fill="#5c6272" fontFamily="Georgia,serif" fontWeight="700">Asia</text>
+          <text x="870" y="400" fontSize="11" fill="#8a8f9a" fontFamily="Georgia,serif" fontStyle="italic">Australia</text>
 
           {/* Lanes from India to destinations */}
           {indiaPortFlows.map(p => {
