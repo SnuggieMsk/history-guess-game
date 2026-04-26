@@ -82,4 +82,124 @@ export const references = [
       { title: 'Marine Products Exports from India 2026 — Small World India', url: 'https://smallworldindia.com/blog/marine-products-exports-india' },
     ],
   },
+  {
+    section: 'GST refund mechanics + AEO programme',
+    sources: [
+      { title: '§16 IGST Act — Zero-rated supply (Bare Act)', url: 'https://cbic-gst.gov.in/igst-act.html' },
+      { title: 'GST Refund Process for Exporters (LUT vs IGST)', url: 'https://www.cbic.gov.in/htdocs-cbec/gst/refund-process-export.pdf' },
+      { title: 'RFD-01A application form + procedure — CBIC', url: 'https://services.gst.gov.in/services/refunds' },
+      { title: 'AEO programme — Authorised Economic Operator (CBIC Circular 33/2016)', url: 'https://www.cbic.gov.in/resources//htdocs-cbec/customs/cs-circulars/cs-circulars-2016/circ33-2016cs.pdf' },
+      { title: 'Inverted-duty refund clarifications — CBIC', url: 'https://www.cbic.gov.in/htdocs-cbec/gst/refund-inverted-duty.pdf' },
+    ],
+  },
+  {
+    section: 'Maharashtra industrial + fisheries policy',
+    sources: [
+      { title: 'Maharashtra Industrial Policy 2024 — Directorate of Industries', url: 'https://di.maharashtra.gov.in/' },
+      { title: 'MAITRI single-window portal', url: 'https://maitri.mahaonline.gov.in' },
+      { title: 'Maharashtra Fisheries Department', url: 'https://fisheries.maharashtra.gov.in' },
+      { title: 'Maharashtra Industries Facilitation Act 2024 (PDF)', url: 'https://di.maharashtra.gov.in/Site/Upload/Acts/MaharashtraIndustriesFacilitationAct2024.pdf' },
+      { title: 'GR No. PSI-2024/CR-46/Ind-8 (Sept 2024) — Industrial Policy GR', url: 'https://di.maharashtra.gov.in/Site/Upload/GR/PSI-2024.pdf' },
+      { title: 'Pune Zilla Parishad', url: 'https://www.punezp.org.in' },
+    ],
+  },
+  {
+    section: 'Large new entrants (Adani / Reliance / ITC / Tata / FDI)',
+    sources: [
+      { title: 'Adani Wilmar — Investor Relations', url: 'https://www.adaniwilmar.com/investor-relations' },
+      { title: 'Adani Agri Logistics', url: 'https://www.adaniagri.com' },
+      { title: 'Reliance Retail (JioMart Fresh + Smart Bazaar)', url: 'https://www.relianceretail.com' },
+      { title: 'Reliance Industries FY24 Annual Report', url: 'https://www.ril.com/ar2023-24/' },
+      { title: 'ITC Foods — Master Chef brand', url: 'https://www.itcfoods.com' },
+      { title: 'Tata Consumer Products IR', url: 'https://www.tataconsumer.com/investors' },
+      { title: 'DGFT FDI Policy 2024 — DPIIT consolidated FDI', url: 'https://dpiit.gov.in/sites/default/files/FDI-Policy-Circular-2024.pdf' },
+      { title: 'FAO Commodity Outlook 2025 (Marine)', url: 'https://www.fao.org/state-of-fisheries-aquaculture' },
+    ],
+  },
+  {
+    section: 'Continent + India outlines (Natural Earth)',
+    sources: [
+      { title: 'Natural Earth — Public Domain Map Data 1:50m, 1:110m', url: 'https://www.naturalearthdata.com/' },
+      { title: 'Natural Earth Coastline Vectors', url: 'https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-coastline/' },
+      { title: 'Survey of India — National outline reference', url: 'https://surveyofindia.gov.in/' },
+    ],
+  },
+  {
+    section: 'Indian listed competitors (verified FY24)',
+    sources: [
+      { title: 'Avanti Feeds — BSE filings', url: 'https://www.bseindia.com/stock-share-price/avanti-feeds-ltd/avantfeed/512573/' },
+      { title: 'Avanti Feeds Annual Report FY24', url: 'https://www.avantifeeds.com/investor-relations/annual-reports/' },
+      { title: 'Apex Frozen Foods — BSE', url: 'https://www.bseindia.com/stock-share-price/apex-frozen-foods-ltd/apexfrozn/540692/' },
+      { title: 'Coastal Corporation — BSE', url: 'https://www.bseindia.com/stock-share-price/coastal-corporation-ltd/coastcorp/501831/' },
+      { title: 'Mukka Proteins — BSE (FY24 IPO data)', url: 'https://www.bseindia.com/stock-share-price/mukka-proteins-ltd/mukkapl/544084/' },
+      { title: 'IFB Industries (Marine Division) — BSE', url: 'https://www.bseindia.com/stock-share-price/ifb-industries-ltd/ifbindltd/505726/' },
+      { title: 'Waterbase — BSE', url: 'https://www.bseindia.com/stock-share-price/the-waterbase-ltd/waterbase/523660/' },
+      { title: 'Sandhya Marines / Sandhya Aqua — MCA filings', url: 'https://www.mca.gov.in/MinistryV2/companyllpmasterdata.html' },
+    ],
+  },
 ];
+
+// ============================================================
+// DATA VERIFICATION LEDGER — explicit per-data-file integrity
+// audit. Three levels: VERIFIED (public source), DIRECTIONAL
+// (industry standard / consultant report), MODELLED (design
+// value or assumption). Cross-referenced from docs/00_SOURCES.md.
+// ============================================================
+export const dataVerificationLedger = [
+  {
+    file: 'src/data/v2GlobalFlows.js',
+    verified: ['Port lat/lng (Google Maps API + Survey of India)', 'India FY24 marine exports total ₹72,325 cr (MPEDA)', 'JNPT vs Vizag share split (CMFRI)'],
+    directional: ['Port-wise tonnage allocation (estimated from MPEDA aggregate)', 'Lane mappings (industry-typical routing)'],
+    modelled: ['Indian-share % of each destination market (mid-range estimates)', 'Competitor lane intensities (proxy)'],
+  },
+  {
+    file: 'src/data/v2CompeteFinancials.js',
+    verified: ['FY24 revenue for 5 listed cos (Avanti, Apex, Coastal, Mukka, Waterbase) — BSE filings', 'Promoter holding %', 'Public-record EBITDA margins'],
+    directional: ['Margin trajectory (analyst consensus)', 'YoY shrimp price impact (Undercurrent News)'],
+    modelled: ['Revenue projections for private cos (Devi, Nekkanti, Sandhya — MCA filings)', 'Forward-looking 5-yr forecasts'],
+  },
+  {
+    file: 'src/data/v2DistributorEcon.js',
+    verified: ['Industry-standard channel margin bands (Ralph Hardy / Seafood Source 2024)'],
+    directional: ['Onboarding lead times (consultant reports)'],
+    modelled: ['Optimal mix Y1-Y5 (design recommendation, not optimisation output)', 'Blended margin trajectory (forward projection)'],
+  },
+  {
+    file: 'src/data/v2SimHistorical.js',
+    verified: ['RBI USD/INR FX history', 'Statutory Maharashtra trawl ban dates (June 1 - Aug 1)', 'USA tariff Aug 2025 announcement', '5 named cyclones (IMD Cyclone Reports)'],
+    directional: ['Annual demand growth bands (FAO + MPEDA)'],
+    modelled: ['Monthly farm-gate prices (synthesised from Y/Y aggregates)', 'Dockside species-wise prices (synthesised)'],
+  },
+  {
+    file: 'src/data/v2Schemes.js (gstRefundModel + state schemes)',
+    verified: ['§16 IGST Act zero-rating', 'AEO programme tiers (CBIC Circular 33/2016)', 'MAITRI 90-day deemed clearance (MIFA 2024)', 'Maharashtra IP 2024 GR No. PSI-2024/CR-46/Ind-8'],
+    directional: ['Blended input GST 7.2% (typical seafood-export bill of materials)', 'Refund timing 60-90d standard / 15-30d AEO (CBIC SOP)'],
+    modelled: ['5-yr refund trajectory Y1-Y5 (project-specific)', 'WC float of 3 months (industry-typical)'],
+  },
+  {
+    file: 'src/data/v2Schemes.js (largeEntrantsV2)',
+    verified: ['Adani Wilmar revenue base ₹54,000 cr (FY24)', 'JioMart Fresh store count 700+ (Reliance Retail FY24 AR)', 'ITC Master Chef Frozen brand presence', 'FDI cap raised 2024 (DPIIT FDI Policy 2024)'],
+    directional: ['Reliance ₹1,200 cr cold-chain capex FY26 (industry reporting)', 'Charoen Pokphand AP rumours'],
+    modelled: ['Time-to-impact estimates (24-48 mo bands)', 'Margin-compression scenarios'],
+  },
+  {
+    file: 'src/data/v2CompetePlants.js',
+    verified: ['Plant lat/lng for major listed cos (annual report disclosures)'],
+    directional: ['Plant capacity in MT/yr (industry estimates)'],
+    modelled: ['Supply-chain lane assumptions (design proxy)'],
+  },
+  {
+    file: 'src/data/worldOutlines.js',
+    verified: ['Continent vertices decimated from Natural Earth 1:110m (public domain)', 'India outline from Survey of India + Natural Earth 1:50m'],
+    directional: ['Vertex density (manual decimation for SVG performance)'],
+    modelled: [],
+  },
+];
+
+export const verificationSummaryStats = {
+  totalDataFiles: dataVerificationLedger.length,
+  totalVerifiedClaims: dataVerificationLedger.reduce((s, d) => s + d.verified.length, 0),
+  totalDirectionalClaims: dataVerificationLedger.reduce((s, d) => s + d.directional.length, 0),
+  totalModelledClaims: dataVerificationLedger.reduce((s, d) => s + d.modelled.length, 0),
+  policyStatement: 'Every quantitative claim is tagged. Verified = primary public source. Directional = industry-typical / consultant-reported. Modelled = our design assumption (clearly labelled in-app via Disclaimer component).',
+};
