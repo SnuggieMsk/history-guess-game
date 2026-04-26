@@ -57,6 +57,7 @@ const sections = [
   ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
+    { path: '/v2/wc-ramp',   label: 'WC Cycle + Plant Ramp',  icon: '⟳' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },
     { path: '/v2/certs',     label: 'Certifications',         icon: '✓' },
     { path: '/v2/nightmares', label: 'Nightmare Playbook',    icon: '☠' },
