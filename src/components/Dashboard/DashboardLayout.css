@@ -89,14 +89,81 @@ body {
 }
 
 .dash-nav-group { margin-bottom: 18px; }
+.dash-nav-group.collapsed { margin-bottom: 4px; }
 .dash-nav-group-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
   font-size: 10px;
   letter-spacing: 1.8px;
   color: var(--c-text-faint);
   text-transform: uppercase;
-  padding: 4px 10px;
+  padding: 6px 10px;
   margin-bottom: 6px;
   font-weight: 600;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 4px;
+  transition: background .12s ease, color .12s ease;
+}
+.dash-nav-group-title:hover {
+  background: var(--c-surface);
+  color: var(--c-accent);
+}
+.dash-nav-caret {
+  font-size: 9px;
+  width: 10px;
+  display: inline-block;
+  color: var(--c-text-faint);
+  transition: color .12s ease;
+}
+.dash-nav-group-title:hover .dash-nav-caret { color: var(--c-accent); }
+.dash-nav-count {
+  margin-left: auto;
+  font-size: 9px;
+  background: var(--c-border);
+  color: var(--c-text-dim);
+  padding: 1px 6px;
+  border-radius: 999px;
+  letter-spacing: 0;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
+.dash-nav-group.group-active .dash-nav-count {
+  background: var(--c-accent);
+  color: #fff;
+}
+.dash-nav-controls {
+  display: flex;
+  gap: 6px;
+  padding: 0 4px 14px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--c-border);
+}
+.dash-nav-controls button {
+  flex: 1;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 5px 8px;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-text-dim);
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all .12s ease;
+}
+.dash-nav-controls button:hover {
+  background: var(--c-accent);
+  color: #fff;
+  border-color: var(--c-accent);
 }
 .dash-nav-link {
   display: flex; align-items: center; gap: 10px;
@@ -314,3 +381,203 @@ a:hover { border-bottom-color: var(--c-accent); }
 .vc-stage-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--c-border); }
 @media (max-width: 720px) { .vc-stage-cols { grid-template-columns: 1fr; } }
 .vc-mini-title { font-size: 10.5px; color: var(--c-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px; }
+
+/* ============================================================
+   PRINT STYLESHEET — investor PDF export
+   Cmd+P / Ctrl+P from any section produces a clean printable.
+   ============================================================ */
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 14mm 18mm 14mm;
+  }
+
+  html, body, #root {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  /* Hide chrome */
+  .dash-side,
+  .dash-burger,
+  .cmdk-fab,
+  .cmdk-overlay,
+  .dash-nav-controls,
+  .dash-foot { display: none !important; }
+
+  /* Single-column main, no padding */
+  .dash-shell { display: block !important; }
+  .dash-main {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Section headers act as PDF dividers */
+  .sec-head {
+    border-bottom: 2px solid #000 !important;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    page-break-after: avoid;
+  }
+  .sec-eyebrow {
+    color: #000 !important;
+    font-size: 8pt;
+    letter-spacing: 1.5pt;
+  }
+  .sec-title {
+    font-size: 22pt;
+    color: #000 !important;
+  }
+  .sec-sub {
+    color: #333 !important;
+    font-size: 10pt;
+  }
+
+  /* Section blocks should not split mid-page where possible */
+  .section-block {
+    page-break-inside: avoid;
+    margin-bottom: 16pt;
+  }
+  .section-block > h2 {
+    page-break-after: avoid;
+    font-family: var(--font-serif);
+    border-bottom: 1px solid #999;
+    padding-bottom: 4pt;
+    margin-bottom: 10pt;
+  }
+
+  /* Cards: print as flat boxes, no shadow */
+  .card {
+    background: #fff !important;
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    padding: 10pt;
+  }
+  .card h3 {
+    color: #000 !important;
+  }
+  .card .big {
+    color: #000 !important;
+  }
+
+  /* Tables: ensure they don't get cut in half */
+  .tbl-wrap, table {
+    page-break-inside: auto;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead { display: table-header-group; }
+  tr { page-break-inside: avoid; page-break-after: auto; }
+  th, td {
+    border: 1px solid #999 !important;
+    padding: 4pt 6pt !important;
+    font-size: 9pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  th {
+    background: #f0f0f0 !important;
+    font-weight: 700;
+  }
+
+  /* Pills become inline badges */
+  .pill {
+    border: 1px solid #666 !important;
+    background: #fff !important;
+    color: #000 !important;
+    padding: 1pt 4pt !important;
+    font-size: 8pt !important;
+  }
+
+  /* Callouts as inset boxes */
+  .callout {
+    border-left: 3px solid #000 !important;
+    background: #f8f8f8 !important;
+    color: #000 !important;
+    padding: 8pt 10pt !important;
+    page-break-inside: avoid;
+  }
+
+  /* Recharts SVG: keep colours but constrain height */
+  .recharts-wrapper {
+    page-break-inside: avoid;
+  }
+
+  /* Suppress hover/animation noise */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+  }
+
+  /* Show URLs after links for context */
+  a[href]:after {
+    content: " [" attr(href) "]";
+    font-size: 8pt;
+    color: #555;
+  }
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after { content: ""; }
+
+  /* Footer with page numbers */
+  @page {
+    @bottom-right {
+      content: "Konkan Seafoods · Investor Dashboard · p. " counter(page);
+      font-size: 8pt;
+      color: #555;
+    }
+  }
+}
+
+/* Print helper: small "Print this page" link visible only on screen */
+.print-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--c-text-dim);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.print-link:hover {
+  background: var(--c-accent);
+  color: #fff;
+  border-color: var(--c-accent);
+}
+@media print { .print-link { display: none !important; } }
+
+/* Print FAB — sits to the left of the ⌘K command-palette FAB */
+.dash-print-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 84px;
+  z-index: 30;
+  background: var(--c-surface);
+  color: var(--c-accent);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(26,31,54,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .12s ease;
+}
+.dash-print-fab:hover {
+  background: var(--c-accent);
+  color: #fff;
+  border-color: var(--c-accent);
+  transform: translateY(-1px);
+}
+@media print { .dash-print-fab { display: none !important; } }
+@media (max-width: 960px) { .dash-print-fab { display: none; } }

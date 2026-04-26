@@ -108,9 +108,37 @@ const sections = [
   ]},
 ];
 
+const STORAGE_KEY = 'ks-collapsed-groups-v1';
+
+function loadCollapsed() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  catch { return {}; }
+}
+
 export default function DashboardLayout() {
   const [navOpen, setNavOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(loadCollapsed);
   const location = useLocation();
+
+  const toggleGroup = (g) => {
+    setCollapsed(prev => {
+      const next = { ...prev, [g]: !prev[g] };
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  };
+
+  const collapseAll = () => {
+    const all = sections.reduce((a, g) => ({ ...a, [g.group]: true }), {});
+    setCollapsed(all);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(all)); } catch {}
+  };
+
+  const expandAll = () => {
+    setCollapsed({});
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({})); } catch {}
+  };
+
   return (
     <div className="dash-shell">
       <aside className={`dash-side ${navOpen ? 'open' : ''}`}>
@@ -122,12 +150,27 @@ export default function DashboardLayout() {
           </div>
         </div>
         <p className="dash-tag">10-Cr Seafood Export Venture · Investor Dashboard</p>
+        <div className="dash-nav-controls">
+          <button onClick={expandAll}>Expand all</button>
+          <button onClick={collapseAll}>Collapse all</button>
+        </div>
         {sections.map(g => {
           const groupActive = g.items.some(it => it.path === location.pathname);
+          const isCollapsed = collapsed[g.group] && !groupActive;
           return (
-          <div key={g.group} className={`dash-nav-group ${groupActive ? 'group-active' : ''}`}>
-            <div className="dash-nav-group-title" style={groupActive ? {color:'var(--c-accent)'} : {}}>{g.group}</div>
-            {g.items.map(it => (
+          <div key={g.group} className={`dash-nav-group ${groupActive ? 'group-active' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
+            <button
+              type="button"
+              className="dash-nav-group-title"
+              onClick={() => toggleGroup(g.group)}
+              style={groupActive ? {color:'var(--c-accent)'} : {}}
+              aria-expanded={!isCollapsed}
+            >
+              <span className="dash-nav-caret">{isCollapsed ? '▸' : '▾'}</span>
+              <span>{g.group}</span>
+              <span className="dash-nav-count">{g.items.length}</span>
+            </button>
+            {!isCollapsed && g.items.map(it => (
               <NavLink
                 key={it.path}
                 to={it.path}
@@ -157,6 +200,13 @@ export default function DashboardLayout() {
           <Outlet />
         </ErrorBoundary>
       </main>
+
+      <button
+        onClick={() => window.print()}
+        title="Print this section"
+        className="dash-print-fab"
+        aria-label="Print this section"
+      >⎙</button>
 
       <CommandPalette routes={sections.flatMap(g => g.items.map(it => ({ ...it, group: g.group })))} />
     </div>
