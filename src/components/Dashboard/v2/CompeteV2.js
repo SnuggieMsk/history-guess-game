@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { competitorsV2, globalBenchmarks, whereWePlay } from '../../../data/v2Compete';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
+import SortableTable from '../SortableTable';
 
 export default function CompeteV2() {
   const [cat, setCat] = useState('ALL');
@@ -78,41 +79,33 @@ export default function CompeteV2() {
 
       <div className="section-block">
         <h2>Global benchmarks — learn from, not beat</h2>
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>Company</th><th className="num">Revenue $ bn</th><th>What we learn</th></tr></thead>
-            <tbody>
-              {globalBenchmarks.map((b, i) => (
-                <tr key={i}>
-                  <td><strong>{b.name}</strong></td>
-                  <td className="num">${b.revUSDbn}</td>
-                  <td style={{ fontSize: 12.5 }}>{b.note}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <SortableTable
+          columns={[
+            { key:'name', label:'Company', render:(v) => <strong>{v}</strong> },
+            { key:'revUSDbn', label:'Revenue $ bn', numeric:true, format:(v) => `$${v}` },
+            { key:'note', label:'What we learn', style:{ fontSize: 12.5 } },
+          ]}
+          rows={globalBenchmarks}
+          defaultSort="revUSDbn"
+          defaultDir="desc"
+        />
       </div>
 
       <div className="section-block">
         <h2>Where we play vs 4 key rivals</h2>
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>Axis</th><th>Avanti</th><th>Apex</th><th>Gadre</th><th>Coastal</th><th>Us (B+C)</th></tr></thead>
-            <tbody>
-              {whereWePlay.map((r, i) => (
-                <tr key={i}>
-                  <td><strong>{r.axis}</strong></td>
-                  <td style={{ fontSize: 12 }}>{r.avanti}</td>
-                  <td style={{ fontSize: 12 }}>{r.apex}</td>
-                  <td style={{ fontSize: 12 }}>{r.gadre}</td>
-                  <td style={{ fontSize: 12 }}>{r.coastal}</td>
-                  <td style={{ fontSize: 12, color: 'var(--c-good)', fontWeight: 600 }}>{r.us}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <SortableTable
+          columns={[
+            { key:'axis', label:'Axis', render:(v) => <strong>{v}</strong> },
+            { key:'avanti', label:'Avanti', style:{ fontSize: 12 } },
+            { key:'apex', label:'Apex', style:{ fontSize: 12 } },
+            { key:'gadre', label:'Gadre', style:{ fontSize: 12 } },
+            { key:'coastal', label:'Coastal', style:{ fontSize: 12 } },
+            { key:'us', label:'Us (B+C)', style:{ fontSize: 12, color: 'var(--c-good)', fontWeight: 600 } },
+          ]}
+          rows={whereWePlay}
+          defaultSort="axis"
+          filterable
+        />
       </div>
     </>
   );

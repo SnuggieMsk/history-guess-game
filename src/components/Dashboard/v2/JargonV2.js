@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { jargon, jargonByGroup } from '../../../data/v2Jargon';
+import SortableTable from '../SortableTable';
 
 export default function JargonV2() {
   const [search, setSearch] = useState('');
@@ -58,20 +59,15 @@ export default function JargonV2() {
       </div>
 
       <div className="section-block">
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>Term</th><th>Full form</th><th>What it means</th></tr></thead>
-            <tbody>
-              {filtered.map((j, i) => (
-                <tr key={i}>
-                  <td><strong style={{ fontFamily: 'Georgia,serif', color: 'var(--c-accent)', fontSize: 14 }}>{j.term}</strong></td>
-                  <td style={{ fontSize: 13, fontWeight: 500 }}>{j.full}</td>
-                  <td style={{ fontSize: 12.5, color: 'var(--c-text)' }}>{j.what}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <SortableTable
+          columns={[
+            { key:'term', label:'Term', render:(v) => <strong style={{ fontFamily: 'Georgia,serif', color: 'var(--c-accent)', fontSize: 14 }}>{v}</strong> },
+            { key:'full', label:'Full form', style:{ fontSize: 13, fontWeight: 500 } },
+            { key:'what', label:'What it means', style:{ fontSize: 12.5, color: 'var(--c-text)' } },
+          ]}
+          rows={filtered}
+          defaultSort="term"
+        />
       </div>
     </>
   );

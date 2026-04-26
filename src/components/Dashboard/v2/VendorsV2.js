@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { vendorCategories } from '../../../data/v2Vendors';
+import SortableTable from '../SortableTable';
 
 export default function VendorsV2() {
   const [cat, setCat] = useState(vendorCategories[0].id);
@@ -31,19 +32,17 @@ export default function VendorsV2() {
 
       <div className="card">
         <h3>{current.title}</h3>
-        <div className="tbl-wrap" style={{ marginTop: 12 }}>
-          <table className="tbl">
-            <thead><tr><th>Vendor</th><th>Location</th><th>Speciality</th></tr></thead>
-            <tbody>
-              {current.vendors.map((v, i) => (
-                <tr key={i}>
-                  <td><strong>{v.name}</strong></td>
-                  <td style={{ fontSize: 12, color: 'var(--c-text-dim)' }}>{v.location}</td>
-                  <td style={{ fontSize: 12.5 }}>{v.speciality}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div style={{marginTop:12}}>
+          <SortableTable
+            columns={[
+              { key:'name', label:'Vendor', render:(v) => <strong>{v}</strong> },
+              { key:'location', label:'Location', style:{fontSize:12, color:'var(--c-text-dim)'} },
+              { key:'speciality', label:'Speciality', style:{fontSize:12.5} },
+            ]}
+            rows={current.vendors}
+            defaultSort="name"
+            filterable
+          />
         </div>
       </div>
 

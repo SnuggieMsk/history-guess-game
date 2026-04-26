@@ -1,5 +1,6 @@
 import React from 'react';
 import { sourcingNodes, outboundNodes, purandarPlant } from '../../../data/sourcing';
+import SortableTable from '../SortableTable';
 
 const TYPE_COLOR = {
   'Major fish market':    '#c5a565',
@@ -89,24 +90,20 @@ export default function Sourcing() {
 
       <div className="section-block">
         <h2>Inbound — sourcing nodes</h2>
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>Node</th><th>State</th><th>Type</th><th className="num">Km</th><th className="num">Hrs</th><th className="num">TPD</th><th>Primary species</th></tr></thead>
-            <tbody>
-              {sourcingNodes.map(n => (
-                <tr key={n.id}>
-                  <td>{n.name}</td>
-                  <td>{n.state}</td>
-                  <td><span className="pill pill-mute">{n.type}</span></td>
-                  <td className="num">{n.km}</td>
-                  <td className="num">{n.hrs}</td>
-                  <td className="num">{n.throughputTPD}</td>
-                  <td style={{fontSize:12}}>{n.primarySpecies.join(', ')}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <SortableTable
+          columns={[
+            { key:'name', label:'Node' },
+            { key:'state', label:'State' },
+            { key:'type', label:'Type', render:(v) => <span className="pill pill-mute">{v}</span> },
+            { key:'km', label:'Km', numeric:true },
+            { key:'hrs', label:'Hrs', numeric:true },
+            { key:'throughputTPD', label:'TPD', numeric:true },
+            { key:'primarySpecies', label:'Primary species', style:{fontSize:12}, render:(v) => v.join(', ') },
+          ]}
+          rows={sourcingNodes}
+          defaultSort="km"
+          filterable
+        />
       </div>
 
       <div className="section-block">

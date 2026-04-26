@@ -1,6 +1,7 @@
 import React from 'react';
 import { nationalCompetitors, maharashtraCompetitors, competitivePositioning } from '../../../data/competitors';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import SortableTable from '../SortableTable';
 
 export default function Competitors() {
   return (
@@ -28,23 +29,22 @@ export default function Competitors() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="tbl-wrap" style={{marginTop:14}}>
-          <table className="tbl">
-            <thead><tr><th>Company</th><th className="num">Revenue (₹ cr)</th><th className="num">Share</th><th>Focus</th><th>Plant states</th><th>Strength</th><th>Weakness</th></tr></thead>
-            <tbody>
-              {nationalCompetitors.map((c,i) => (
-                <tr key={i}>
-                  <td><strong>{c.name}</strong></td>
-                  <td className="num">{c.revenueINRcr}</td>
-                  <td className="num">{c.share}%</td>
-                  <td style={{fontSize:12}}>{c.focus}</td>
-                  <td>{c.plantStates.join(', ')}</td>
-                  <td style={{fontSize:12,color:'var(--c-good)'}}>{c.strength}</td>
-                  <td style={{fontSize:12,color:'var(--c-bad)'}}>{c.weakness}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div style={{marginTop:14}}>
+          <SortableTable
+            columns={[
+              { key:'name', label:'Company', render:(v) => <strong>{v}</strong> },
+              { key:'revenueINRcr', label:'Revenue (₹ cr)', numeric:true },
+              { key:'share', label:'Share %', numeric:true, format:(v) => `${v}%` },
+              { key:'focus', label:'Focus', style:{fontSize:12} },
+              { key:'plantStates', label:'Plant states', render:(v) => v.join(', ') },
+              { key:'strength', label:'Strength', style:{fontSize:12, color:'var(--c-good)'} },
+              { key:'weakness', label:'Weakness', style:{fontSize:12, color:'var(--c-bad)'} },
+            ]}
+            rows={nationalCompetitors}
+            defaultSort="revenueINRcr"
+            defaultDir="desc"
+            filterable
+          />
         </div>
       </div>
 

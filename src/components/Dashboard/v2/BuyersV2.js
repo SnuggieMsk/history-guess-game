@@ -1,6 +1,7 @@
 import React from 'react';
 import { buyerMarkets } from '../../../data/v2Buyers';
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts';
+import SortableTable from '../SortableTable';
 
 const MARKET_COLOR = {
   'hk':'#0d3b66','sg':'#2d6a4f','jp':'#a8322d','es':'#c5a565',
@@ -77,19 +78,16 @@ export default function BuyersV2() {
               </div>
             </div>
 
-            <div className="tbl-wrap" style={{ marginBottom: 14 }}>
-              <table className="tbl">
-                <thead><tr><th>Buyer</th><th>Type</th><th>Note</th></tr></thead>
-                <tbody>
-                  {m.buyers.map((b, i) => (
-                    <tr key={i}>
-                      <td><strong>{b.name}</strong></td>
-                      <td><span className="pill pill-mute">{b.type}</span></td>
-                      <td style={{ fontSize: 12 }}>{b.note}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div style={{ marginBottom: 14 }}>
+              <SortableTable
+                columns={[
+                  { key:'name', label:'Buyer', render:(v) => <strong>{v}</strong> },
+                  { key:'type', label:'Type', render:(v) => <span className="pill pill-mute">{v}</span> },
+                  { key:'note', label:'Note', style:{ fontSize: 12 } },
+                ]}
+                rows={m.buyers}
+                defaultSort="name"
+              />
             </div>
 
             <div className="grid grid-2">
