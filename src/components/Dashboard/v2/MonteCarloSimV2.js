@@ -7,6 +7,7 @@ export default function MonteCarloSimV2() {
   const [routeId, setRouteId] = useState(hotRoutes[0].id);
   const [year, setYear] = useState(2024);
   const [iterations, setIterations] = useState(1000);
+  const [seed, setSeed] = useState(42);
   const [running, setRunning] = useState(false);
   const [results, setResults] = useState(null);
 
@@ -15,7 +16,7 @@ export default function MonteCarloSimV2() {
   const runSim = () => {
     setRunning(true);
     setTimeout(() => {
-      const r = runMonteCarlo(route, year, iterations);
+      const r = runMonteCarlo(route, year, iterations, seed);
       setResults(r);
       setRunning(false);
     }, 50);
@@ -58,11 +59,20 @@ export default function MonteCarloSimV2() {
             <input type="range" min="100" max="2000" step="100" value={iterations} onChange={e => setIterations(parseInt(e.target.value))} style={{width:'100%'}}/>
             <div style={{fontSize:13, fontWeight:600}}>{iterations} runs</div>
           </div>
+          <div style={{marginBottom:12}}>
+            <label style={{fontSize:12, color:'var(--c-text-dim)'}}>Random seed (deterministic — same seed = same result)</label>
+            <input type="number" min="1" max="999999" value={seed} onChange={e => setSeed(parseInt(e.target.value)||42)}
+              style={{width:'100%', padding:8, border:'1px solid var(--c-border)', borderRadius:4, fontSize:12, marginTop:4, background:'var(--c-surface)', color:'var(--c-text)'}}/>
+            <button onClick={() => setSeed(Math.floor(Math.random()*1000000))} style={{
+              marginTop:6, padding:'4px 10px', fontSize:11, border:'1px solid var(--c-border)', borderRadius:4,
+              cursor:'pointer', background:'transparent', color:'var(--c-text-dim)',
+            }}>↻ Random seed</button>
+          </div>
           <button onClick={runSim} disabled={running} style={{
             width:'100%', padding:12, background:'var(--c-accent)', color:'#fff',
             border:'none', borderRadius:4, fontSize:13, fontWeight:600, cursor:'pointer',
             opacity: running ? 0.5 : 1,
-          }}>{running ? 'Running...' : 'Run Monte Carlo'}</button>
+          }}>{running ? 'Running...' : `Run Monte Carlo (seed ${seed})`}</button>
         </div>
 
         {results && (

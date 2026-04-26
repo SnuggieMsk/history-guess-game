@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { graveyardCases, graveyardSummary, survivorComparison } from '../../../data/v2GraveyardCases';
 import { backtestScenarios, simAccuracyByEvent, knownLimitations, futureSimEnhancements } from '../../../data/v2BackTesting';
+import Disclaimer from './Disclaimer';
 
 export default function GraveyardV2() {
   const [open, setOpen] = useState(graveyardCases[0].id);
@@ -86,6 +87,13 @@ export default function GraveyardV2() {
 
       <div className="section-block">
         <h2>Simulator back-testing</h2>
+        <Disclaimer kind="modelled">
+          The "predictiveness" percentages below are <strong>self-reported by the simulator design</strong> against
+          known historical events; they reflect how well the simulator's <em>parametric</em> shock model captures
+          observed outcomes when the parameters are tuned to that period. They are NOT a held-out validation against
+          unseen data. Treat as design-confidence, not predictive-confidence. Black-swan events (pandemic-like) are
+          poorly predicted (~70%) — see Known Limitations below.
+        </Disclaimer>
         <div className="kpi-grid">
           <div className="card"><h3>Cyclone predictiveness</h3><div className="big">{simAccuracyByEvent.cyclonePredictiveness}</div></div>
           <div className="card"><h3>Tariff predictiveness</h3><div className="big">{simAccuracyByEvent.tariffPredictiveness}</div></div>

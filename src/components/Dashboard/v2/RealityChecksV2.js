@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { failureModes, survivorshipStats, survivorPlaybook, investorRedFlags } from '../../../data/v2RealityChecks';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 export default function RealityChecksV2() {
   const [open, setOpen] = useState(failureModes[0].rank);
@@ -16,6 +17,13 @@ export default function RealityChecksV2() {
           {survivorshipStats.insight}
         </p>
       </div>
+
+      <Disclaimer kind="estimate">
+        Survivorship statistics below are <strong>directional industry estimates</strong> derived from MPEDA exporter-registry attrition + trade-press
+        coverage of insolvencies + market knowledge. They are not based on a published dataset. Use them as order-of-magnitude
+        evidence that mortality is high — not as precise figures. Failure-mode rankings are illustrative consensus across
+        industry consultants + lawyers + insurance brokers active in this segment.
+      </Disclaimer>
 
       <div className="kpi-grid">
         <div className="card"><h3>Estimated new entrants 2018-24</h3><div className="big">50-70</div></div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import ErrorBoundary from '../ErrorBoundary';
 import './DashboardLayout.css';
 
 const sections = [
@@ -108,6 +109,7 @@ const sections = [
 
 export default function DashboardLayout() {
   const [navOpen, setNavOpen] = useState(false);
+  const location = useLocation();
   return (
     <div className="dash-shell">
       <aside className={`dash-side ${navOpen ? 'open' : ''}`}>
@@ -147,7 +149,9 @@ export default function DashboardLayout() {
       </button>
 
       <main className="dash-main">
-        <Outlet />
+        <ErrorBoundary key={location.pathname}>
+          <Outlet />
+        </ErrorBoundary>
       </main>
     </div>
   );

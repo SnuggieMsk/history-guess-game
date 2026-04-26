@@ -1,46 +1,59 @@
 // V2 L6 — Monte Carlo simulation engine for stochastic risk modeling
+// Uses seedable Mulberry32 PRNG so results are deterministic for same (route, year, seed, iterations).
 
 import { hotRoutes } from './v2SimRoutes';
 import { simulateRoute } from './v2SimEngine';
 
+// Mulberry32 — fast, good-quality, 32-bit seedable PRNG. Same seed = same sequence.
+export function makeRng(seed) {
+  let a = seed >>> 0;
+  return function rng() {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 // Triangular distribution sampler — most realistic for business shocks
-function triangular(min, mode, max) {
-  const u = Math.random();
+function triangular(rng, min, mode, max) {
+  const u = rng();
   const f = (mode - min) / (max - min);
   if (u < f) return min + Math.sqrt(u * (max - min) * (mode - min));
   return max - Math.sqrt((1 - u) * (max - min) * (max - mode));
 }
 
 // Discrete event sampler — cyclone hits with X% probability per quarter
-function bernoulli(p) {
-  return Math.random() < p ? 1 : 0;
+function bernoulli(rng, p) {
+  return rng() < p ? 1 : 0;
 }
 
-// Sample annual scenario shocks
-export function sampleScenario() {
+// Sample annual scenario shocks (rng-injected)
+export function sampleScenario(rng) {
   return {
-    fobShock:        triangular(-0.20, 0, 0.15),
-    buyShock:        triangular(-0.10, 0, 0.25),
-    fxShock:         triangular(-0.10, 0, 0.10),
-    freightShock:    triangular(-0.20, 0, 1.50),
-    cycloneEvent:    bernoulli(0.40),
-    diseaseEvent:    bernoulli(0.30),
-    tariffEvent:     bernoulli(0.20),
-    rasffAlert:      bernoulli(0.05),
-    mortalityShock:  triangular(0.7, 1.0, 2.0),
+    fobShock:        triangular(rng, -0.20, 0, 0.15),
+    buyShock:        triangular(rng, -0.10, 0, 0.25),
+    fxShock:         triangular(rng, -0.10, 0, 0.10),
+    freightShock:    triangular(rng, -0.20, 0, 1.50),
+    cycloneEvent:    bernoulli(rng, 0.40),
+    diseaseEvent:    bernoulli(rng, 0.30),
+    tariffEvent:     bernoulli(rng, 0.20),
+    rasffAlert:      bernoulli(rng, 0.05),
+    mortalityShock:  triangular(rng, 0.7, 1.0, 2.0),
   };
 }
 
-// Run one simulation iteration for a route
-export function runOneIteration(routeConfig, year) {
-  const scenario = sampleScenario();
+// Run one simulation iteration for a route (rng-injected)
+export function runOneIteration(routeConfig, year, rng) {
+  const scenario = sampleScenario(rng);
   const months = [];
   for (let m = 0; m < 12; m++) {
     const overrides = {
       fobMultiplier: 1 + scenario.fobShock,
       buyMultiplier: 1 + scenario.buyShock + (scenario.diseaseEvent && [3,4,5].includes(m) ? 0.20 : 0),
       mortalityMultiplier: scenario.mortalityShock,
-      tariffPct: scenario.tariffEvent ? Math.max(15, Math.random() * 30) : null,
+      tariffPct: scenario.tariffEvent ? Math.max(15, rng() * 30) : null,
     };
     const r = simulateRoute(routeConfig, year, m, overrides);
     if (scenario.cycloneEvent && [4,5,6,7].includes(m)) {
@@ -65,9 +78,10 @@ export function runOneIteration(routeConfig, year) {
   };
 }
 
-// Run N iterations and return distribution
-export function runMonteCarlo(routeConfig, year, iterations = 1000) {
-  const results = Array.from({ length: iterations }, () => runOneIteration(routeConfig, year));
+// Run N iterations and return distribution. Pass `seed` for deterministic results.
+export function runMonteCarlo(routeConfig, year, iterations = 1000, seed = 42) {
+  const rng = makeRng(seed);
+  const results = Array.from({ length: iterations }, () => runOneIteration(routeConfig, year, rng));
   const margins = results.map(r => r.annualMarginPct).sort((a, b) => a - b);
   const revenues = results.map(r => r.annualRevenueINR).sort((a, b) => a - b);
   const marginsINR = results.map(r => r.annualMarginINR).sort((a, b) => a - b);
@@ -120,9 +134,10 @@ export function buildHistogram(values, bins = 20) {
 }
 
 // Cross-route Monte Carlo to identify which routes are most resilient
-export function rankRoutesByResilience(year, iterations = 200) {
-  return hotRoutes.map(r => {
-    const mc = runMonteCarlo(r, year, iterations);
+export function rankRoutesByResilience(year, iterations = 200, seed = 42) {
+  return hotRoutes.map((r, idx) => {
+    // Different seed per route so they don't share identical shock sequences
+    const mc = runMonteCarlo(r, year, iterations, seed + idx);
     return {
       route: r.name,
       rid: r.id,

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { hotRoutes, sourcingLocations, products, markets, distributors, transportModes } from '../../../data/v2SimRoutes';
 import { simulateYear, simulateMultiYear, aggregateAnnual } from '../../../data/v2SimEngine';
 import { ResponsiveContainer, ComposedChart, Line, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -62,6 +63,13 @@ export default function MarketSimulatorV2() {
           Add overrides (mortality, tariff, buy/sell shock) and watch how the margin curve shifts.
         </p>
       </div>
+
+      <Disclaimer kind="modelled">
+        The 10-year monthly historical series (vannamei farm-gate, pomfret/lobster dockside, USA FOB, FX, sea/air freight, cyclone severity, disease severity, tariff)
+        is <strong>synthesised from publicly-reported MPEDA monthly bulletins, IMD weather, Drewry shipping indices, USDA AMS, and FAO/GLOBEFISH price ranges</strong> —
+        and reproduces the major shocks (2019 EHP+WSSV, 2020 COVID, 2021 freight peak, 2023 Ecuador price war, 2025 tariff escalation). It is NOT a tick-level
+        archive — use for directional / pattern analysis, not for back-testing trading strategies. Validate against current MPEDA monthly bulletin before any commitment.
+      </Disclaimer>
 
       <div className="kpi-grid">
         <div className="card"><h3>Routes simulated</h3><div className="big">{hotRoutes.length}</div></div>
