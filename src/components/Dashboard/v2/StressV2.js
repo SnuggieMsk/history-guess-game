@@ -1,5 +1,5 @@
 import React from 'react';
-import { capexRevised, capexTotals, fundingPlan, fundingTotal, scenariosY5, pnlBase, dscrTable, combinedShock, returnsSummary, monitorKPIs } from '../../../data/v2Stress';
+import { capexRevised, capexTotals, fundingPlan, fundingTotal, subsidyReceipts, subsidyTotal, scenariosY5, pnlBase, dscrTable, combinedShock, returnsSummary, monitorKPIs } from '../../../data/v2Stress';
 import { ResponsiveContainer, BarChart, Bar, ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 
 export default function StressV2() {
@@ -11,7 +11,8 @@ export default function StressV2() {
         <p className="sec-sub">
           Revised capex ₹{(capexTotals.grossL / 100).toFixed(1)} cr gross ·
           ₹{(capexTotals.netL / 100).toFixed(1)} cr net after subsidy.
-          Funding ₹{fundingTotal} cr total (promoter ₹14 cr, loan ₹16 cr, WC ₹10 cr, subsidy ₹5 cr tranche-timed).
+          Project cost ₹{fundingTotal} cr funded by promoter ₹14 cr + term loan ₹16 cr + WC line ₹10 cr.
+          Subsidies (₹{subsidyTotal.toFixed(2)} cr) are tranche-timed RECEIPTS that offset capex / repay interim debt — not a separate funding source.
           Y5 revenue bear/base/bull = ₹175/243/315 cr · Project IRR 10-28% with 17-19% central.
         </p>
       </div>
@@ -65,21 +66,39 @@ export default function StressV2() {
         </div>
       </div>
 
-      <div className="section-block">
-        <h2>Funding plan</h2>
-        <div className="tbl-wrap">
+      <div className="section-block grid grid-2">
+        <div className="card">
+          <h3>Funding plan (₹{fundingTotal} cr project cost)</h3>
           <table className="tbl">
             <thead><tr><th>Source</th><th className="num">₹ cr</th></tr></thead>
             <tbody>
               {fundingPlan.map((f, i) => (
-                <tr key={i}><td>{f.source}</td><td className="num">{f.amountINRcr}</td></tr>
+                <tr key={i}><td style={{fontSize:12.5}}>{f.source}</td><td className="num">{f.amountINRcr}</td></tr>
               ))}
               <tr style={{ fontWeight: 700, background: 'var(--c-surface-2)' }}>
-                <td>Total</td>
-                <td className="num">{fundingTotal}</td>
+                <td>Total project cost</td>
+                <td className="num">₹{fundingTotal} cr</td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div className="card">
+          <h3>Subsidy RECEIPTS (offset capex, not funding)</h3>
+          <table className="tbl">
+            <thead><tr><th>Scheme</th><th className="num">₹ cr</th></tr></thead>
+            <tbody>
+              {subsidyReceipts.map((f, i) => (
+                <tr key={i}><td style={{fontSize:12.5}}>{f.source}</td><td className="num" style={{color:'var(--c-good)'}}>{f.amountINRcr}</td></tr>
+              ))}
+              <tr style={{ fontWeight: 700, background: 'var(--c-surface-2)' }}>
+                <td>Cumulative receipts (Y0-Y7)</td>
+                <td className="num" style={{color:'var(--c-good)'}}>₹{subsidyTotal.toFixed(2)} cr</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style={{fontSize:11.5, color:'var(--c-text-dim)', marginTop:8, fontStyle:'italic'}}>
+            Subsidies offset gross capex (₹{(capexTotals.grossL/100).toFixed(1)} → ₹{(capexTotals.netL/100).toFixed(1)} cr net) and partially repay interim debt. They are NOT a primary funding source per Indian accounting + DPR conventions.
+          </p>
         </div>
       </div>
 

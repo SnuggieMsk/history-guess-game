@@ -26,13 +26,25 @@ export const capexTotals = {
   netL:   capexRevised.reduce((s, c) => s + c.netL, 0),
 };
 
+// Funding plan = ₹40 cr (project cost). Subsidies are tranche-timed RECEIPTS
+// that offset capex / repay interim debt — NOT a separate funding source.
+// Reconciled to v2Constants.PROJECT.totalProjectCostINRcr.
 export const fundingPlan = [
   { source: 'Promoter equity',      amountINRcr: 14 },
-  { source: 'Term loan (10-yr, 9.5%, 24-mo moratorium)', amountINRcr: 16 },
-  { source: 'Subsidy grants (tranche-timed)',  amountINRcr: 5 },
-  { source: 'Cash credit (WC)',     amountINRcr: 10 },
+  { source: 'Term loan (10-yr, 9.25% w/ NABARD AIF subvention, 24-mo moratorium)', amountINRcr: 16 },
+  { source: 'Working-capital line (CC + EPC + FBP/FBN)',     amountINRcr: 10 },
 ];
 export const fundingTotal = fundingPlan.reduce((s, f) => s + f.amountINRcr, 0);
+
+// Subsidies are RECEIPTS, not funding — they reduce net capex over time
+export const subsidyReceipts = [
+  { source: 'PMMSY (tranche-timed M10-M28)', amountINRcr: 6.0 },
+  { source: 'PMKSY (tranche-timed M10-M24)', amountINRcr: 2.75 },
+  { source: 'MNRE solar direct subsidy',     amountINRcr: 0.45 },
+  { source: 'State MIP 2024 (7-yr SGST refund cumulative)', amountINRcr: 4.0 },
+  { source: 'NABARD AIF interest subvention NPV',         amountINRcr: 0.4 },
+];
+export const subsidyTotal = subsidyReceipts.reduce((s, f) => s + f.amountINRcr, 0);
 
 export const scenariosY5 = {
   bear: {

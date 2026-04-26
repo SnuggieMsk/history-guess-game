@@ -52,7 +52,7 @@ export const capTableStages = [
   },
   {
     stage: 'Series B — PE / Strategic (Y3-Y4)',
-    timing: 'M36 (₹100 cr revenue run-rate, ~10% EBITDA)',
+    timing: 'M36 (₹168.65 cr Y3 revenue, 16.5% EBITDA per v2DprFinModel)',
     totalEquityINRcr: 47.0,
     valuationPostINRcr: 200.0,
     valuationPreINRcr: 175.0,
@@ -64,16 +64,16 @@ export const capTableStages = [
     notes: 'Comps: Sandhya Marines raised ₹85cr at 1.8× revenue (FY23). Use of funds: 2nd plant + Y5 capacity.',
   },
   {
-    stage: 'Exit — Year 5 (Strategic acquisition or pre-IPO)',
-    timing: 'M60 (₹195 cr revenue, ~14% EBITDA)',
+    stage: 'Exit — Year 5 (Strategic acquisition base case)',
+    timing: 'M60 (₹243 cr Y5 revenue, ₹48.95 cr EBITDA, 20.1% margin per v2DprFinModel)',
     totalEquityINRcr: 47.0,
-    valuationPostINRcr: 410.0,
+    valuationPostINRcr: 440.55,        // 9× × ₹48.95 cr (Indian listed median minus private discount)
     holders: [
-      { name: 'Promoter (founder + family)', equityINRcr: 14.0, sharePct: 76.7, type: 'Promoter', exitProceedsINRcr: 314.5 },
-      { name: 'Angel / family-office (Series A)', equityINRcr: 8.0, sharePct: 10.7, type: 'External equity', exitProceedsINRcr: 43.9 },
-      { name: 'PE / Strategic (Series B)', equityINRcr: 25.0, sharePct: 12.5, type: 'External equity', exitProceedsINRcr: 51.3 },
+      { name: 'Promoter (founder + family)', equityINRcr: 14.0, sharePct: 76.7, type: 'Promoter', exitProceedsINRcr: 337.9 },
+      { name: 'Angel / family-office (Series A)', equityINRcr: 8.0, sharePct: 10.7, type: 'External equity', exitProceedsINRcr: 47.1 },
+      { name: 'PE / Strategic (Series B)', equityINRcr: 25.0, sharePct: 12.5, type: 'External equity', exitProceedsINRcr: 55.1 },
     ],
-    notes: 'Base case 15× Y5 EBITDA = ₹410 cr enterprise value. Promoter 22.5× MoM, Series A 5.5× MoM, Series B 2.05× MoM.',
+    notes: 'Base case 9× Y5 EBITDA (Indian listed median) = ₹440.55 cr EV. Promoter 24.1× MoM, Series A 5.9× MoM, Series B 2.2× MoM. Pre-IPO/strategic-global cases (15-18×) shown in scenarios below.',
   },
 ];
 
@@ -120,49 +120,49 @@ export const exitScenariosY5 = [
   {
     scenario: 'Trade sale to AP shrimp major (Y5 base)',
     triggerCondition: 'Adani / Apex / Sandhya offer for Maharashtra-anchor processor',
-    revenueINRcr: 195,
-    ebitdaINRcr: 27.3,
+    revenueINRcr: 243,
+    ebitdaINRcr: 48.95,
     multiple: 9.0,                // Indian listed median minus 10% (private discount)
-    enterpriseValueINRcr: 245.7,
-    promoterMoM: 13.5,
-    seriesAMoM: 3.3,
-    seriesBMoM: 1.2,
+    enterpriseValueINRcr: 440.55,
+    promoterMoM: 24.1,            // (₹440.55 × 76.7%) / ₹14
+    seriesAMoM: 5.9,              // (₹440.55 × 10.7%) / ₹8
+    seriesBMoM: 2.2,              // (₹440.55 × 12.5%) / ₹25
     notes: 'Most likely path. Strategic gets Konkan supply, Maharashtra plant + premium-niche brand.',
   },
   {
     scenario: 'Strategic acquisition by global player (Y5 upside)',
     triggerCondition: 'Thai Union / CP / Mowi seeks Indian foothold',
-    revenueINRcr: 195,
-    ebitdaINRcr: 31.2,            // 16% (premium-niche)
+    revenueINRcr: 243,
+    ebitdaINRcr: 48.95,
     multiple: 12.0,                // global premium; brand + species niche
-    enterpriseValueINRcr: 374.4,
-    promoterMoM: 20.5,
-    seriesAMoM: 5.0,
-    seriesBMoM: 1.87,
+    enterpriseValueINRcr: 587.4,
+    promoterMoM: 32.2,
+    seriesAMoM: 7.9,
+    seriesBMoM: 2.94,
     notes: 'Stretch but achievable if MSC + BAP + EU-approved + Konkan monopoly secured by Y4.',
   },
   {
     scenario: 'Pre-IPO investor round (Y5)',
     triggerCondition: 'Late-stage growth equity at pre-IPO valuation',
-    revenueINRcr: 195,
-    ebitdaINRcr: 27.3,
+    revenueINRcr: 243,
+    ebitdaINRcr: 48.95,
     multiple: 15.0,                // pre-IPO premium for branded growth co
-    enterpriseValueINRcr: 409.5,
-    promoterMoM: 22.5,
-    seriesAMoM: 5.5,
-    seriesBMoM: 2.05,
+    enterpriseValueINRcr: 734.25,    // 15× × ₹48.95 cr
+    promoterMoM: 40.2,
+    seriesAMoM: 9.8,
+    seriesBMoM: 3.67,
     notes: 'Our cap-table modelled here. Requires 4-yr audited GST + clean ROC + 200%+ revenue growth.',
   },
   {
     scenario: 'IPO (Y6-7)',
     triggerCondition: 'BSE SME or main board listing',
-    revenueINRcr: 280,
-    ebitdaINRcr: 42.0,
+    revenueINRcr: 320,                // assumed Y6-7 growth
+    ebitdaINRcr: 64.5,                // ~20% on ₹320 cr
     multiple: 18.0,                // listed peer-set
-    enterpriseValueINRcr: 756.0,
-    promoterMoM: 41.4,             // promoter retains 60-65% post-IPO
-    seriesAMoM: 10.1,
-    seriesBMoM: 3.78,
+    enterpriseValueINRcr: 1161.0,
+    promoterMoM: 63.6,             // promoter retains 60-65% post-IPO
+    seriesAMoM: 15.5,
+    seriesBMoM: 5.81,
     notes: 'Liquidity for Series A/B; promoter retains majority. Comparable to Apex 2017 listing.',
   },
 ];
@@ -230,47 +230,47 @@ export const sensitivityMatrix = {
       name: 'Downside (P25)',
       probabilityPct: 25,
       values: { FX: 80, Vannamei: 360, Utilisation: 55, Premium: 8, WC: 145, Power: 9.8 },
-      Y5revenueINRcr: 132,
-      Y5ebitdaINRcr: 9.2,
-      Y5ebitdaMarginPct: 7.0,
-      enterpriseValueINRcr: 73.6,    // 8× downside multiple
-      promoterMoM: 4.0,
-      verdict: 'Survives, but all later-stage funding gets tougher. PE Series B may not happen.',
+      Y5revenueINRcr: 165,
+      Y5ebitdaINRcr: 13.2,            // ~8% margin
+      Y5ebitdaMarginPct: 8.0,
+      enterpriseValueINRcr: 92.4,     // 7× downside multiple
+      promoterMoM: 5.1,
+      verdict: 'Survives, but all later-stage funding gets tougher. PE Series B may not happen at planned terms.',
     },
     {
       name: 'Base (P50)',
       probabilityPct: 50,
       values: { FX: 84.5, Vannamei: 320, Utilisation: 78, Premium: 18, WC: 110, Power: 8.4 },
-      Y5revenueINRcr: 195,
-      Y5ebitdaINRcr: 27.3,
-      Y5ebitdaMarginPct: 14.0,
-      enterpriseValueINRcr: 245.7,
-      promoterMoM: 13.5,
-      verdict: 'Plan-of-record. Trade sale at 9× viable. DSCR 1.85× through cycle.',
+      Y5revenueINRcr: 243,
+      Y5ebitdaINRcr: 48.95,
+      Y5ebitdaMarginPct: 20.1,
+      enterpriseValueINRcr: 440.55,
+      promoterMoM: 24.1,
+      verdict: 'Plan-of-record per v2DprFinModel. Trade sale at 9× viable. DSCR 13.2× Y5.',
     },
     {
       name: 'Upside (P75)',
       probabilityPct: 25,
       values: { FX: 90, Vannamei: 280, Utilisation: 88, Premium: 28, WC: 90, Power: 6.5 },
-      Y5revenueINRcr: 268,
-      Y5ebitdaINRcr: 48.2,
-      Y5ebitdaMarginPct: 18.0,
-      enterpriseValueINRcr: 578.4,    // 12× upside multiple
-      promoterMoM: 31.7,
+      Y5revenueINRcr: 295,
+      Y5ebitdaINRcr: 67.85,            // ~23% premium-niche
+      Y5ebitdaMarginPct: 23.0,
+      enterpriseValueINRcr: 814.2,     // 12× upside multiple
+      promoterMoM: 44.6,
       verdict: 'Strategic interest from Thai Union / Mowi. IPO path opens.',
     },
   ],
-  expectedValueINRcr: 232.5,            // 0.25*73.6 + 0.5*245.7 + 0.25*578.4
+  expectedValueINRcr: 449.0,            // 0.25*92.4 + 0.5*440.55 + 0.25*814.2
 };
 
 export const summaryStats = {
   promoterEquityINRcr: 14.0,
   totalProjectCostINRcr: 40.0,
-  baseExitEVINRcr: 245.7,
-  basePromoterMoM: 13.5,
-  baseSeriesAMoM: 3.3,
-  baseSeriesBMoM: 1.2,
-  expectedEVINRcr: 232.5,
+  baseExitEVINRcr: 440.55,
+  basePromoterMoM: 24.1,
+  baseSeriesAMoM: 5.9,
+  baseSeriesBMoM: 2.2,
+  expectedEVINRcr: 449.0,
   exitTimingYears: 5,
   exitComparablesCount: 11 + 5,        // listed + private
 };

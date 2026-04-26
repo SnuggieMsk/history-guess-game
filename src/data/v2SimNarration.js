@@ -32,7 +32,7 @@ export const insightLibrary = [
   },
   {
     pattern: 'WC sensitivity to growth',
-    insight: 'For every ₹1 cr revenue growth, WC absorbs ~₹16 L (60-day cycle). Y3 ₹165 cr revenue = ₹27 cr WC tied up.',
+    insight: 'For every ₹1 cr revenue growth, WC absorbs ~₹18 L (110-day base cycle). Y3 ₹168.65 cr revenue = ₹30.1 cr WC tied up (matches v2/wc-ramp page).',
     actionItem: 'CC limit must scale with revenue. Negotiate 1.5x revenue cap with bank.',
   },
   {

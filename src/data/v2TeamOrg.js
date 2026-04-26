@@ -103,7 +103,7 @@ export const coreTeamHires = [
     yearsRequired: 10,
     salaryINRlakh: 16,
     esopBps: 20,
-    keyKpis: ['200+ headcount by Y2 with < 8% attrition', 'Zero labour disputes', 'PF/ESI 100% compliance'],
+    keyKpis: ['~156 headcount Y2 → 334 Y5 with < 8% attrition (per v2Constants)', 'Zero labour disputes', 'PF/ESI 100% compliance'],
     candidateSource: 'Pune food-processing HR network',
     hireBy: 'M+3 (post-commissioning)',
     fillRisk: 'Low',
