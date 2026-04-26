@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { hotRoutes } from '../../../data/v2SimRoutes';
 import { runMonteCarlo, buildHistogram } from '../../../data/v2SimMonteCarlo';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 export default function MonteCarloSimV2() {
   const [routeId, setRouteId] = useState(hotRoutes[0].id);
@@ -38,6 +39,12 @@ export default function MonteCarloSimV2() {
           P5 worst case, P50 median, P95 best case, probability of loss, probability of >15% margin.
         </p>
       </div>
+
+      <Disclaimer kind="modelled">
+        Monte Carlo outputs are <strong>stochastic projections</strong> from synthetic shock distributions
+        (Mulberry32 PRNG, deterministic per seed). Useful for shape-of-distribution analysis;
+        not a real-world prediction. P5/P50/P95 reflect modelled assumptions, not historical actuals.
+      </Disclaimer>
 
       <div className="grid grid-2">
         <div className="card">

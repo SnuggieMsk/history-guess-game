@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { fiveYearScenarios, run5YearForecast } from '../../../data/v2Sim5Year';
 import { ResponsiveContainer, ComposedChart, LineChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, AreaChart, Area } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 const DEFAULT_PORTFOLIO = ['r4','r6','r7','r3','r1'];
 const DEFAULT_ALLOC = { r4:20, r6:25, r7:25, r3:15, r1:15 };
@@ -21,6 +22,12 @@ export default function FiveYearSimV2() {
           shocks compound; you see how the company actually evolves over 5 years.
         </p>
       </div>
+
+      <Disclaimer kind="modelled">
+        5-year forecast is a <strong>compounded multi-year projection</strong> using deterministic shock
+        profiles per scenario. Headline numbers (revenue, EBITDA) reconcile to v2DprFinModel base case;
+        bear/bull diverge per scenario assumptions. Not a guarantee of outcomes.
+      </Disclaimer>
 
       <div style={{display:'flex',gap:8,marginTop:14,marginBottom:18,flexWrap:'wrap'}}>
         {Object.keys(fiveYearScenarios).map(s => (

@@ -3,6 +3,7 @@ import { compoundShockScenarios, survivalThresholds, mitigationLayers } from '..
 import { hotRoutes } from '../../../data/v2SimRoutes';
 import { simulateRoute, aggregateAnnual } from '../../../data/v2SimEngine';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 export default function CompoundShockSimV2() {
   // Run base portfolio (5 routes) under each compound shock — declared outside useMemo to satisfy hook-deps
@@ -61,6 +62,12 @@ export default function CompoundShockSimV2() {
           are survivable and which trigger kill conditions.
         </p>
       </div>
+
+      <Disclaimer kind="modelled">
+        Compound-shock scenarios are <strong>design stress tests</strong>, not statistical predictions.
+        Magnitudes are calibrated against 2018-2024 actuals (cyclone Tauktae, USA tariff Aug 2025,
+        RASFF events). Co-occurrence probabilities are illustrative.
+      </Disclaimer>
 
       <div className="card">
         <h3>Portfolio outcome under {compoundShockScenarios.length} compound scenarios</h3>

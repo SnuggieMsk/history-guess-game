@@ -1,6 +1,7 @@
 import React from 'react';
 import { monsoonForecast2026, cycloneRiskByQuarter, seaSurfaceTemp2026, climateAdaptationCosts, weatherImpactMatrix, weatherDataSources } from '../../../data/v2SimWeather';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 export default function WeatherSimV2() {
   return (
@@ -14,6 +15,12 @@ export default function WeatherSimV2() {
           schedule, weather-impact matrix per event type, and the 7 essential data sources to monitor daily.
         </p>
       </div>
+
+      <Disclaimer kind="modelled">
+        Monsoon 2026 forecast bands and cyclone probabilities are <strong>directional projections</strong>
+        based on IMD long-range forecast (April 2026) + IITM ENSO/IOD phase analysis.
+        Actual events depend on real-time atmospheric conditions; this layer is for planning, not betting.
+      </Disclaimer>
 
       <div className="kpi-grid">
         <div className="card"><h3>Monsoon 2026 forecast</h3><div className="big">Mixed</div><div className="sub">Above normal Jun; below normal Aug-Sep</div></div>

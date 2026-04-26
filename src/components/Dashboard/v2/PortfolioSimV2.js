@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { hotRoutes } from '../../../data/v2SimRoutes';
 import { simulateYear, aggregateAnnual } from '../../../data/v2SimEngine';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 const COLORS = ['#0d3b66','#a8322d','#c5a565','#2d6a4f','#7a5b8c','#b8860b','#5fb3e3','#92c7b6'];
 
@@ -48,6 +49,11 @@ export default function PortfolioSimV2() {
           blended margin lift from ~10% to 20%+.
         </p>
       </div>
+
+      <Disclaimer kind="modelled">
+        Portfolio outputs are <strong>simulated</strong> from per-route shock+margin distributions in v2SimEngine.
+        Useful for what-if analysis on allocation; numerical values are illustrative, not commitments.
+      </Disclaimer>
 
       <div className="kpi-grid">
         <div className="card"><h3>Portfolio revenue {year}</h3><div className="big">₹{(portfolio.totalRev/10000000).toFixed(2)} cr</div></div>
