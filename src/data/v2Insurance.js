@@ -1,0 +1,146 @@
+// =====================================================================
+// SOURCE INTEGRITY HEADER (auto-applied across v2 data files)
+// =====================================================================
+// Cross-page numerical claims (revenue, EBITDA, capex, subsidy, headcount)
+// are reconciled to src/data/v2Constants.js — the authoritative single
+// source of truth for the v2 dashboard. If you see a financial figure here
+// that conflicts with v2Constants, treat v2Constants as truth.
+//
+// Source classification per item:
+//   VERIFIED      — primary public source (BSE, MCA, MPEDA, IMD, RBI, etc.)
+//   DIRECTIONAL   — industry-typical or consultant-reported
+//   MODELLED      — design/assumption value (forward projection)
+//
+// Full per-file audit ledger: see src/data/references.js
+// (dataVerificationLedger) and docs/00_SOURCES.md.
+// Last reconciliation: April 2026.
+// =====================================================================
+
+// V2 — Insurance program (consolidated with premium budgets)
+
+export const insuranceProgram = [
+  {
+    line: 'Marine Cargo (per-shipment + open cover)',
+    coverScope: 'All-risks marine on FOB-CIF basis; transit ports; warehouse-to-warehouse',
+    annualPremiumINRl: '4-6',
+    risk: 'Damage / loss in transit; cargo abandonment; partial loss; general average',
+    insurers: ['ICICI Lombard', 'HDFC ERGO', 'Bajaj Allianz', 'Chola MS'],
+    broker: 'JB Boda or Marsh',
+    notes: 'Annual open cover ~₹2-3 L + per-shipment certificate. Covers ~3% of cargo value.',
+  },
+  {
+    line: 'Live Animal Cargo (special endorsement)',
+    coverScope: 'Live lobster + mud crab; mortality up to 20%; specific named airlines',
+    annualPremiumINRl: '3-5',
+    risk: 'Mass mortality, transit delays, oxygen failure',
+    insurers: ['ICICI Lombard (specialty)', 'Chola MS'],
+    broker: 'Marsh',
+    notes: 'High premium; requires named-cargo per shipment; documented mortality SOP.',
+  },
+  {
+    line: 'Plant + Machinery (Fire + Allied Perils)',
+    coverScope: 'Building + machinery + fixtures + furniture; full reinstatement value',
+    annualPremiumINRl: '5-8',
+    risk: 'Fire, storm, flood, vandalism, equipment breakdown',
+    insurers: ['Bajaj Allianz', 'TATA AIG', 'ICICI Lombard'],
+    broker: 'JB Boda',
+    notes: 'Standard rate ~0.15-0.25% of insured value. Plant ₹25 cr → ₹5-6 L/yr.',
+  },
+  {
+    line: 'Machinery Breakdown',
+    coverScope: 'IQF, plate freezer, ammonia plant, refrigeration, lab equipment',
+    annualPremiumINRl: '2-4',
+    risk: 'Mechanical/electrical failure',
+    insurers: ['Bajaj Allianz', 'ICICI Lombard'],
+    broker: 'JB Boda',
+    notes: 'Critical for ammonia + IQF; covers consequential loss.',
+  },
+  {
+    line: 'Business Interruption',
+    coverScope: 'Lost gross profit + standing charges during 12-month indemnity period',
+    annualPremiumINRl: '6-10',
+    risk: 'Plant down due to fire / flood / cyclone / equipment failure',
+    insurers: ['ICICI Lombard', 'Bajaj Allianz'],
+    broker: 'Marsh',
+    notes: 'Calculated as % of gross profit; tied to fire policy. Critical for single-plant operation.',
+  },
+  {
+    line: 'Product Recall + Contamination',
+    coverScope: 'Recall costs, lost margin on recalled product, brand restoration',
+    annualPremiumINRl: '8-15',
+    risk: 'RASFF / USFDA detention; antibiotic positive; pathogen contamination',
+    insurers: ['Chubb', 'AIG', 'Liberty'],
+    broker: 'Aon (specialty)',
+    notes: 'Specialty line; some insurers exclude seafood — broker negotiation critical.',
+  },
+  {
+    line: 'Public Liability + Third Party',
+    coverScope: 'Bodily injury / property damage to third parties (visitors, neighbours)',
+    annualPremiumINRl: '1-2',
+    risk: 'Plant accidents involving non-employees',
+    insurers: ['Bajaj Allianz', 'TATA AIG'],
+    broker: 'JB Boda',
+    notes: '₹2-5 cr cover.',
+  },
+  {
+    line: 'Workmen Compensation + ESI / PF',
+    coverScope: 'Employee injury / death during employment',
+    annualPremiumINRl: '2-3',
+    risk: 'Workplace injury, work-related illness',
+    insurers: ['Statutory ESI + WC top-up via private insurer'],
+    broker: 'JB Boda',
+    notes: 'WC top-up ~₹2-3 L/yr for 152 employees.',
+  },
+  {
+    line: 'Directors & Officers (D&O)',
+    coverScope: 'Promoter + director liability for management decisions',
+    annualPremiumINRl: '3-5',
+    risk: 'Shareholder disputes, regulatory action, employment claims',
+    insurers: ['TATA AIG', 'Chubb', 'AIG'],
+    broker: 'Aon',
+    notes: '₹5-10 cr cover. Critical pre-Series A.',
+  },
+  {
+    line: 'Key-man Insurance',
+    coverScope: 'Loss of CEO + COO for 2-3 years',
+    annualPremiumINRl: '2-4',
+    risk: 'Loss of critical leadership',
+    insurers: ['LIC + private insurer'],
+    broker: 'Direct',
+    notes: '₹3-5 cr cover per individual; tied to corporate guarantor on bank loans.',
+  },
+  {
+    line: 'Cyber + Data Liability',
+    coverScope: 'Data breach, ransomware, business email compromise, cyber-extortion',
+    annualPremiumINRl: '1-3',
+    risk: 'Operational disruption + reputation damage',
+    insurers: ['HDFC ERGO', 'Bajaj Allianz', 'TATA AIG'],
+    broker: 'Marsh',
+    notes: '₹2-5 cr cover. Increasingly critical with traceability + ERP.',
+  },
+  {
+    line: 'ECGC Export Credit Insurance',
+    coverScope: 'Buyer non-payment + political risk on exports',
+    annualPremiumINRl: '4-7 (% of insured turnover)',
+    risk: 'Buyer bankruptcy, political/regulatory blockage',
+    insurers: ['ECGC of India'],
+    broker: 'Direct',
+    notes: 'Covers 80-95% of default. Recommended for all open-account buyers > ₹30 L exposure.',
+  },
+];
+
+export const totalAnnualInsuranceCost = {
+  y1INRl: '40-55',
+  y3INRl: '50-75',
+  y5INRl: '65-95',
+  notes: 'Includes ECGC turnover-linked. Y3 budget ~₹0.6-0.7 cr.',
+};
+
+export const insuranceTimeline = [
+  { stage: 'Pre-construction', priority: ['Land insurance', 'Pre-operative cover'] },
+  { stage: 'Construction (M1-M9)', priority: ['Contractor all-risks (CAR)', 'Erection all-risks (EAR)'] },
+  { stage: 'Pre-commissioning', priority: ['Marine import cover for equipment', 'Storage cover'] },
+  { stage: 'Commissioning (M10-M12)', priority: ['Plant + machinery (fire)', 'Machinery breakdown', 'Public liability'] },
+  { stage: 'Y1 Operations', priority: ['Marine cargo open cover', 'BI', 'WC + ESI top-up', 'D&O'] },
+  { stage: 'Y2+', priority: ['Live animal cargo', 'Product recall', 'ECGC', 'Cyber'] },
+];

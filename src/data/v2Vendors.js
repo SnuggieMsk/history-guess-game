@@ -1,0 +1,169 @@
+// =====================================================================
+// SOURCE INTEGRITY HEADER (auto-applied across v2 data files)
+// =====================================================================
+// Cross-page numerical claims (revenue, EBITDA, capex, subsidy, headcount)
+// are reconciled to src/data/v2Constants.js — the authoritative single
+// source of truth for the v2 dashboard. If you see a financial figure here
+// that conflicts with v2Constants, treat v2Constants as truth.
+//
+// Source classification per item:
+//   VERIFIED      — primary public source (BSE, MCA, MPEDA, IMD, RBI, etc.)
+//   DIRECTIONAL   — industry-typical or consultant-reported
+//   MODELLED      — design/assumption value (forward projection)
+//
+// Full per-file audit ledger: see src/data/references.js
+// (dataVerificationLedger) and docs/00_SOURCES.md.
+// Last reconciliation: April 2026.
+// =====================================================================
+
+// V2 — Vendor directory for first-time operator. Named suppliers of everything.
+
+export const vendorCategories = [
+  {
+    id: 'iqf',
+    title: 'IQF tunnels + blast freezers + plate freezers',
+    vendors: [
+      { name: 'Cocoon Freezers (India)', location: 'Chennai', speciality: 'IQF + cold storage for seafood; Indian-made' },
+      { name: 'Kaytee Cooltek / Kaytee Groups', location: 'Pune + Mumbai', speciality: 'Indian turnkey cold-chain provider' },
+      { name: 'Frigoscandia (JBT, via Indian agent)', location: 'Dealers: GEA Refrigeration India; or direct US', speciality: 'Premium IQF tunnels; benchmark brand' },
+      { name: 'Carnitech A/S (via Indian dealer)', location: 'Denmark / India', speciality: 'Shrimp processing lines; plate freezers' },
+      { name: 'DSI (Denmark / Scandinavia, via India)', location: 'Denmark', speciality: 'Dedicated fish processing lines' },
+      { name: 'Marine Hydraulics International (MHI) — Indian reseller', location: 'Mumbai', speciality: 'Custom projects' },
+    ],
+  },
+  {
+    id: 'cold-store',
+    title: 'Cold storage (panels, compressors, evaporators, controls)',
+    vendors: [
+      { name: 'Rinac India', location: 'Bangalore', speciality: 'Insulated panels + cold rooms turnkey' },
+      { name: 'Blue Star (Commercial Refrigeration)', location: 'Mumbai HQ', speciality: 'Integrated cold chain' },
+      { name: 'Voltas Commercial Refrigeration', location: 'Mumbai', speciality: 'Tata group; cold rooms + reefer vans' },
+      { name: 'Danfoss Industrial Refrigeration', location: 'Pune', speciality: 'Controls, valves, expansion' },
+      { name: 'Bitzer India', location: 'Mumbai', speciality: 'Compressors (ammonia + CO2)' },
+      { name: 'Gea Refrigeration India', location: 'Pune', speciality: 'Large-scale ammonia refrigeration' },
+    ],
+  },
+  {
+    id: 'solar',
+    title: 'Solar PV (1.2 MWp rooftop)',
+    vendors: [
+      { name: 'Tata Power Solar', location: 'Pune + Bengaluru', speciality: 'Turnkey C&I rooftop' },
+      { name: 'Adani Solar', location: 'Ahmedabad', speciality: 'Panels + EPC' },
+      { name: 'Waaree Energies', location: 'Mumbai', speciality: 'Panel manufacturer + EPC' },
+      { name: 'Vikram Solar', location: 'Kolkata + Pune', speciality: 'Panel + EPC + MSEB net-metering' },
+      { name: 'Amplus Solar', location: 'Delhi + Pune', speciality: 'OPEX/capex models' },
+    ],
+  },
+  {
+    id: 'zld',
+    title: 'RO + ZLD effluent treatment',
+    vendors: [
+      { name: 'Ion Exchange (India) Ltd', location: 'Mumbai', speciality: 'Full ZLD trains; water treatment leader' },
+      { name: 'VA Tech Wabag', location: 'Chennai + Mumbai', speciality: 'Large-scale ZLD + RO' },
+      { name: 'Thermax', location: 'Pune', speciality: 'MEE evaporators; ZLD integration' },
+      { name: 'GE Water (Suez Water India)', location: 'Mumbai', speciality: 'Membrane + MBR' },
+    ],
+  },
+  {
+    id: 'ammonia',
+    title: 'Ammonia refrigeration + PESO compliance',
+    vendors: [
+      { name: 'Voltas Refrigeration', location: 'Mumbai', speciality: 'Full ammonia plant + PESO docs' },
+      { name: 'Blue Star Industrial', location: 'Mumbai', speciality: 'NH3 + CO2 cascade' },
+      { name: 'Sabroe / Johnson Controls', location: 'Denmark / India dealer', speciality: 'Premium NH3 refrigeration' },
+    ],
+  },
+  {
+    id: 'reefer-trucks',
+    title: 'Reefer trucks + chilled vans',
+    vendors: [
+      { name: 'Tata Motors (Ace Mega Refrigerated)', location: 'Pune', speciality: '3.5-12 MT reefer chassis' },
+      { name: 'Ashok Leyland (Avia chassis)', location: 'Chennai + Pune', speciality: 'Medium-heavy reefer' },
+      { name: 'Mahindra Trucks (Blazo reefer)', location: 'Mumbai', speciality: 'Medium reefer chassis' },
+      { name: 'Eicher Trucks (Volvo Eicher)', location: 'Pithampur + Pune', speciality: 'Medium reefer' },
+      { name: 'ColdCraft / Cargocool (body builders)', location: 'Mumbai + Delhi', speciality: 'Insulated body + reefer unit mounting' },
+      { name: 'Thermo King / Carrier Transicold (India agents)', location: 'All metros', speciality: 'Reefer units on chassis' },
+    ],
+  },
+  {
+    id: 'lab',
+    title: 'Lab equipment (HPLC-MS/MS, ELISA, AAS, microbiology)',
+    vendors: [
+      { name: 'Agilent Technologies India', location: 'Bangalore + Pune', speciality: 'HPLC + LC-MS/MS; industry standard' },
+      { name: 'Shimadzu Analytical India', location: 'Mumbai', speciality: 'HPLC + GC' },
+      { name: 'Thermo Fisher Scientific India', location: 'Mumbai + Bangalore', speciality: 'HPLC + MS + AAS' },
+      { name: 'Waters Corporation India', location: 'Bangalore', speciality: 'LC-MS/MS' },
+      { name: 'Neogen India (ELISA kits)', location: 'Mumbai', speciality: 'Antibiotic rapid test kits' },
+      { name: 'Euroclone (via Indian distributor)', location: 'Italy', speciality: 'ELISA kits' },
+      { name: 'HiMedia Laboratories', location: 'Mumbai', speciality: 'Microbiology media + consumables' },
+    ],
+  },
+  {
+    id: 'packing',
+    title: 'Packing materials (EPS boxes, gel packs, bags, cartons)',
+    vendors: [
+      { name: 'Supreme Industries (Styrofoam)', location: 'Mumbai', speciality: 'EPS boxes in all sizes' },
+      { name: 'Essel Propack / EPL', location: 'Mumbai', speciality: 'Printed flexible packaging' },
+      { name: 'Uflex Ltd', location: 'Noida + Mumbai', speciality: 'Flexible + rigid packaging' },
+      { name: 'ITC Paperboards', location: 'Kolkata', speciality: 'Corrugated cartons (wet-strength)' },
+      { name: 'Local gel-pack suppliers', location: 'Mumbai + Pune', speciality: 'Reusable ice/gel packs' },
+      { name: 'RFID tag suppliers (Impinj / Zebra / Indian SI)', location: 'Bangalore + Mumbai', speciality: 'Traceability tags + readers' },
+    ],
+  },
+  {
+    id: 'insurance',
+    title: 'Insurance (marine, plant, live-cargo, product recall, D&O)',
+    vendors: [
+      { name: 'ICICI Lombard General Insurance', location: 'Mumbai', speciality: 'Marine cargo + plant + liability' },
+      { name: 'Bajaj Allianz General', location: 'Pune', speciality: 'Plant + fire + marine' },
+      { name: 'HDFC ERGO General', location: 'Mumbai', speciality: 'Marine + product recall' },
+      { name: 'TATA AIG', location: 'Mumbai', speciality: 'Specialty lines + D&O' },
+      { name: 'Chola MS General', location: 'Chennai', speciality: 'Marine cargo live-animal' },
+      { name: 'Marsh India (broker)', location: 'Mumbai', speciality: 'Recommended broker for multi-line programmes' },
+      { name: 'Aon India (broker)', location: 'Mumbai', speciality: 'Broker — especially for product recall' },
+      { name: 'JB Boda (broker)', location: 'Mumbai', speciality: 'Legacy marine insurance broker' },
+    ],
+  },
+  {
+    id: 'consultants',
+    title: 'Consultants (PMMSY / PMKSY DPR, HACCP, NABL, MSC)',
+    vendors: [
+      { name: 'AGRUNIVERSE Consulting', location: 'Pune', speciality: 'PMMSY + PMKSY DPR' },
+      { name: 'KPMG Agri Food', location: 'Mumbai', speciality: 'Investor-grade DPR + structuring' },
+      { name: 'Rabo Equity Advisors', location: 'Chennai + Bangalore', speciality: 'Structuring + scheme capture' },
+      { name: 'SGS India', location: 'Mumbai + Pune', speciality: 'HACCP + BRC + IFS certification + audits' },
+      { name: 'Bureau Veritas India', location: 'Mumbai', speciality: 'Full suite certifications' },
+      { name: 'DNV India', location: 'Mumbai + Pune', speciality: 'Quality + MSC-related certifications' },
+      { name: 'TÜV SÜD India', location: 'Mumbai', speciality: 'HACCP + ISO' },
+      { name: 'Foodcert (HACCP + FSSC consultancy)', location: 'Mumbai', speciality: 'Implementation consultancy' },
+      { name: 'NABL accreditation consultants (Aartech / Ankur)', location: 'Pune', speciality: 'ISO/IEC 17025 implementation' },
+      { name: 'MPEDA-empanelled DPR consultants', location: 'Check MPEDA website (mpeda.gov.in) for current list', speciality: 'Fisheries-specific DPR' },
+    ],
+  },
+  {
+    id: 'legal',
+    title: 'Legal + CS + Tax + IP',
+    vendors: [
+      { name: 'Economic Laws Practice (ELP)', location: 'Mumbai', speciality: 'FTA + trade law + export compliance' },
+      { name: 'Khaitan & Co', location: 'Mumbai', speciality: 'Corporate + regulatory' },
+      { name: 'AZB & Partners', location: 'Mumbai', speciality: 'M&A + JV + equity transactions' },
+      { name: 'SRBC / BSR / Deloitte tax', location: 'Pune + Mumbai', speciality: 'Direct + indirect tax; 115BAB eligibility' },
+      { name: 'Pune-based CS firms (e.g., IDAC Corporate Services)', location: 'Pune', speciality: 'Incorporation + ongoing CS' },
+      { name: 'Remfry & Sagar (IP)', location: 'Mumbai', speciality: 'Trademark + brand IP' },
+    ],
+  },
+  {
+    id: 'banking',
+    title: 'Banks + lenders',
+    vendors: [
+      { name: 'State Bank of India (agri-infra)', location: 'All branches', speciality: 'Term loan + WC, PMMSY-aligned' },
+      { name: 'Bank of Baroda', location: 'All branches', speciality: 'Seafood export lending historic strength' },
+      { name: 'HDFC Bank SME', location: 'Pune + Mumbai', speciality: 'Term + WC for mid-size food processors' },
+      { name: 'Axis Bank Corporate', location: 'Pune + Mumbai', speciality: 'Export finance' },
+      { name: 'ICICI Bank Corporate', location: 'Pune + Mumbai', speciality: 'Term + LC + export credit' },
+      { name: 'EXIM Bank of India', location: 'Mumbai', speciality: 'Export-specific term loans; overseas buyer credit' },
+      { name: 'NABARD (through state coop banks)', location: 'Mumbai + Pune', speciality: 'AIF interest subvention' },
+      { name: 'SIDBI', location: 'Pune + Mumbai', speciality: 'Sustainable finance; Stand-Up India for SC/ST/Women' },
+    ],
+  },
+];

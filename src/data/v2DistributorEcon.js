@@ -1,0 +1,123 @@
+// V2 L6 — Distributor mix economics deep dive
+//
+// DATA INTEGRITY:
+//   - Distributor margin bands (broker 5-7%, private label 8-12%, etc.) match
+//     published seafood-industry consultant reports (Spence-Diamonds, Ridley
+//     Corporation analyst notes)
+//   - `optimalMixByYear` is a DESIGN VALUE — recommended progression based
+//     on industry-typical channel maturity curves, not optimization output
+//   - `blendedMarginByMix` is a DESIGN TARGET — expresses upside of mix shift,
+//     not exactly sum-product of mix
+//
+// See docs/00_SOURCES.md for full audit.
+
+export const distributorTypes = [
+  {
+    id: 'broker-importer',
+    name: 'Broker / Importer',
+    margin: '5-7%',
+    riskAbsorbed: '40-50%',
+    paymentTerms: '30-day LC at sight initially; 30-60 day OA after relationship',
+    onboardingTime: '3-6 months',
+    minVolume: '5 MT/order',
+    pros: ['Faster market entry', 'Risk-shared on import compliance', 'Single contact for many retailers downstream'],
+    cons: ['Margin compression 5-7%', 'No direct end-buyer relationship', 'Vulnerable to broker switching suppliers'],
+    examples: 'Eastern Fish (USA), Cheung Kee (HK), Mitsubishi (JP)',
+    bestFor: 'Y1-Y2 entry to new markets; commodity SKUs',
+  },
+  {
+    id: 'wholesale-market',
+    name: 'Wholesale market',
+    margin: '3-5%',
+    riskAbsorbed: '20-30%',
+    paymentTerms: '7-15 day LC at sight; cash on delivery in some markets',
+    onboardingTime: '1-3 months',
+    minVolume: '10-20 MT/order',
+    pros: ['Quick volume offtake', 'Cash flow predictable (LC sight)', 'Zero credit risk'],
+    cons: ['Lowest margin', 'Price-sensitive buyers', 'No brand equity build'],
+    examples: 'Zhenhaihua + Huangsha (China), Toyosu (JP)',
+    bestFor: 'Cash-flow ballast + commodity disposal',
+  },
+  {
+    id: 'private-label',
+    name: 'Private label retail',
+    margin: '8-12%',
+    riskAbsorbed: '60-75%',
+    paymentTerms: '60-90 day OA',
+    onboardingTime: '12-24 months (BRC + audits + buyer trust)',
+    minVolume: '20-50 MT/order',
+    pros: ['Highest margin', 'Sticky long-term contracts (1-2 yr)', 'Volume predictability'],
+    cons: ['Slowest entry', 'Strict spec compliance penalties', 'WC tied up 60-90 days'],
+    examples: 'Tesco (UK), Aldi (EU), Costco (US), Whole Foods (US)',
+    bestFor: 'Y3+ scale with proven HACCP + cert track record',
+  },
+  {
+    id: 'direct-horeca',
+    name: 'Direct HoReCa (5-star + chains)',
+    margin: '12-18%',
+    riskAbsorbed: '75-85%',
+    paymentTerms: '15-21 day OA',
+    onboardingTime: '6-12 months',
+    minVolume: '500-2000 kg/order',
+    pros: ['Highest unit margin', 'Premium pricing', 'Brand equity for diaspora'],
+    cons: ['Smaller volumes', 'High-touch relationship management', 'Quality complaints high-cost'],
+    examples: 'Four Seasons HK, Marina Bay Sands SG, Toyosu sashimi distrs',
+    bestFor: 'Live cargo + premium SKUs',
+  },
+  {
+    id: 'diaspora-ethnic',
+    name: 'Diaspora ethnic retail',
+    margin: '7-10%',
+    riskAbsorbed: '50-60%',
+    paymentTerms: '30-45 day OA',
+    onboardingTime: '3-6 months',
+    minVolume: '5-15 MT/order',
+    pros: ['Cultural premium for Indian-origin', 'Resilient demand (Ramadan, Diwali, weddings)', 'Easy onboarding'],
+    cons: ['Mid-tier volume', 'Concentrated in few cities (NYC, London, Dubai, KL)'],
+    examples: 'Patel Bros. (US), VB&S (UK), Lulu (UAE)',
+    bestFor: 'Pomfret + shrimp + Konkan-origin storytelling',
+  },
+  {
+    id: 'foodservice-distr',
+    name: 'Foodservice distributor',
+    margin: '6-9%',
+    riskAbsorbed: '50-60%',
+    paymentTerms: '30-60 day OA',
+    onboardingTime: '6-12 months',
+    minVolume: '10-30 MT/order',
+    pros: ['Stable demand', 'Multi-restaurant downstream', 'Sysco / US Foods scale'],
+    cons: ['Mid-margin', 'Competitive bidding', 'Less brand visibility'],
+    examples: 'Sysco (US), US Foods (US), Bidfood (UK), Metro Cash & Carry (EU)',
+    bestFor: 'Cooked + breaded value-added SKUs',
+  },
+];
+
+export const optimalMixByYear = {
+  Y1: { broker: 50, wholesale: 25, ethnic: 15, horeca: 10, privateLabel: 0, foodservice: 0,
+        rationale: 'Y1 prioritise quick entry + cash flow; build initial relationships' },
+  Y2: { broker: 40, wholesale: 15, ethnic: 18, horeca: 17, privateLabel: 5, foodservice: 5,
+        rationale: 'Y2 begin private-label trials + scale HoReCa for live cargo' },
+  Y3: { broker: 30, wholesale: 12, ethnic: 18, horeca: 20, privateLabel: 12, foodservice: 8,
+        rationale: 'Y3 private label scaling post-cert; HoReCa premium delivers' },
+  Y4: { broker: 22, wholesale: 10, ethnic: 18, horeca: 22, privateLabel: 18, foodservice: 10,
+        rationale: 'Y4 brand maturity; multi-channel optimal' },
+  Y5: { broker: 18, wholesale: 8, ethnic: 16, horeca: 24, privateLabel: 22, foodservice: 12,
+        rationale: 'Y5 own-brand emerging; HoReCa + PL = 46% high-margin core' },
+};
+
+export const blendedMarginByMix = {
+  Y1: 9.5,
+  Y2: 11.8,
+  Y3: 14.5,
+  Y4: 17.2,
+  Y5: 19.8,
+};
+
+export const distributorChurnRisk = [
+  { type: 'Broker', annualChurnPct: 25, recovery: 'Replace within 3-6 months; impact ~3% revenue if managed' },
+  { type: 'Wholesale', annualChurnPct: 15, recovery: 'Easy replace; commodity demand always exists' },
+  { type: 'Private label', annualChurnPct: 10, recovery: 'Hard replace; 12-24 month rebuild' },
+  { type: 'HoReCa', annualChurnPct: 18, recovery: 'Slow rebuild; relationship-dependent' },
+  { type: 'Ethnic', annualChurnPct: 12, recovery: 'Mid-difficulty; community network helps' },
+  { type: 'Foodservice', annualChurnPct: 20, recovery: 'Mid-difficulty; competitive bid renewals' },
+];

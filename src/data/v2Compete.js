@@ -1,0 +1,174 @@
+// =====================================================================
+// SOURCE INTEGRITY HEADER (auto-applied across v2 data files)
+// =====================================================================
+// Cross-page numerical claims (revenue, EBITDA, capex, subsidy, headcount)
+// are reconciled to src/data/v2Constants.js — the authoritative single
+// source of truth for the v2 dashboard. If you see a financial figure here
+// that conflicts with v2Constants, treat v2Constants as truth.
+//
+// Source classification per item:
+//   VERIFIED      — primary public source (BSE, MCA, MPEDA, IMD, RBI, etc.)
+//   DIRECTIONAL   — industry-typical or consultant-reported
+//   MODELLED      — design/assumption value (forward projection)
+//
+// Full per-file audit ledger: see src/data/references.js
+// (dataVerificationLedger) and docs/00_SOURCES.md.
+// Last reconciliation: April 2026.
+// =====================================================================
+
+// V2 — Competitor forensics
+
+export const competitorsV2 = [
+  // AP shrimp majors
+  {
+    id: 'avanti', name: 'Avanti Feeds / Avanti Frozen Foods', category: 'AP Shrimp Major',
+    revenueINRcr: 6800, margin: '5-8%',
+    strength: 'India\'s only integrated feed+shrimp exporter; feed contracts lock farmer supply',
+    weakness: 'Single-species (vannamei); USA concentration 45-55%; feed advance book ₹400+ cr',
+    recentMoves: 'Exploring GCC + Japan; raising value-added mix; Ecuador outbound sourcing',
+    weLearn: 'Scale is not a moat when core commoditizes; geographic diversification defensive not offensive',
+    weAvoid: 'Single-species single-geography concentration',
+    color: '#a8322d',
+  },
+  {
+    id: 'apex', name: 'Apex Frozen Foods', category: 'AP Shrimp Major',
+    revenueINRcr: 2000, margin: '6-10%',
+    strength: 'India\'s highest value-added shrimp share (~55% of revenue)',
+    weakness: 'Debt-heavy (D/E 1.8); narrow buyer base (Costco, Walmart, Sysco); stock underperform 2022-25',
+    recentMoves: 'Expanding breaded + cooked capacity; Tesco + Aldi via BRC-qualified SKUs',
+    weLearn: 'Value-added shift works but 5+ yr compounding',
+    weAvoid: 'Over-leverage — our D/E 1.4× is at prudent ceiling',
+    color: '#a8322d',
+  },
+  {
+    id: 'nekkanti', name: 'Nekkanti Sea Foods', category: 'AP Shrimp Major',
+    revenueINRcr: 1650, margin: '6-9%',
+    strength: 'Branded "Lighthouse" with minor US retail; HACCP + BAP; long Costco relationship',
+    weakness: 'USA 50%+ concentration; limited species diversification',
+    recentMoves: 'Black tiger from AP + Odisha wild catch for Japan',
+    weLearn: 'Branded line attempt is right but slow + expensive',
+    weAvoid: 'Over-bet on single retail relationship',
+    color: '#a8322d',
+  },
+  {
+    id: 'devi', name: 'Devi Sea Foods', category: 'AP Shrimp Major',
+    revenueINRcr: 1500, margin: '5-7%',
+    strength: 'Geographic diversification (AP + TN + Odisha); compliance reputation',
+    weakness: 'Lower brand profile; not in US retail direct',
+    recentMoves: 'Steady — low-profile compounding',
+    weLearn: 'Compliance reputation takes 15+ yrs; durable moat once built',
+    weAvoid: 'N/A — their model is reference',
+    color: '#a8322d',
+  },
+  {
+    id: 'sandhya', name: 'Sandhya Aqua', category: 'AP Shrimp Mid',
+    revenueINRcr: 450, margin: '7-10%',
+    strength: 'Value-added + domestic retail (Metro, Reliance Stores)',
+    weakness: 'Sub-scale; domestic pricing pressure',
+    recentMoves: 'Domestic brand push',
+    weLearn: 'Domestic is viable backup revenue stream',
+    weAvoid: 'Domestic-only concentration limits scale',
+    color: '#a8322d',
+  },
+  // Maharashtra
+  {
+    id: 'ifb-agro', name: 'IFB Agro Industries (Seafood)', category: 'Maharashtra Incumbent',
+    revenueINRcr: 700, margin: '4-7%',
+    strength: 'Modern Vasai plant; UK + EU buyer access; IFB group institutional reputation',
+    weakness: 'Sub-scale vs AP majors; high corporate overhead; revenue stalled 2019-24',
+    recentMoves: 'Modest growth; EU focus',
+    weLearn: 'Modernity alone insufficient; need differentiated thesis',
+    weAvoid: 'Competing on commodity scale — instead play live + MSC niches',
+    color: '#c5a565',
+  },
+  {
+    id: 'coastal', name: 'Coastal Corporation', category: 'Maharashtra Incumbent',
+    revenueINRcr: 600, margin: '4-7%',
+    strength: 'Decade+ buyer relationships; Japan squid/cuttlefish + GCC',
+    weakness: 'Aged assets (1990s); cold chain behind modern spec; labour productivity low',
+    recentMoves: 'Margin pressure 2022-25',
+    weLearn: 'Old assets = slow death',
+    weAvoid: 'Buying aged assets via acquisition — greenfield cleaner',
+    color: '#c5a565',
+  },
+  {
+    id: 'gadre', name: 'Gadre Marine Exports', category: 'Maharashtra Specialist',
+    revenueINRcr: 550, margin: '6-9%',
+    strength: 'India\'s only surimi + analogue-crab maker; global niche monopoly',
+    weakness: 'Surimi is capex-intensive + commodity-priced; limited diversification',
+    recentMoves: 'Niche exploitation',
+    weLearn: 'Niche durability comes from process IP + supplier lock-in (Gadre\'s 1984 surimi blast-freezing process + exclusive Mirkarwada threadfin bream MoUs) — not the niche label itself',
+    weAvoid: 'A niche that commoditizes caps margin upside',
+    color: '#c5a565',
+  },
+  {
+    id: 'magnum', name: 'Magnum Seafoods', category: 'Maharashtra Mid',
+    revenueINRcr: 280, margin: '5-8%',
+    strength: 'Flexible contracts + JNPT proximity',
+    weakness: 'No value-added line; commodity positioning',
+    recentMoves: 'Mid-size status quo',
+    weLearn: 'JNPT proximity valuable',
+    weAvoid: 'Commodity-only position',
+    color: '#c5a565',
+  },
+  // Eastern coast
+  {
+    id: 'falcon', name: 'Falcon Marine Exports', category: 'Odisha',
+    revenueINRcr: 560, margin: '5-7%',
+    strength: 'Wild catch + farmed mix; Japan tuna access; Paradip port',
+    weakness: 'Cyclone risk WB/Odisha',
+    recentMoves: 'Japan tuna expansion',
+    weLearn: 'Diversification works; cyclone risk region-specific',
+    weAvoid: 'Geographic risk concentration',
+    color: '#7a5b8c',
+  },
+  {
+    id: 'zeal', name: 'Zeal Aqua', category: 'Gujarat',
+    revenueINRcr: 280, margin: '6-9%',
+    strength: 'Gujarat-origin (less AP competition)',
+    weakness: 'USA-only customer concentration',
+    recentMoves: 'Stable',
+    weLearn: 'Alternate geography is possible',
+    weAvoid: 'USA-only concentration',
+    color: '#7a5b8c',
+  },
+  // Lakshadweep tuna-specific
+  {
+    id: 'afd', name: 'Accelerated Freeze Drying (AFD)', category: 'Lakshadweep Tuna',
+    revenueINRcr: 420, margin: '5-8%',
+    strength: '25+ yr Lakshadweep relationship; freeze-dried + frozen product',
+    weakness: 'No MSC focus; freeze-dried is niche',
+    recentMoves: 'Steady',
+    weLearn: 'Lakshadweep relationships matter',
+    weAvoid: 'Competing on freeze-dried — we play MSC fresh saku/loin',
+    color: '#2d6a4f',
+  },
+  {
+    id: 'amalgam', name: 'Amalgam Foods Ltd', category: 'Lakshadweep Tuna',
+    revenueINRcr: 380, margin: '5-8%',
+    strength: 'Multi-species seafood exporter; Lakshadweep one of many',
+    weakness: 'Not MSC-focused',
+    recentMoves: 'Cochin-based steady',
+    weLearn: 'Multi-product scale works at Cochin level',
+    weAvoid: 'No MSC = no premium pricing',
+    color: '#2d6a4f',
+  },
+];
+
+export const globalBenchmarks = [
+  { name: 'Thai Union',       revUSDbn: 5.0, note: 'Global brand acquisitions (John West, Chicken of the Sea); learn M&A + brand' },
+  { name: 'Mowi',             revUSDbn: 6.0, note: 'Salmon vertical integration; learn Y10+ playbook' },
+  { name: 'Minh Phu',         revUSDbn: 0.85, note: 'Vannamei global scale; our filler must be efficient vs this' },
+  { name: 'Nueva Pescanova',  revUSDbn: 0.7, note: 'Octopus + squid + farming; potential partner long-term' },
+  { name: 'Clearwater Seafoods', revUSDbn: 0.5, note: 'Premium shellfish; learn live-cargo logistics' },
+  { name: 'Sanford Ltd',      revUSDbn: 0.35, note: 'MSC multi-species; direct model parallel' },
+  { name: 'Maruha Nichiro',   revUSDbn: 11.0, note: 'Integrated sogo shosha; our target buyer' },
+];
+
+export const whereWePlay = [
+  { axis: 'Primary species', avanti: 'Vannamei', apex: 'Vannamei VA', gadre: 'Surimi', coastal: 'Mixed', us: 'Live lobster + MSC tuna + octopus' },
+  { axis: 'Primary market',   avanti: 'USA',      apex: 'USA',        gadre: 'Japan',   coastal: 'Japan+GCC', us: 'HK/SG/JP + EU + post-MSC USA' },
+  { axis: 'Key moat',          avanti: 'Scale+feed',apex: 'VA share',   gadre: 'Surimi monopoly', coastal: 'Relationships', us: 'MSC + live-cargo + Lakshadweep' },
+  { axis: 'Scale ₹cr',          avanti: '6,800',     apex: '2,000',      gadre: '550',    coastal: '600',       us: 'Y5 target 180-220' },
+  { axis: 'Margin',             avanti: '5-8%',       apex: '6-10%',      gadre: '6-9%',    coastal: '4-7%',      us: 'Y5 target 14-17%' },
+];

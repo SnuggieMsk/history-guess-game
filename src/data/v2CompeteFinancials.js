@@ -1,0 +1,153 @@
+// V2 — Competitor 5-year financial trends, deep ratios, working capital, debt, capex.
+//
+// DATA INTEGRITY:
+//
+// VERIFIED FY24 revenue (via NSE/BSE filings + GlobalData):
+//   - Avanti Feeds + Frozen Foods ₹6,800 cr
+//   - Apex Frozen Foods ₹1,850 cr
+//   - IFB Agro Marine ₹720 cr (parent NSE: IFBAGRO)
+//   - Coastal Corporation ₹600 cr (BSE: 501831)
+//
+// ESTIMATE FY24 revenue (private cos, ±20% likely; via trade press + ROC + industry consensus):
+//   - Nekkanti, Devi, Gadre, Falcon, Sandhya
+//
+// MODELLED YoY trends (FY20-FY24):
+//   - EBITDA% / PAT% / ROCE / D/E / WC days are DIRECTIONAL ESTIMATES based on:
+//     - Sector analyst reports (CRISIL, ICRA, Care Ratings)
+//     - Listed-co quarterly trend lines
+//     - Known industry shocks (2019 EHP+WSSV, 2020 COVID, 2023 Ecuador price war)
+//   - Annual figures should be considered ±2 ppt for margins, ±0.2 for D/E
+//   - VALIDATE against actual annual reports for listed cos before pitching to investor
+//
+// See docs/00_SOURCES.md for full audit.
+
+export const competitorFinancials = {
+  avanti: {
+    revenueINRcr: { FY20: 4030, FY21: 3590, FY22: 4750, FY23: 5300, FY24: 6800 },
+    ebitdaPct:    { FY20: 11.2, FY21: 9.8, FY22: 8.4, FY23: 7.6, FY24: 7.1 },
+    patPct:       { FY20: 9.5, FY21: 7.8, FY22: 6.2, FY23: 5.4, FY24: 4.9 },
+    roce:         { FY20: 25.4, FY21: 18.6, FY22: 15.2, FY23: 12.8, FY24: 11.4 },
+    debtEquity:   { FY20: 0.05, FY21: 0.04, FY22: 0.05, FY23: 0.05, FY24: 0.04 },
+    workingCapDays: { FY20: 28, FY21: 35, FY22: 42, FY23: 48, FY24: 51 },
+    farmerAdvanceINRcr: { FY20: 230, FY21: 280, FY22: 340, FY23: 380, FY24: 410 },
+    capexINRcr:   { FY20: 65, FY21: 45, FY22: 60, FY23: 80, FY24: 110 },
+    feedRevShare: '~65% of total revenue is feed; frozen foods ~35%',
+    keyInsight: 'Margin compression from 11% to 7% in 4 years driven by Ecuador price war + USA tariff. Despite scale, ROCE halved.',
+  },
+  apex: {
+    revenueINRcr: { FY20: 1280, FY21: 1450, FY22: 1620, FY23: 1780, FY24: 1850 },
+    ebitdaPct:    { FY20: 12.5, FY21: 10.8, FY22: 8.9, FY23: 7.4, FY24: 6.8 },
+    patPct:       { FY20: 7.8, FY21: 6.2, FY22: 4.5, FY23: 3.2, FY24: 2.6 },
+    roce:         { FY20: 22.4, FY21: 17.8, FY22: 13.2, FY23: 9.8, FY24: 7.6 },
+    debtEquity:   { FY20: 1.45, FY21: 1.62, FY22: 1.78, FY23: 1.84, FY24: 1.79 },
+    workingCapDays: { FY20: 65, FY21: 72, FY22: 81, FY23: 88, FY24: 84 },
+    valueAddedPct: { FY20: 38, FY21: 42, FY22: 48, FY23: 52, FY24: 55 },
+    capexINRcr:   { FY20: 35, FY21: 42, FY22: 38, FY23: 28, FY24: 22 },
+    keyInsight: 'High debt-equity (1.8x) constrains capex flexibility. Despite VA share rising to 55%, margins compressed by tariff + commodity pressure. Stock has underperformed Sensex 2022-25.',
+  },
+  nekkanti: {
+    revenueINRcr: { FY20: 1450, FY21: 1380, FY22: 1520, FY23: 1610, FY24: 1650 },
+    ebitdaPct:    { FY20: 9.8, FY21: 8.4, FY22: 7.6, FY23: 6.9, FY24: 6.4 },
+    patPct:       { FY20: 5.2, FY21: 4.1, FY22: 3.4, FY23: 2.8, FY24: 2.5 },
+    roce:         { FY20: 15.8, FY21: 12.4, FY22: 10.2, FY23: 8.6, FY24: 7.4 },
+    debtEquity:   { FY20: 0.62, FY21: 0.71, FY22: 0.78, FY23: 0.82, FY24: 0.79 },
+    workingCapDays: { FY20: 58, FY21: 65, FY22: 72, FY23: 76, FY24: 78 },
+    capexINRcr:   { FY20: 20, FY21: 25, FY22: 18, FY23: 15, FY24: 22 },
+    keyInsight: 'Steady scale but margin compression. Lighthouse brand attempt has not yielded outsized returns. USA concentration remains the structural risk.',
+  },
+  devi: {
+    revenueINRcr: { FY20: 1180, FY21: 1240, FY22: 1380, FY23: 1450, FY24: 1500 },
+    ebitdaPct:    { FY20: 8.6, FY21: 7.9, FY22: 7.2, FY23: 6.8, FY24: 6.4 },
+    patPct:       { FY20: 4.8, FY21: 4.2, FY22: 3.6, FY23: 3.2, FY24: 2.9 },
+    roce:         { FY20: 14.2, FY21: 12.8, FY22: 11.4, FY23: 10.2, FY24: 9.4 },
+    debtEquity:   { FY20: 0.42, FY21: 0.48, FY22: 0.52, FY23: 0.54, FY24: 0.56 },
+    workingCapDays: { FY20: 52, FY21: 58, FY22: 62, FY23: 65, FY24: 68 },
+    capexINRcr:   { FY20: 18, FY21: 22, FY22: 25, FY23: 30, FY24: 35 },
+    employees: { FY24: 3500 },
+    keyInsight: 'Steady, low-profile compounding. Vertical integration (own hatchery + farms + feed) gives supply security but margin still compressed by industry-wide tariff pressure.',
+  },
+  ifbAgro: {
+    revenueINRcr: { FY20: 680, FY21: 650, FY22: 700, FY23: 720, FY24: 720 },
+    ebitdaPct:    { FY20: 6.2, FY21: 5.4, FY22: 5.8, FY23: 5.1, FY24: 4.6 },
+    patPct:       { FY20: 3.4, FY21: 2.8, FY22: 3.1, FY23: 2.4, FY24: 2.1 },
+    roce:         { FY20: 11.4, FY21: 9.6, FY22: 10.2, FY23: 8.8, FY24: 7.6 },
+    debtEquity:   { FY20: 0.85, FY21: 0.92, FY22: 0.88, FY23: 0.85, FY24: 0.82 },
+    workingCapDays: { FY20: 62, FY21: 68, FY22: 71, FY23: 74, FY24: 78 },
+    capexINRcr:   { FY20: 8, FY21: 6, FY22: 5, FY23: 8, FY24: 10 },
+    keyInsight: 'Revenue stalled at ₹650-720 cr range for 5 years. Founder transition (Bijon Nag died Jan 2024) creates strategic uncertainty.',
+  },
+  gadre: {
+    revenueINRcr: { FY20: 420, FY21: 460, FY22: 510, FY23: 540, FY24: 550 },
+    ebitdaPct:    { FY20: 9.4, FY21: 8.6, FY22: 8.2, FY23: 7.6, FY24: 7.2 },
+    patPct:       { FY20: 4.8, FY21: 4.2, FY22: 3.8, FY23: 3.4, FY24: 3.1 },
+    roce:         { FY20: 14.8, FY21: 12.4, FY22: 11.6, FY23: 10.2, FY24: 9.4 },
+    debtEquity:   { FY20: 0.68, FY21: 0.72, FY22: 0.74, FY23: 0.71, FY24: 0.68 },
+    workingCapDays: { FY20: 72, FY21: 78, FY22: 82, FY23: 85, FY24: 88 },
+    capexINRcr:   { FY20: 25, FY21: 18, FY22: 22, FY23: 30, FY24: 35 },
+    keyInsight: 'Surimi niche provides moat but commodity-priced; margins gradually compressed. Premium B2C launch (Gadre.co.in) is wildcard.',
+  },
+  coastalCorp: {
+    revenueINRcr: { FY20: 540, FY21: 510, FY22: 570, FY23: 590, FY24: 600 },
+    ebitdaPct:    { FY20: 6.4, FY21: 5.8, FY22: 5.2, FY23: 4.6, FY24: 4.2 },
+    patPct:       { FY20: 2.8, FY21: 2.2, FY22: 1.8, FY23: 1.4, FY24: 1.2 },
+    roce:         { FY20: 8.4, FY21: 7.2, FY22: 6.4, FY23: 5.6, FY24: 4.8 },
+    debtEquity:   { FY20: 1.12, FY21: 1.18, FY22: 1.24, FY23: 1.28, FY24: 1.32 },
+    workingCapDays: { FY20: 78, FY21: 84, FY22: 89, FY23: 92, FY24: 95 },
+    capexINRcr:   { FY20: 6, FY21: 4, FY22: 5, FY23: 7, FY24: 8 },
+    keyInsight: 'Aging assets + high debt = double squeeze. Margin spiral from 6.4% to 4.2% in 4 years. Likely M&A target by Y3-Y5.',
+  },
+  falcon: {
+    revenueINRcr: { FY20: 480, FY21: 410, FY22: 520, FY23: 540, FY24: 560 },
+    ebitdaPct:    { FY20: 7.6, FY21: 5.4, FY22: 6.8, FY23: 6.2, FY24: 5.8 },
+    patPct:       { FY20: 3.4, FY21: 1.8, FY22: 2.6, FY23: 2.2, FY24: 1.9 },
+    roce:         { FY20: 12.4, FY21: 7.2, FY22: 9.8, FY23: 8.4, FY24: 7.6 },
+    debtEquity:   { FY20: 0.78, FY21: 0.84, FY22: 0.88, FY23: 0.86, FY24: 0.84 },
+    workingCapDays: { FY20: 65, FY21: 78, FY22: 72, FY23: 74, FY24: 76 },
+    capexINRcr:   { FY20: 12, FY21: 8, FY22: 15, FY23: 18, FY24: 20 },
+    cycloneImpact: 'FY21 dip due to Cyclone Yaas + COVID double-impact',
+    keyInsight: 'Cyclone-exposed geography creates volatility. Japan tuna business is the bright spot.',
+  },
+  sandhyaAqua: {
+    revenueINRcr: { FY20: 280, FY21: 310, FY22: 340, FY23: 360, FY24: 380 },
+    ebitdaPct:    { FY20: 9.2, FY21: 8.6, FY22: 8.2, FY23: 7.8, FY24: 7.4 },
+    patPct:       { FY20: 4.8, FY21: 4.4, FY22: 3.9, FY23: 3.6, FY24: 3.2 },
+    roce:         { FY20: 13.4, FY21: 12.8, FY22: 11.6, FY23: 10.4, FY24: 9.6 },
+    debtEquity:   { FY20: 0.82, FY21: 0.85, FY22: 0.88, FY23: 0.86, FY24: 0.84 },
+    workingCapDays: { FY20: 55, FY21: 58, FY22: 62, FY23: 65, FY24: 68 },
+    capexINRcr:   { FY20: 8, FY21: 12, FY22: 14, FY23: 18, FY24: 22 },
+    keyInsight: 'Domestic + export dual model; small scale but consistent margins. Reference for our optional domestic channel.',
+  },
+};
+
+export const industryAverages = {
+  revenueGrowthCAGR_FY20toFY24: 6.8,
+  ebitdaCompressionPpt: -3.2,
+  workingCapDaysIncrease: 18,
+  averageDebtEquity: 0.84,
+  averageRoce: 9.2,
+  topQuartileMargin: 8.6,
+  bottomQuartileMargin: 4.2,
+  industryAverage: 5.8,
+  ourTargetVsIndustry: 'Y5 16-20% EBITDA = top decile (above industry top quartile of 8.6%)',
+};
+
+export const peerComparisonMatrix = [
+  { metric: 'Revenue ₹cr (FY24)', avanti: 6800, apex: 1850, nekkanti: 1650, devi: 1500, ifbAgro: 720, gadre: 550, coastalCorp: 600, falcon: 560, sandhyaAqua: 380, ourY5Target: 243 },
+  { metric: 'EBITDA % (FY24)',    avanti: 7.1,  apex: 6.8,  nekkanti: 6.4,  devi: 6.4,  ifbAgro: 4.6, gadre: 7.2, coastalCorp: 4.2, falcon: 5.8, sandhyaAqua: 7.4, ourY5Target: 20.1 },
+  { metric: 'PAT % (FY24)',       avanti: 4.9,  apex: 2.6,  nekkanti: 2.5,  devi: 2.9,  ifbAgro: 2.1, gadre: 3.1, coastalCorp: 1.2, falcon: 1.9, sandhyaAqua: 3.2, ourY5Target: 13.6 },
+  { metric: 'ROCE % (FY24)',      avanti: 11.4, apex: 7.6,  nekkanti: 7.4,  devi: 9.4,  ifbAgro: 7.6, gadre: 9.4, coastalCorp: 4.8, falcon: 7.6, sandhyaAqua: 9.6, ourY5Target: 22.0 },
+  { metric: 'D/E (FY24)',         avanti: 0.04, apex: 1.79, nekkanti: 0.79, devi: 0.56, ifbAgro: 0.82, gadre: 0.68, coastalCorp: 1.32, falcon: 0.84, sandhyaAqua: 0.84, ourY5Target: 1.4 },
+  { metric: 'WC Days (FY24)',     avanti: 51,   apex: 84,   nekkanti: 78,   devi: 68,   ifbAgro: 78,  gadre: 88,  coastalCorp: 95, falcon: 76, sandhyaAqua: 68, ourY5Target: 65 },
+];
+
+export const competitorRevenueByMarket = {
+  avanti:      { USA: 50, Japan: 12, EU: 14, China: 8, GCC: 6, SEA: 5, Other: 5 },
+  apex:        { USA: 65, Japan: 8,  EU: 10, China: 5, GCC: 4, SEA: 4, Other: 4 },
+  nekkanti:    { USA: 50, Japan: 14, EU: 12, China: 7, GCC: 6, SEA: 6, Other: 5 },
+  devi:        { USA: 38, Japan: 16, EU: 18, China: 8, GCC: 8, SEA: 6, Other: 6 },
+  ifbAgro:     { USA: 18, Japan: 8,  EU: 32, China: 6, GCC: 14, SEA: 8, Other: 14 },
+  gadre:       { USA: 22, Japan: 28, EU: 18, China: 6, GCC: 8, SEA: 12, Other: 6 },
+  coastalCorp: { USA: 12, Japan: 35, EU: 18, China: 5, GCC: 18, SEA: 8, Other: 4 },
+  falcon:      { USA: 28, Japan: 22, EU: 16, China: 10, GCC: 12, SEA: 8, Other: 4 },
+  ourY5Target: { USA: 6, Japan: 20, EU: 27, China: 13, GCC: 7, SEA: 4, HKSG: 19, Other: 4 },
+};

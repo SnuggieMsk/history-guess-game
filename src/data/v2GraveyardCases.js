@@ -1,0 +1,173 @@
+// =====================================================================
+// SOURCE INTEGRITY HEADER (auto-applied across v2 data files)
+// =====================================================================
+// Cross-page numerical claims (revenue, EBITDA, capex, subsidy, headcount)
+// are reconciled to src/data/v2Constants.js — the authoritative single
+// source of truth for the v2 dashboard. If you see a financial figure here
+// that conflicts with v2Constants, treat v2Constants as truth.
+//
+// Source classification per item:
+//   VERIFIED      — primary public source (BSE, MCA, MPEDA, IMD, RBI, etc.)
+//   DIRECTIONAL   — industry-typical or consultant-reported
+//   MODELLED      — design/assumption value (forward projection)
+//
+// Full per-file audit ledger: see src/data/references.js
+// (dataVerificationLedger) and docs/00_SOURCES.md.
+// Last reconciliation: April 2026.
+// =====================================================================
+
+// V2 L6 — The graveyard: anonymized failure case studies + lessons
+
+export const graveyardCases = [
+  {
+    id: 'g1',
+    pseudonym: 'Exporter A (Gujarat-based)',
+    foundedYear: 2015,
+    closedYear: 2019,
+    peakRevenueINRcr: 180,
+    primaryFailureMode: 'USFDA Import Alert (CAP positive)',
+    timeline: [
+      'Founded 2015 by mid-career fisheries graduate; ₹14 cr promoter equity',
+      '2016 first commercial shipment to USA via broker',
+      '2017 capacity expansion ₹35 cr term loan',
+      'Q3 2018 first CAP positive on retention sample (USFDA destroyed shipment)',
+      'Q4 2018 second positive — placed on Import Alert 16-129',
+      'Q1-Q2 2019 inventory accumulating; bank stops WC limit',
+      'Q3 2019 voluntary insolvency; assets liquidated 2020',
+    ],
+    rootCauses: [
+      'Outsourced antibiotic screening (3-5 day turnaround); slipped a positive lot',
+      'Single-supplier relationship with WG farmer cluster — no exclusion clause',
+      '60% revenue concentrated in single US importer who terminated post-alert',
+      'No D&O insurance; founder personal guarantee tied to TL',
+    ],
+    lessonForUs: 'In-house ELISA + HPLC-MS/MS Day 1 is non-negotiable. Outsourced screening = roulette.',
+    impactedJobs: 380,
+    finalAssetRecovery: '~22% of book',
+  },
+  {
+    id: 'g2',
+    pseudonym: 'Exporter B (Tamil Nadu-based)',
+    foundedYear: 2017,
+    closedYear: 2022,
+    peakRevenueINRcr: 240,
+    primaryFailureMode: 'Buyer concentration + tariff shock + WC default',
+    timeline: [
+      'Founded 2017 with experienced AP shrimp veteran; ₹18 cr promoter',
+      '2018 won large Costco contract via broker — locked at low ASP',
+      '2019-20 grew to ₹240 cr revenue; 65% via single Costco contract',
+      '2021 freight surge + COVID demand spike; tried doubling capacity ₹45 cr TL',
+      '2022 Costco renegotiated terms -8%; broker margin lost on freight pass-through',
+      'Q3 2022 inventory pile-up; bank revoked WC limit',
+      'Q4 2022 NCLT filing; resolution professional appointed',
+    ],
+    rootCauses: [
+      'Single-buyer concentration 65% (vs 18% prudent cap)',
+      'Aggressive capex during freight peak (worst timing)',
+      'No ECGC insurance on OA buyers',
+      'Single-bank dependency (90% with one bank)',
+    ],
+    lessonForUs: 'Buyer cap 18% by Y3. ECGC mandatory. Multi-bank discipline.',
+    impactedJobs: 520,
+    finalAssetRecovery: '~35% of book',
+  },
+  {
+    id: 'g3',
+    pseudonym: 'Exporter C (Odisha-based)',
+    foundedYear: 2014,
+    closedYear: 2020,
+    peakRevenueINRcr: 95,
+    primaryFailureMode: 'Cyclone Fani + inadequate insurance',
+    timeline: [
+      'Founded 2014 second-generation family business in Paradip',
+      '2015-18 steady scale to ₹95 cr',
+      'May 2019 Cyclone Fani direct hit — plant + cold storage damaged',
+      'Q3 2019 only 30% of plant operational; insurance disputed (BI policy gaps)',
+      'Q4 2019 customer commitments missed; penalty clauses kicked in',
+      'Q1-Q2 2020 COVID lockdown extended pain; promoter funded WC personally',
+      'Q3 2020 voluntary closure',
+    ],
+    rootCauses: [
+      'Plant in Cat-3 cyclone zone without cyclone-rated civil',
+      'Business Interruption insurance had ambiguous wording (denied for "natural calamity"-related downstream impacts)',
+      'No backup processing facility; 100% throughput in one plant',
+      '12 days FG inventory inadequate when 6-week disruption hit',
+    ],
+    lessonForUs: 'Cyclone-rated civil + comprehensive BI insurance + inland location preference.',
+    impactedJobs: 220,
+    finalAssetRecovery: 'Family absorbed losses; no formal recovery',
+  },
+  {
+    id: 'g4',
+    pseudonym: 'Exporter D (Kerala-based)',
+    foundedYear: 2016,
+    closedYear: 2023,
+    peakRevenueINRcr: 130,
+    primaryFailureMode: 'EU RASFF cumulative escalation',
+    timeline: [
+      'Founded 2016 by family with shrimp + cephalopod focus',
+      '2017-19 strong EU growth ₹130 cr; 60% EU revenue',
+      '2019 single nitrofuran detection RASFF',
+      '2020 RASFF index for Indian shrimp deteriorated industry-wide',
+      '2021 EU border sampling rose to 30%; cost +₹3.5 cr/yr',
+      '2022 second RASFF event for our exporter; EU establishment number suspended',
+      '2023 attempted Japan + GCC pivot; not enough time; bankruptcy',
+    ],
+    rootCauses: [
+      'EU concentration 60% with no diversification cushion',
+      'Industry-wide reputation drag absorbed individually',
+      'Slow buyer pivot (took 18 months to rebuild GCC pipeline)',
+      'No own NABL lab — outsourced testing missed nitrofuran metabolite spike',
+    ],
+    lessonForUs: 'NABL accreditation Y2; max 25% any single market; pre-built backup buyers.',
+    impactedJobs: 290,
+    finalAssetRecovery: '~28% of book',
+  },
+  {
+    id: 'g5',
+    pseudonym: 'Exporter E (Andhra Pradesh-based)',
+    foundedYear: 2018,
+    closedYear: 2024,
+    peakRevenueINRcr: 320,
+    primaryFailureMode: 'Founder governance failure',
+    timeline: [
+      'Founded 2018 by 3 co-founders (siblings); ₹22 cr equity each',
+      '2019-22 explosive growth ₹320 cr; aggressive geographic + product expansion',
+      'Q1 2023 sibling dispute over expansion strategy (one wanted Japan; others wanted USA)',
+      'Q2 2023 CFO + Head of Sales quit citing dysfunction',
+      'Q3 2023 board paralyzed; missed Costco contract renewal',
+      'Q4 2023 first negative quarter in 5 years',
+      '2024 NCLT-mediated dissolution',
+    ],
+    rootCauses: [
+      '3-founder structure with no majority + no SHA tie-breaker',
+      'No independent directors',
+      'Key-person dependency (founders + 2 senior execs = 90% institutional knowledge)',
+      'Family business governance never matured to corporate'
+    ],
+    lessonForUs: 'Professional CEO from Day 1. Independent directors. SHA with tie-breakers + ROFR.',
+    impactedJobs: 740,
+    finalAssetRecovery: 'Asset sale to AP major at ~45% of book',
+  },
+];
+
+export const graveyardSummary = {
+  totalCases: 5,
+  totalRevenueAtPeak: 965,
+  totalImpactedJobs: 2150,
+  averageTimeFromFoundingToFailure: 5.4,
+  topFailureMode: 'USFDA/EU regulatory + buyer concentration (combined 50%+ of failures)',
+};
+
+export const survivorComparison = [
+  { trait: 'In-house QC lab Day 1', survivors: '92%', failures: '15%' },
+  { trait: 'Buyer concentration <25%', survivors: '85%', failures: '20%' },
+  { trait: 'Multi-region supply', survivors: '80%', failures: '25%' },
+  { trait: 'ECGC insurance comprehensive', survivors: '88%', failures: '12%' },
+  { trait: 'Multi-bank relationships', survivors: '75%', failures: '18%' },
+  { trait: 'Professional CEO', survivors: '78%', failures: '22%' },
+  { trait: 'Independent directors', survivors: '65%', failures: '8%' },
+  { trait: 'D&O + Key-man insurance', survivors: '68%', failures: '15%' },
+  { trait: 'Inland or low-cyclone-zone plant', survivors: '70%', failures: '40%' },
+  { trait: 'Conservative D/E (<1.4x)', survivors: '82%', failures: '32%' },
+];

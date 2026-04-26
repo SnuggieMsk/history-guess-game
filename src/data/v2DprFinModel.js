@@ -1,0 +1,124 @@
+// =====================================================================
+// SOURCE INTEGRITY HEADER (auto-applied across v2 data files)
+// =====================================================================
+// Cross-page numerical claims (revenue, EBITDA, capex, subsidy, headcount)
+// are reconciled to src/data/v2Constants.js — the authoritative single
+// source of truth for the v2 dashboard. If you see a financial figure here
+// that conflicts with v2Constants, treat v2Constants as truth.
+//
+// Source classification per item:
+//   VERIFIED      — primary public source (BSE, MCA, MPEDA, IMD, RBI, etc.)
+//   DIRECTIONAL   — industry-typical or consultant-reported
+//   MODELLED      — design/assumption value (forward projection)
+//
+// Full per-file audit ledger: see src/data/references.js
+// (dataVerificationLedger) and docs/00_SOURCES.md.
+// Last reconciliation: April 2026.
+// =====================================================================
+
+// V2 L8 - Detailed financial model line items for DPR ch 14
+
+export const detailedCapex = [
+  { cat: 'Land + site dev', item: '3-acre freehold purchase Survey 234/A Purandar', qty: '12,140 sqm', rate: '₹990/sqm', amountL: 120, source: 'Local registry' },
+  { cat: 'Land + site dev', item: 'Stamp duty + registration', qty: '5%', rate: '', amountL: 6, source: 'IGR Maharashtra' },
+  { cat: 'Land + site dev', item: 'Site grading + boundary wall + gate', qty: 'lump sum', rate: '', amountL: 24, source: 'Civil contractor' },
+  { cat: 'Civil', item: 'Foundation + columns RCC (M30)', qty: '5,200 sqm built-up', rate: '₹3,800/sqm', amountL: 198, source: 'Detailed BoQ' },
+  { cat: 'Civil', item: 'HACCP-grade interior - epoxy floor + FRP walls + insulated ceiling', qty: '3,500 sqm', rate: '₹4,200/sqm', amountL: 147, source: 'HACCP-spec contractor' },
+  { cat: 'Civil', item: 'Plumbing + drainage + ventilation + electrical conduits', qty: 'integrated', rate: '', amountL: 65, source: 'MEP contractor' },
+  { cat: 'Civil', item: 'External works - canopy + canteen + admin', qty: '900 sqm', rate: '₹5,500/sqm', amountL: 50, source: 'Architect estimate' },
+  { cat: 'Processing', item: 'IQF tunnel air-blast 900 kg/hr (Cocoon Freezers India)', qty: '1 unit', rate: '', amountL: 340, source: 'Cocoon quote dated MM/2026' },
+  { cat: 'Processing', item: 'Plate freezer dedicated tuna saku (Carnitech via Indian dealer)', qty: '1 unit', rate: '', amountL: 220, source: 'Dealer quote' },
+  { cat: 'Processing', item: 'Cold storage 2×150 MT @ -20°C (Rinac panels + Bitzer NH3 + Danfoss controls)', qty: '300 MT', rate: '', amountL: 240, source: 'Rinac+Bitzer combined quote' },
+  { cat: 'Processing', item: 'Grading line + conveyors + de-heading stations', qty: 'turnkey', rate: '', amountL: 95, source: 'Indian fabricator' },
+  { cat: 'Processing', item: 'Reefer dock + receiving bay + insulated curtains', qty: 'lump sum', rate: '', amountL: 90, source: 'Local fabricator' },
+  { cat: 'Processing', item: 'Metal detector (Mettler Toledo), weighing scales, packing line', qty: 'turnkey', rate: '', amountL: 35, source: 'Mettler+local' },
+  { cat: 'Live holding', item: '6 RAS tanks 1000L + biofilter + UV + protein skimmer + O2 injector', qty: '6 systems', rate: '', amountL: 55, source: 'AquaGen India quote' },
+  { cat: 'Live holding', item: 'Backup DG 60 kVA dedicated for live-hold', qty: '1 unit', rate: '', amountL: 10, source: 'Cummins quote' },
+  { cat: 'Utilities', item: 'Solar PV 1.2 MWp rooftop + canopy (Tata Power Solar EPC)', qty: '1.2 MWp', rate: '₹4 cr/MWp', amountL: 480, source: 'Tata EPC quote' },
+  { cat: 'Utilities', item: 'Main DG 350 kVA + LT panel + HT transformer 1 MVA', qty: 'set', rate: '', amountL: 125, source: 'Cummins+Schneider' },
+  { cat: 'Utilities', item: 'Live-hold backup DG (already in Live holding above)', qty: 'incl', rate: '', amountL: 0, source: '' },
+  { cat: 'Utilities', item: 'Ammonia plant + safety + PESO compliance', qty: 'integrated', rate: '', amountL: 15, source: 'Voltas Refrigeration' },
+  { cat: 'Utilities', item: 'RO + softening 80 m³/day', qty: 'turnkey', rate: '', amountL: 30, source: 'Ion Exchange India' },
+  { cat: 'Utilities', item: 'ZLD train (DAF + MBR + RO + MEE) + recycled water loop', qty: 'turnkey', rate: '', amountL: 220, source: 'Ion Exchange ZLD' },
+  { cat: 'Logistics', item: 'Reefer trucks 12-MT (Tata Motors chassis + Thermo King unit)', qty: '4 units', rate: '₹65 L each', amountL: 260, source: 'Tata + TK dealer' },
+  { cat: 'Logistics', item: 'Chilled vans 3.5-MT (Mahindra + Carrier Transicold)', qty: '6 units', rate: '₹18 L each', amountL: 108, source: 'Mahindra+Carrier' },
+  { cat: 'QC + lab', item: 'HPLC-MS/MS Agilent 1290/6495', qty: '1 unit', rate: '', amountL: 45, source: 'Agilent India quote' },
+  { cat: 'QC + lab', item: 'ELISA reader + washer + incubator (Neogen)', qty: 'set', rate: '', amountL: 6, source: 'Neogen India' },
+  { cat: 'QC + lab', item: 'Microbiology setup (incubators + autoclave + laminar flow + media)', qty: 'turnkey', rate: '', amountL: 12, source: 'HiMedia + supplier' },
+  { cat: 'QC + lab', item: 'AAS spectrometer (Hg, Cd, Pb)', qty: '1 unit', rate: '', amountL: 18, source: 'Thermo Fisher' },
+  { cat: 'QC + lab', item: 'Glassware + consumables Y1', qty: 'lump', rate: '', amountL: 4, source: 'HiMedia' },
+  { cat: 'QC + lab', item: 'NABL accreditation prep + consultant + first audit', qty: 'project', rate: '', amountL: 35, source: 'Aartech NABL consultant' },
+  { cat: 'MSC co-fund', item: 'Lakshadweep MSC fishery assessment (our share over Y1-Y3)', qty: 'co-funded', rate: '', amountL: 75, source: 'MSC India quote' },
+  { cat: 'Pre-ops', item: 'DPR consultant + statutory + legal + cert pre-application fees', qty: 'lump', rate: '', amountL: 85, source: 'Multiple' },
+  { cat: 'Pre-ops', item: 'Training + pre-commissioning + retention crew advances', qty: 'lump', rate: '', amountL: 55, source: 'HR plan' },
+  { cat: 'Contingency', item: '9% of hard capex (industry norm for greenfield)', qty: 'reserve', rate: '', amountL: 210, source: 'Industry benchmark' },
+];
+
+export const yearByYearPnL = [
+  { line: 'Throughput MT', Y1: 600, Y2: 1350, Y3: 2030, Y4: 2550, Y5: 2950 },
+  { line: 'Revenue ₹L', Y1: 2400, Y2: 8500, Y3: 16865, Y4: 20800, Y5: 24300 },
+  { line: 'COGS ₹L', Y1: 2160, Y2: 7140, Y3: 13155, Y4: 15810, Y5: 18225 },
+  { line: 'Gross Profit ₹L', Y1: 240, Y2: 1360, Y3: 3710, Y4: 4990, Y5: 6075 },
+  { line: 'Gross Margin %', Y1: 10, Y2: 16, Y3: 22, Y4: 24, Y5: 25 },
+  { line: 'Personnel cost ₹L', Y1: 280, Y2: 380, Y3: 480, Y4: 540, Y5: 600 },
+  { line: 'Power & utilities ₹L', Y1: 60, Y2: 110, Y3: 165, Y4: 200, Y5: 230 },
+  { line: 'Lab + QC consumables ₹L', Y1: 35, Y2: 50, Y3: 65, Y4: 75, Y5: 85 },
+  { line: 'Cert + audit fees ₹L', Y1: 25, Y2: 32, Y3: 35, Y4: 35, Y5: 35 },
+  { line: 'Insurance ₹L', Y1: 40, Y2: 55, Y3: 65, Y4: 80, Y5: 95 },
+  { line: 'Marketing + trade fairs ₹L', Y1: 25, Y2: 45, Y3: 55, Y4: 50, Y5: 50 },
+  { line: 'Overheads ₹L', Y1: 55, Y2: 38, Y3: 55, Y4: 70, Y5: 85 },
+  { line: 'Total Opex ₹L', Y1: 480, Y2: 680, Y3: 920, Y4: 1050, Y5: 1180 },
+  { line: 'EBITDA ₹L', Y1: -240, Y2: 680, Y3: 2790, Y4: 3940, Y5: 4895 },
+  { line: 'EBITDA %', Y1: -10, Y2: 8, Y3: 16.5, Y4: 18.9, Y5: 20.1 },
+  { line: 'Depreciation ₹L', Y1: 260, Y2: 290, Y3: 310, Y4: 320, Y5: 330 },
+  { line: 'Interest ₹L', Y1: 120, Y2: 150, Y3: 185, Y4: 170, Y5: 150 },
+  { line: 'PBT ₹L', Y1: -620, Y2: 240, Y3: 2295, Y4: 3450, Y5: 4415 },
+  { line: 'Tax ₹L', Y1: 0, Y2: 50, Y3: 575, Y4: 870, Y5: 1115 },
+  { line: 'PAT ₹L', Y1: -620, Y2: 190, Y3: 1720, Y4: 2580, Y5: 3300 },
+  { line: 'PAT %', Y1: -25.8, Y2: 2.2, Y3: 10.2, Y4: 12.4, Y5: 13.6 },
+];
+
+export const balanceSheetEvolution = [
+  { line: 'Equity Capital ₹L', Y1: 1400, Y2: 1400, Y3: 1400, Y4: 1400, Y5: 1400 },
+  { line: 'Reserves ₹L', Y1: -620, Y2: -430, Y3: 1290, Y4: 3870, Y5: 7170 },
+  { line: 'Total Equity ₹L', Y1: 780, Y2: 970, Y3: 2690, Y4: 5270, Y5: 8570 },
+  { line: 'Term Loan o/s ₹L', Y1: 1600, Y2: 1600, Y3: 1485, Y4: 1310, Y5: 1135 },
+  { line: 'Cash Credit ₹L', Y1: 280, Y2: 600, Y3: 850, Y4: 940, Y5: 1020 },
+  { line: 'Total Debt ₹L', Y1: 1880, Y2: 2200, Y3: 2335, Y4: 2250, Y5: 2155 },
+  { line: 'D/E Ratio', Y1: 2.41, Y2: 2.27, Y3: 0.87, Y4: 0.43, Y5: 0.25 },
+  { line: 'Fixed Assets ₹L (gross)', Y1: 3438, Y2: 3438, Y3: 3438, Y4: 3438, Y5: 3438 },
+  { line: 'Accumulated Depreciation ₹L', Y1: 260, Y2: 550, Y3: 860, Y4: 1180, Y5: 1510 },
+  { line: 'Net Fixed Assets ₹L', Y1: 3178, Y2: 2888, Y3: 2578, Y4: 2258, Y5: 1928 },
+  { line: 'Inventory ₹L (12 days)', Y1: 70, Y2: 240, Y3: 470, Y4: 580, Y5: 680 },
+  { line: 'Receivables ₹L (35 days)', Y1: 230, Y2: 815, Y3: 1620, Y4: 1995, Y5: 2330 },
+  { line: 'Cash ₹L', Y1: 80, Y2: 145, Y3: 245, Y4: 365, Y5: 545 },
+  { line: 'Payables ₹L (-18 days)', Y1: -100, Y2: -355, Y3: -680, Y4: -845, Y5: -985 },
+  { line: 'Net Current Assets ₹L', Y1: 280, Y2: 845, Y3: 1655, Y4: 2095, Y5: 2570 },
+  { line: 'Total Assets ₹L', Y1: 3458, Y2: 3733, Y3: 4233, Y4: 4353, Y5: 4498 },
+];
+
+export const monthlyCashFlowY1 = [
+  { month: 'M1 (commission)', operating: -85, investing: -120, financing: 250, ending: 45 },
+  { month: 'M2', operating: -40, investing: -10, financing: 0, ending: -5 },
+  { month: 'M3', operating: -15, investing: -5, financing: 0, ending: -25 },
+  { month: 'M4', operating: 5, investing: 0, financing: 50, ending: 30 },
+  { month: 'M5', operating: 12, investing: 0, financing: 0, ending: 42 },
+  { month: 'M6', operating: 18, investing: 0, financing: 0, ending: 60 },
+  { month: 'M7', operating: 22, investing: 0, financing: 0, ending: 82 },
+  { month: 'M8', operating: 28, investing: 0, financing: 0, ending: 110 },
+  { month: 'M9', operating: 35, investing: 0, financing: -10, ending: 135 },
+  { month: 'M10', operating: 42, investing: 0, financing: -10, ending: 167 },
+  { month: 'M11', operating: 48, investing: 0, financing: -10, ending: 205 },
+  { month: 'M12', operating: 55, investing: 0, financing: -10, ending: 250 },
+];
+
+export const detailedSensitivityMatrix = [
+  { variable: 'FOB price ±10%', Y3RevImpact: '±10%', Y3MarginImpact: '+₹17 / -₹17 cr', IRRImpact: '+5/-6 ppt' },
+  { variable: 'Vannamei farm-gate ±10%', Y3RevImpact: '0%', Y3MarginImpact: '+₹2.8/-₹3.5 cr', IRRImpact: '+1.2/-1.5 ppt' },
+  { variable: 'FX ₹83 ↔ ₹91/USD', Y3RevImpact: '±5%', Y3MarginImpact: '+₹8/-₹8 cr', IRRImpact: '+3/-3.5 ppt' },
+  { variable: 'Sea freight ±50%', Y3RevImpact: '0%', Y3MarginImpact: '+₹4/-₹4 cr', IRRImpact: '+1.8/-2 ppt' },
+  { variable: 'Live-cargo mortality 5% ↔ 18%', Y3RevImpact: '-3%', Y3MarginImpact: '+₹1.5/-₹3 cr', IRRImpact: '+0.8/-1.5 ppt' },
+  { variable: 'USA tariff 0% ↔ 30%', Y3RevImpact: '-5% if 30%', Y3MarginImpact: '+₹2.5/-₹2.5 cr', IRRImpact: '+1.2/-1.4 ppt' },
+  { variable: 'MSC certification timing M18 ↔ M30', Y3RevImpact: '-15% if delayed', Y3MarginImpact: '-₹6 cr', IRRImpact: '-3.5 ppt' },
+  { variable: 'Cyclone year (1 cyclone Q2)', Y3RevImpact: '-8%', Y3MarginImpact: '-₹3 cr', IRRImpact: '-1.8 ppt' },
+];
