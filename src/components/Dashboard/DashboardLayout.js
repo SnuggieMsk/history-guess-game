@@ -30,6 +30,10 @@ const sections = [
     { path: '/v2/regforms',     label: 'Exact Forms + Portals',  icon: '🗂' },
     { path: '/v2/sim-news',     label: 'Sim News Timeline',      icon: '📰' },
   ]},
+  { group: 'V2 · L5 Produce + Portfolio',     items: [
+    { path: '/v2/produce',      label: 'Produce Visual Catalog', icon: '🐟' },
+    { path: '/v2/portfolio-sim',label: 'Multi-Route Portfolio Sim', icon: '⚖' },
+  ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },
