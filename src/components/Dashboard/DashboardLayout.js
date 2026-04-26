@@ -26,6 +26,10 @@ const sections = [
   { group: 'V2 · L3 Contacts',     items: [
     { path: '/v2/contacts',     label: 'Phone/Email Directory',  icon: '☎' },
   ]},
+  { group: 'V2 · L4 Regulatory',     items: [
+    { path: '/v2/regforms',     label: 'Exact Forms + Portals',  icon: '🗂' },
+    { path: '/v2/sim-news',     label: 'Sim News Timeline',      icon: '📰' },
+  ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },

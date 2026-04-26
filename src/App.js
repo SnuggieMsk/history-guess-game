@@ -51,6 +51,8 @@ import CompeteStoriesV2 from './components/Dashboard/v2/CompeteStoriesV2';
 import SupplyFlowV2 from './components/Dashboard/v2/SupplyFlowV2';
 import MarketSimulatorV2 from './components/Dashboard/v2/MarketSimulatorV2';
 import ContactsV2 from './components/Dashboard/v2/ContactsV2';
+import RegFormsV2 from './components/Dashboard/v2/RegFormsV2';
+import SimNewsTimelineV2 from './components/Dashboard/v2/SimNewsTimelineV2';
 
 import './App.css';
 
@@ -86,6 +88,8 @@ function App() {
           <Route path="/v2/supply-flow"  element={<SupplyFlowV2 />} />
           <Route path="/v2/simulator"    element={<MarketSimulatorV2 />} />
           <Route path="/v2/contacts"     element={<ContactsV2 />} />
+          <Route path="/v2/regforms"     element={<RegFormsV2 />} />
+          <Route path="/v2/sim-news"     element={<SimNewsTimelineV2 />} />
 
           {/* V1 reference */}
           <Route path="/"             element={<ThesisV2 />} />
