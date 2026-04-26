@@ -18,6 +18,10 @@ const sections = [
     { path: '/v2/markets',   label: 'Destination Countries',  icon: '⌘' },
     { path: '/v2/compete',   label: 'Competitor Forensics',   icon: '⚔' },
     { path: '/v2/compete-deep', label: 'Competitor Deep Stories', icon: '🔬' },
+    { path: '/v2/supply-flow',  label: 'Supply-Chain Flows',     icon: '⇋' },
+  ]},
+  { group: 'V2 · Simulator',     items: [
+    { path: '/v2/simulator',    label: '★ Market Simulator',     icon: '⚡' },
   ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },

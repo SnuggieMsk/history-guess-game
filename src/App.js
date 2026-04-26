@@ -48,6 +48,8 @@ import TechStackV2 from './components/Dashboard/v2/TechStackV2';
 import InsuranceV2 from './components/Dashboard/v2/InsuranceV2';
 import CloseoutV2 from './components/Dashboard/v2/CloseoutV2';
 import CompeteStoriesV2 from './components/Dashboard/v2/CompeteStoriesV2';
+import SupplyFlowV2 from './components/Dashboard/v2/SupplyFlowV2';
+import MarketSimulatorV2 from './components/Dashboard/v2/MarketSimulatorV2';
 
 import './App.css';
 
@@ -80,6 +82,8 @@ function App() {
           <Route path="/v2/insurance" element={<InsuranceV2 />} />
           <Route path="/v2/closeout"  element={<CloseoutV2 />} />
           <Route path="/v2/compete-deep" element={<CompeteStoriesV2 />} />
+          <Route path="/v2/supply-flow"  element={<SupplyFlowV2 />} />
+          <Route path="/v2/simulator"    element={<MarketSimulatorV2 />} />
 
           {/* V1 reference */}
           <Route path="/"             element={<ThesisV2 />} />
