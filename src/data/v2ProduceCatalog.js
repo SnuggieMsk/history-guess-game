@@ -22,7 +22,10 @@ export const produceItems = [
   {
     id: 'vannamei',
     name: 'Vannamei (Litopenaeus vannamei)',
+    scientificName: 'Litopenaeus vannamei',
     aliases: 'Whiteleg shrimp, Pacific white shrimp',
+    photoCredit: '— (drop a licensed photo at public/species/vannamei.jpg)',
+    photoLicense: 'see public/species/README.md',
     avgWeight: '20-35g (farmed Indian standard)',
     color: 'Pale grey-pink (raw); pink-orange (cooked)',
     countGrades: [
@@ -50,7 +53,10 @@ export const produceItems = [
   {
     id: 'pomfret-silver',
     name: 'Silver pomfret (Pampus argenteus)',
+    scientificName: 'Pampus argenteus',
     aliases: 'White pomfret, Bombay pomfret',
+    photoCredit: '— (drop a licensed photo at public/species/pomfret-silver.jpg)',
+    photoLicense: 'see public/species/README.md',
     avgWeight: '300g - 1.5kg',
     color: 'Silver-white skin; white flesh',
     countGrades: [
@@ -75,7 +81,10 @@ export const produceItems = [
   {
     id: 'lobster-spiny',
     name: 'Spiny lobster (Panulirus homarus / P. polyphagus)',
+    scientificName: 'Panulirus homarus',
     aliases: 'Indian rock lobster, Konkan lobster',
+    photoCredit: '— (drop a licensed photo at public/species/lobster-spiny.jpg)',
+    photoLicense: 'see public/species/README.md',
     avgWeight: '300g - 1.5kg',
     color: 'Brown-green carapace with white spots',
     countGrades: [
@@ -102,7 +111,10 @@ export const produceItems = [
   {
     id: 'mudcrab',
     name: 'Mud crab (Scylla serrata)',
+    scientificName: 'Scylla serrata',
     aliases: 'Mangrove crab, Sundarbans crab',
+    photoCredit: '— (drop a licensed photo at public/species/mudcrab.jpg)',
+    photoLicense: 'see public/species/README.md',
     avgWeight: '500g - 1.5kg',
     color: 'Greyish-green carapace',
     countGrades: [
@@ -126,7 +138,10 @@ export const produceItems = [
   {
     id: 'octopus',
     name: 'Octopus (Octopus aegina + O. cyanea)',
+    scientificName: 'Octopus aegina / O. cyanea',
     aliases: 'Konkan octopus, Lakshadweep octopus',
+    photoCredit: '— (drop a licensed photo at public/species/octopus.jpg)',
+    photoLicense: 'see public/species/README.md',
     avgWeight: '500g - 3kg',
     color: 'Reddish-brown (live); pale grey-pink (cooked)',
     countGrades: [
@@ -151,7 +166,10 @@ export const produceItems = [
   {
     id: 'tuna-yellowfin',
     name: 'Yellowfin tuna (Thunnus albacares)',
+    scientificName: 'Thunnus albacares',
     aliases: 'Lakshadweep yellowfin, Pole-and-line tuna',
+    photoCredit: '— (drop a licensed photo at public/species/tuna-yellowfin.jpg)',
+    photoLicense: 'see public/species/README.md',
     avgWeight: '15-80kg',
     color: 'Deep red flesh; iridescent silver skin',
     countGrades: [
@@ -176,7 +194,10 @@ export const produceItems = [
   {
     id: 'cuttlefish',
     name: 'Cuttlefish (Sepia spp.)',
+    scientificName: 'Sepia pharaonis',
     aliases: 'Pharaoh cuttlefish',
+    photoCredit: '— (drop a licensed photo at public/species/cuttlefish.jpg)',
+    photoLicense: 'see public/species/README.md',
     avgWeight: '300g - 2kg',
     color: 'Mottled brown (live); white (cleaned)',
     countGrades: [

@@ -35,7 +35,7 @@ const sections = [
     { path: '/v2/sim-news',     label: 'Sim News Timeline',      icon: '📰' },
   ]},
   { group: 'V2 · L5 Produce + Portfolio',     items: [
-    { path: '/v2/produce',      label: 'Produce Visual Catalog', icon: '🐟' },
+    { path: '/v2/produce',      label: 'Produce Visual Catalog', icon: '◗' },
     { path: '/v2/portfolio-sim',label: 'Multi-Route Portfolio Sim', icon: '⚖' },
   ]},
   { group: 'V2 · L6 Reality + Monte Carlo',     items: [
@@ -86,7 +86,7 @@ const sections = [
     { path: '/value-chain',  label: 'Value Chain',       icon: '⇄' },
   ]},
   { group: 'Products',     items: [
-    { path: '/species',      label: 'Species Portfolio', icon: '🐟' },
+    { path: '/species',      label: 'Species Portfolio', icon: '◗' },
     { path: '/gap-species',  label: 'Gap Species (★)',   icon: '⚑' },
   ]},
   { group: 'Operations',   items: [

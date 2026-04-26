@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { produceItems, processingFlow, yieldChart } from '../../../data/v2ProduceCatalog';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
+import SpeciesImage from '../../SpeciesImage';
 
 export default function ProduceCatalogV2() {
   const [selected, setSelected] = useState(produceItems[0].id);
@@ -13,7 +14,8 @@ export default function ProduceCatalogV2() {
         <h1 className="sec-title">Visual Produce Identity — Counts, Sizes, Forms</h1>
         <p className="sec-sub">
           {produceItems.length} core species with: count grades + size bands + FOB by grade + form-yield matrix +
-          seasonality + storage + ASCII renderings. Every operator should memorize size grades — wrong grade = wrong price.
+          seasonality + storage + species image. Every operator should memorize size grades — wrong grade = wrong price.
+          (Species illustrations are SVG fallbacks; drop licensed photos in <code>public/species/&lt;id&gt;.jpg</code> to override.)
         </p>
       </div>
 
@@ -47,10 +49,16 @@ export default function ProduceCatalogV2() {
           </div>
         </div>
 
-        {/* ASCII art */}
-        <pre style={{marginTop:14, padding:12, background:'var(--c-surface-2)', border:'1px solid var(--c-border)', borderRadius:4, fontSize:11, fontFamily:'Menlo,monospace', overflowX:'auto', color:'var(--c-text)'}}>
-{item.asciiArt}
-        </pre>
+        {/* Species image — real photo if /public/species/<id>.jpg exists, else SVG fallback */}
+        <div style={{marginTop:14}}>
+          <SpeciesImage
+            id={item.id}
+            alt={`${item.name} reference photo`}
+            credit={item.photoCredit}
+            license={item.photoLicense}
+            scientificName={item.scientificName || item.name}
+          />
+        </div>
 
         <div className="section-block" style={{marginTop:16}}>
           <h3 style={{fontFamily:'Georgia,serif',fontSize:15,marginBottom:8}}>Count grades + FOB by grade</h3>
