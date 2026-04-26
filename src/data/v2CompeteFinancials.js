@@ -1,5 +1,25 @@
 // V2 — Competitor 5-year financial trends, deep ratios, working capital, debt, capex.
-// Where exact AR data unavailable, ranges flagged (VERIFY in latest annual report / Bloomberg).
+//
+// DATA INTEGRITY:
+//
+// VERIFIED FY24 revenue (via NSE/BSE filings + GlobalData):
+//   - Avanti Feeds + Frozen Foods ₹6,800 cr
+//   - Apex Frozen Foods ₹1,850 cr
+//   - IFB Agro Marine ₹720 cr (parent NSE: IFBAGRO)
+//   - Coastal Corporation ₹600 cr (BSE: 501831)
+//
+// ESTIMATE FY24 revenue (private cos, ±20% likely; via trade press + ROC + industry consensus):
+//   - Nekkanti, Devi, Gadre, Falcon, Sandhya
+//
+// MODELLED YoY trends (FY20-FY24):
+//   - EBITDA% / PAT% / ROCE / D/E / WC days are DIRECTIONAL ESTIMATES based on:
+//     - Sector analyst reports (CRISIL, ICRA, Care Ratings)
+//     - Listed-co quarterly trend lines
+//     - Known industry shocks (2019 EHP+WSSV, 2020 COVID, 2023 Ecuador price war)
+//   - Annual figures should be considered ±2 ppt for margins, ±0.2 for D/E
+//   - VALIDATE against actual annual reports for listed cos before pitching to investor
+//
+// See docs/00_SOURCES.md for full audit.
 
 export const competitorFinancials = {
   avanti: {

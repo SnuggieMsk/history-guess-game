@@ -1,4 +1,23 @@
 // V2 L7 — Global trade flow data: India seafood exports by destination + lane economics
+//
+// DATA INTEGRITY:
+//
+// VERIFIED:
+//   - Port lat/lng (JNPT, Vizag, Chennai, etc.) via Google Maps
+//   - Shipping line market share — Drewry / Alphaliner public reports
+//   - Air carrier strengths — IATA + carrier own publications
+//
+// DIRECTIONAL ESTIMATE:
+//   - Indian port FY24 export tonnage + value — aggregated from JNPT/Vizag port
+//     authority disclosures + MPEDA aggregate annual report. Validate against
+//     DGCI&S export data (commerce ministry) for trade-intelligence purposes.
+//   - Destination country imports + Indian share — FAO/GLOBEFISH + ITC Trade Map
+//   - Competitor primary lanes annual MT — trade-flow analysis from buyer reports
+//
+// INDUSTRY-TYPICAL:
+//   - Lane FOB + freight $/kg — standard ranges from Drewry / Urner Barry / industry
+//
+// Last updated April 2026. See docs/00_SOURCES.md for full audit.
 
 export const indiaPortFlows = [
   { port: 'JNPT (Nhava Sheva)', state: 'Maharashtra', lat: 18.952, lng: 72.951, mtFY24: 280000, valueINRcr: 21500, exportShare: 32, primaryRoutes: ['USA west coast', 'Europe', 'Middle East'] },

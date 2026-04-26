@@ -1,5 +1,26 @@
 // V2 — Market Simulator: 10 years of monthly historical baseline data
-// Sources synthesized from MPEDA monthly bulletins, IMD weather, USDA AMS, FAO/GLOBEFISH.
+//
+// DATA INTEGRITY (see docs/00_SOURCES.md for full audit):
+//
+// VERIFIED:
+//   - fxINRperUSD: RBI monthly reference rates ±1%
+//   - trawlBan: statutory June 1-July 31 east+west coast (CMFRI confirmed)
+//   - usaTariff: India-US trade actions publicly tracked (26% from 2025)
+//   - cycloneSeverity: events documented (Fani 2019, Yaas+Tauktae 2021, Mocha 2023)
+//
+// DIRECTIONALLY ACCURATE / SYNTHESIZED:
+//   - vannameiFarmGate, pomfret/lobsterDockside: pattern reflects real shocks
+//     (2019 EHP+WSSV peak, 2020 COVID dip, 2023 Ecuador price war) but specific
+//     monthly precision is constructed from MPEDA quarterly bulletins +
+//     Undercurrent News + Aquaculture Asia Pacific archives. Not tick-level.
+//   - usaShrimpFOB: NOAA SIMP + Urner Barry pattern; monthly interpolated.
+//   - seaFreight, airFreight: Drewry index pattern (2020-21 spike real); USD precision constructed.
+//   - rasffDetentions: EU RASFF portal aggregate ±20%.
+//
+// USE FOR: directional / pattern analysis; what-if scenario testing.
+// DO NOT USE FOR: trading-strategy back-testing; precise margin claims to investor.
+// VALIDATE against current MPEDA monthly bulletin before any trading decision.
+//
 // Months: 2016-01 to 2026-04 (124 months). Compact representation: per-year-per-month.
 
 const M = (jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec) => ({

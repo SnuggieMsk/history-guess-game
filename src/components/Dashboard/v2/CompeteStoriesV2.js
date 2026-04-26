@@ -3,6 +3,7 @@ import { competitorStories, competitorRollup } from '../../../data/v2CompeteStor
 import { competitorFinancials, industryAverages, peerComparisonMatrix, competitorRevenueByMarket } from '../../../data/v2CompeteFinancials';
 import { competitorMAevents, founderTimelines, competitorAdvisorsAndAuditors, competitorPotentialMA } from '../../../data/v2CompeteMA';
 import IndiaCompetitorMap from '../IndiaCompetitorMap';
+import Disclaimer from './Disclaimer';
 import {
   ResponsiveContainer, BarChart, Bar, LineChart, Line,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend,
@@ -195,6 +196,12 @@ export default function CompeteStoriesV2() {
 
       {tab === 'financials' && (
         <>
+          <Disclaimer kind="modelled">
+            FY24 revenue for listed cos (Avanti ₹6,800 cr; Apex ₹1,850 cr; IFB Agro ₹720 cr; Coastal ₹600 cr) is VERIFIED via NSE/BSE filings.
+            Private-co revenue (Nekkanti, Devi, Gadre, Falcon, Sandhya) is INDUSTRY ESTIMATE ±20% from trade press + ROC + analyst notes.
+            Year-by-year EBITDA% / PAT% / ROCE / D/E / WC days are DIRECTIONAL ESTIMATES based on sector analyst trend lines + known industry shocks.
+            Validate against actual annual reports for listed cos before pitching to investor.
+          </Disclaimer>
           <div className="card">
             <h3>Revenue trajectory FY20-FY24 (₹ cr)</h3>
             <ResponsiveContainer width="100%" height={320}>

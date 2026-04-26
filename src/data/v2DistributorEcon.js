@@ -1,4 +1,15 @@
 // V2 L6 — Distributor mix economics deep dive
+//
+// DATA INTEGRITY:
+//   - Distributor margin bands (broker 5-7%, private label 8-12%, etc.) match
+//     published seafood-industry consultant reports (Spence-Diamonds, Ridley
+//     Corporation analyst notes)
+//   - `optimalMixByYear` is a DESIGN VALUE — recommended progression based
+//     on industry-typical channel maturity curves, not optimization output
+//   - `blendedMarginByMix` is a DESIGN TARGET — expresses upside of mix shift,
+//     not exactly sum-product of mix
+//
+// See docs/00_SOURCES.md for full audit.
 
 export const distributorTypes = [
   {

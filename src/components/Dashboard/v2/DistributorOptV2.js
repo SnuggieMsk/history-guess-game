@@ -1,6 +1,7 @@
 import React from 'react';
 import { distributorTypes, optimalMixByYear, blendedMarginByMix, distributorChurnRisk } from '../../../data/v2DistributorEcon';
 import { ResponsiveContainer, BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import Disclaimer from './Disclaimer';
 
 export default function DistributorOptV2() {
   const mixData = Object.entries(optimalMixByYear).map(([yr, mix]) => ({
@@ -21,6 +22,13 @@ export default function DistributorOptV2() {
           Blended margin lifts from {blendedMarginByMix.Y1}% (Y1) to {blendedMarginByMix.Y5}% (Y5).
         </p>
       </div>
+
+      <Disclaimer kind="modelled">
+        Distributor margin bands (broker 5-7%, private label 8-12%) match published seafood-industry consultant reports.
+        Optimal mix Y1-Y5 + blended-margin trajectory are <strong>design recommendations</strong> based on industry-typical
+        channel maturity curves, not optimisation output. Real channel mix will depend on actual buyer pipeline and
+        capacity constraints.
+      </Disclaimer>
 
       <div className="kpi-grid">
         <div className="card"><h3>Distributor types</h3><div className="big">{distributorTypes.length}</div></div>
