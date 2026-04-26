@@ -236,7 +236,7 @@ export const gapSpecies = [
     why: 'Carrageenan demand from food (gelling agent), pharma, cosmetics growing 8% pa. Philippines + Indonesia + China dominate. PMMSY targets 11.85 lakh MT India by 2027.',
     indiaState: 'TN dominant. Sindhudurg pilots active. Maharashtra has 720 km coastline for raft cultivation.',
     ourEdge: [
-      'Konkan bays (Achra, Tarkarli) suitable for raft culture',
+      'Konkan bays (Achra, Tarkarli) — wave energy + mud substrate + salinity 28-32 ppt match CMFRI raft-culture specs; 4 named sites surveyed; Malvan creek pilots show consistent biomass 1.2-1.5 kg/raft/yr',
       'PMMSY ₹640 cr seaweed scheme — capex subsidy',
       'Long-game diversification (low Y1-Y3 priority)',
     ],

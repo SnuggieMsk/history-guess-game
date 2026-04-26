@@ -75,7 +75,9 @@ door-to-door."
 **What the operator needs to know:**
 
 - **Lobster mortality in air freight is 8-15% industry average.** A 3%
-  target is aspirational; possible only with best-in-class packing. v1
+  target is aspirational; achievable only with the Emirates SkyCargo
+  protocol (24-hr purge + 6-hr pre-shipment cool-down to 12-14°C +
+  moist seaweed bedding, max 12 units/carton). v1
   doesn't budget 8-15% mortality cost.
 - **Packing protocol for spiny lobster:**
   1. Purge in chilled salt-water tank (18°C, 24 hr) to void gut.

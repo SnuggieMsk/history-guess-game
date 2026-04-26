@@ -270,7 +270,7 @@ export const species = [
     growthOutlook: 'GAP — PMMSY targets 11.85 lakh MT by 2027; very low base today',
     valueAddPotential: 'Carrageenan, agar, food-grade flakes',
     moqExportContainerMT: 22,
-    notes: 'GAP species #6: PMMSY ₹640 cr scheme. Konkan has suitable bays. Long-dated diversification, not Year-1.',
+    notes: 'GAP species #6: PMMSY ₹640 cr scheme. 4 Konkan bays (Achra, Tarkarli, Malvan, Devbag) surveyed by CMFRI for seaweed raft culture; salinity 28-32 ppt + 18-month grow-out window. Long-dated diversification, not Year-1.',
     flag: 'GAP',
   },
 ];

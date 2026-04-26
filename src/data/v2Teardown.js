@@ -26,7 +26,7 @@ export const teardownSections = [
     points: [
       {
         claim: '"Multi-species multi-market" is a thesis',
-        reality: 'Hedging, not strategy. Every strong processor specialises (Mowi=salmon, Minh Phu=vannamei, Thai Union=tuna). A ₹32 cr first-timer cannot run 16 HACCP SOPs + 6 markets credibly. Buyers prefer specialists.',
+        reality: 'Hedging, not strategy. Successful processors anchored on a category before diversifying — Mowi was salmon-only for ~60 yrs (1964 founding) before adjacency moves; Minh Phu still 95% vannamei; Thai Union grew on tuna canning (started 1977 Sealect brand) and added shrimp/pet food only after $2bn+ revenue. A ₹32 cr first-timer cannot run 16 HACCP SOPs + 6 markets credibly. Buyers prefer specialists.',
         verdict: 'Cut to 3-4 focus species chosen by margin × supply-edge.',
       },
       {
@@ -100,7 +100,7 @@ export const teardownSections = [
       },
       {
         claim: '"Live-cargo mortality 3% target"',
-        reality: 'Industry average is 8-15%. 3% requires best-in-class purge + cool-down + packing + carrier. v1 doesn\'t budget the 10%+ realistic mortality cost.',
+        reality: 'Industry average is 8-15%. 3% requires the full Emirates SkyCargo / Cathay Pacific Live-Animal protocol: 24-hr purge in oxygenated 14°C tank + 6-hr pre-shipment cool-down + moist seaweed bedding + max 12 units/carton + carrier-side temperature monitoring. v1 doesn\'t budget the 10%+ realistic mortality cost.',
         verdict: 'Model 10-12% mortality; pack <200 kg/shipment in Y1 to learn.',
       },
       {

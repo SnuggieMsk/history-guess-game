@@ -110,8 +110,9 @@ Cutting the hedging. This is the actual winning business we're building.
 - Blended Y3 gross margin **~22%** (vs. v1's 11.5% blended).
 - Revenue lower than v1's ₹98 cr (Y3) — **no wait, higher**, because
   Pillars B + C operate at higher ₹/kg. Rebuild shows ₹171 cr Y3 revenue.
-  But the investor teardown (`01d`) pushed realistic Y1 down; after
-  re-stretching, realistic Y5 lands at **₹180-220 cr, not ₹155 cr**, and
+  Investor teardown (`01d`) recomputed Y1 conservatively at ₹20-28 cr after
+  accounting for the 18-mo USFDA + EU establishment licensing window (vs v1's
+  ₹42 cr assumption). Re-stretched Y5 lands at **₹180-220 cr, not ₹155 cr**, and
   EBITDA margin at **15-18%** not 12.6%.
 
 ## Why this beats v1

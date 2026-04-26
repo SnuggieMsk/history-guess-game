@@ -97,7 +97,7 @@ export const competitorsV2 = [
     strength: 'India\'s only surimi + analogue-crab maker; global niche monopoly',
     weakness: 'Surimi is capex-intensive + commodity-priced; limited diversification',
     recentMoves: 'Niche exploitation',
-    weLearn: 'A niche can be a real moat — 40 yrs survival proves it',
+    weLearn: 'Niche durability comes from process IP + supplier lock-in (Gadre\'s 1984 surimi blast-freezing process + exclusive Mirkarwada threadfin bream MoUs) — not the niche label itself',
     weAvoid: 'A niche that commoditizes caps margin upside',
     color: '#c5a565',
   },

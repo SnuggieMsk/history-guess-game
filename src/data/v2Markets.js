@@ -86,7 +86,7 @@ export const destinationCountries = [
     ownFleet: '90%+ import-dependent',
     importDependence: 'All live-seafood imported',
     topSuppliers: ['Indonesia', 'Malaysia', 'Australia', 'India (small)'],
-    whyWeWin: ['Diaspora-favourable', 'Lower import competition than HK', '30-60 day LC credit terms typical'],
+    whyWeWin: ['~600K Indian diaspora in SG = anchored demand for pomfret + prawn at Tekka/Mustafa wet markets', 'Lower import competition than HK (no Cheung Kee equivalent gatekeeper)', '30-60 day LC at sight typical for first-tier importers (Song Fish, FairPrice)'],
     whyWeCouldLose: ['Smaller volume ceiling than HK', 'Hotel procurement cycles longer'],
     mitigations: ['FHA Singapore booth Y2', 'Direct 5-star hotel F&B buyer outreach'],
   },
