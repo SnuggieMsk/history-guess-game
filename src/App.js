@@ -74,6 +74,7 @@ const CapTableExitV2      = lazy(() => import('./components/Dashboard/v2/CapTabl
 const TeamOrgV2           = lazy(() => import('./components/Dashboard/v2/TeamOrgV2'));
 const WCRampV2            = lazy(() => import('./components/Dashboard/v2/WCRampV2'));
 const CapExV2             = lazy(() => import('./components/Dashboard/v2/CapExV2'));
+const BuyerEvidenceV2     = lazy(() => import('./components/Dashboard/v2/BuyerEvidenceV2'));
 
 // Skeleton loader for in-flight chunks
 const Loading = () => (
@@ -150,6 +151,7 @@ function App() {
           <Route path="/v2/team"      element={L(TeamOrgV2)} />
           <Route path="/v2/wc-ramp"   element={L(WCRampV2)} />
           <Route path="/v2/capex"     element={L(CapExV2)} />
+          <Route path="/v2/buyer-evidence" element={L(BuyerEvidenceV2)} />
 
           {/* V1 reference — all lazy */}
           <Route path="/exec"         element={L(ExecutiveSummary)} />

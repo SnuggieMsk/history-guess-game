@@ -18,6 +18,7 @@ const sections = [
   ]},
   { group: 'V2 · Buyers & Markets',     items: [
     { path: '/v2/buyers',    label: 'Named Buyers',           icon: '⇒' },
+    { path: '/v2/buyer-evidence', label: 'Buyer LOI Tracker', icon: '✉' },
     { path: '/v2/markets',   label: 'Destination Countries',  icon: '⌘' },
     { path: '/v2/compete',   label: 'Competitor Forensics',   icon: '⚔' },
     { path: '/v2/compete-deep', label: 'Competitor Deep Stories', icon: '🔬' },
