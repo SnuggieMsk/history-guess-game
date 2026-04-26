@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { fiveYearScenarios, run5YearForecast } from '../../../data/v2Sim5Year';
-import { hotRoutes } from '../../../data/v2SimRoutes';
 import { ResponsiveContainer, ComposedChart, LineChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, AreaChart, Area } from 'recharts';
 
 const DEFAULT_PORTFOLIO = ['r4','r6','r7','r3','r1'];

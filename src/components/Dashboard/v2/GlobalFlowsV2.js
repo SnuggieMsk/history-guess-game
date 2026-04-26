@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { indiaPortFlows, destinationCountries, lanes, competitorPrimaryLanes, monthlyExportPattern, shippingLineMarketShare, refrigeratedAirCarriers } from '../../../data/v2GlobalFlows';
-import { ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line } from 'recharts';
 
 // World map projection: simple equirectangular for visual clarity
 // Lng: -180 to 180 → 0 to 1000; Lat: 70 to -55 → 0 to 500

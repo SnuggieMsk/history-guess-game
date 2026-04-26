@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { hotRoutes, sourcingLocations, products, markets, distributors, transportModes } from '../../../data/v2SimRoutes';
-import { simulateRoute, simulateYear, simulateMultiYear, aggregateAnnual } from '../../../data/v2SimEngine';
+import { simulateYear, simulateMultiYear, aggregateAnnual } from '../../../data/v2SimEngine';
 import { ResponsiveContainer, ComposedChart, Line, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart } from 'recharts';
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -14,16 +14,22 @@ export default function MarketSimulatorV2() {
   const [fobMul, setFobMul] = useState(1);
 
   const route = hotRoutes.find(r => r.id === routeId);
-  const overrides = { mortalityMultiplier: mortMul, tariffPct, buyMultiplier: buyMul, fobMultiplier: fobMul };
 
-  const yearData = useMemo(() => simulateYear(route, year, overrides), [route, year, mortMul, tariffPct, buyMul, fobMul]);
+  const yearData = useMemo(() => {
+    const ov = { mortalityMultiplier: mortMul, tariffPct, buyMultiplier: buyMul, fobMultiplier: fobMul };
+    return simulateYear(route, year, ov);
+  }, [route, year, mortMul, tariffPct, buyMul, fobMul]);
   const annual   = useMemo(() => aggregateAnnual(yearData), [yearData]);
-  const multiYear = useMemo(() => simulateMultiYear(route, 2018, 2025, overrides), [route, mortMul, tariffPct, buyMul, fobMul]);
+  const multiYear = useMemo(() => {
+    const ov = { mortalityMultiplier: mortMul, tariffPct, buyMultiplier: buyMul, fobMultiplier: fobMul };
+    return simulateMultiYear(route, 2018, 2025, ov);
+  }, [route, mortMul, tariffPct, buyMul, fobMul]);
 
   // Compare hot routes for the same year + overrides
   const routeComparison = useMemo(() => {
+    const ov = { mortalityMultiplier: mortMul, tariffPct, buyMultiplier: buyMul, fobMultiplier: fobMul };
     return hotRoutes.map(r => {
-      const yr = simulateYear(r, year, overrides);
+      const yr = simulateYear(r, year, ov);
       const ag = aggregateAnnual(yr);
       return { route: r.name.slice(0, 28), ...ag };
     }).sort((a, b) => b.totalMarginINR - a.totalMarginINR);

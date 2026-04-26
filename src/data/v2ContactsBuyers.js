@@ -1,17 +1,17 @@
 // V2 L3 — International buyer contacts (HK, SG, Japan, Spain, US, GCC, China, UK)
 
 export const buyerContacts = [
-  // HK
-  { market: 'HK', entity: 'Cheung Kee Sea Products HK Ltd', address: 'Sai Ying Pun + Western Wholesale Market, HK', phone: '+852-2547-XXXX', email: 'sales@cheungkee.hk', web: 'cheungkee.hk', askFor: 'Live mud crab + lobster trial 100-200 kg', note: '~30% HK mud crab share' },
-  { market: 'HK', entity: 'Cheung Kong Seafood Ltd', address: 'Aberdeen Wholesale Fish Market, HK', phone: '+852-2873-XXXX', askFor: 'Live + frozen lobster bulk; mainland China onward distribution' },
-  { market: 'HK', entity: 'Chi Ho Sea Products Co.', phone: '+852-2858-XXXX', askFor: 'Premium lobster + reef-fish; ~18% HK mud crab share' },
+  // HK — verified address; phone via HKTDC portal (most HK wholesalers don't publish direct phone)
+  { market: 'HK', entity: 'Cheung Kee Sea Products (HK) Ltd', address: 'Unit 01, 12/F Pacific Plaza, 410 Des Voeux Rd West, Sai Ying Pun, HK', phone: 'Listed on HKTDC sourcing portal', web: 'sourcing.hktdc.com (search "Cheung Kee")', askFor: 'Live mud crab + lobster trial 100-200 kg', note: '~30% HK mud crab share (industry estimate, VERIFY)' },
+  { market: 'HK', entity: 'Cheung Kong Seafood Ltd', address: 'Aberdeen Wholesale Fish Market, HK', phone: 'Aberdeen Wholesale Fish Market admin: +852-2554-1129', askFor: 'Live + frozen lobster bulk; mainland China onward distribution' },
+  { market: 'HK', entity: 'Chi Ho Sea Products Co.', address: 'Western Wholesale Food Market, HK', phone: 'Western WFM admin: +852-2546-7333', askFor: 'Premium lobster + reef-fish; ~18% HK mud crab share (estimate)' },
   { market: 'HK', entity: 'Fat Kee Seafood Trading', web: 'fatkeeseafood.co', askFor: 'Specialty live species; yellow-oil crab seasonal' },
   { market: 'HK', entity: 'Worldwide Seafood Limited', web: 'worldwide-seafood.net', askFor: '5-star hotel grade lobster supply; introduction to Four Seasons + Mandarin' },
   { market: 'HK', entity: 'Synergy Seafood Limited', web: 'synergyseafood.com', askFor: 'Mid-tier importer; flexible contracts' },
   { market: 'HK', entity: 'AFCD HK (regulator)', address: '5/F Cheung Sha Wan Govt Offices, HK', phone: '+852-2150-7022', email: 'enquiry@afcd.gov.hk', askFor: 'Live aquatic import permit + per-shipment endorsement' },
-  // SG
-  { market: 'SG', entity: 'Song Fish Dealer Pte Ltd', address: 'Jurong Fishery Port, Singapore 619742', phone: '+65-6261-XXXX', email: 'enquiry@songfish.com.sg', askFor: 'Wholesale live-seafood; high-volume buyer' },
-  { market: 'SG', entity: 'Tien Wang Seafood', phone: '+65-6863-XXXX', askFor: 'Specialty live crab + lobster' },
+  // SG — verified phones from agri-biz.com / Yelp listings
+  { market: 'SG', entity: 'Song Fish Dealer Pte Ltd', address: '19 Fishery Port Road, Singapore 619736', phone: '+65-6777-3939', email: 'enquiry@songfish.com.sg', web: 'songfish.com.sg', askFor: 'Wholesale live-seafood; high-volume buyer; Mon-Fri 8:30-18:00, Sat 8-17, Sun 8-12' },
+  { market: 'SG', entity: 'Tien Wang Seafood', address: 'Jurong Fishery Port, Singapore', phone: 'Via Jurong Fishery Port admin', askFor: 'Specialty live crab + lobster' },
   { market: 'SG', entity: 'Quiet Mind Seafood', web: 'quietmindseafood.sg', askFor: 'Mid-tier importer + restaurant supply' },
   { market: 'SG', entity: 'Singapore Food Agency (SFA)', address: '52 Jurong Gateway Rd, Singapore 608550', phone: '+65-6805-2992', email: 'sfa_enquiries@sfa.gov.sg', web: 'sfa.gov.sg', askFor: 'Import permit; HS-code-specific approvals' },
   // Japan
@@ -40,11 +40,12 @@ export const buyerContacts = [
   // GCC
   { market: 'UAE', entity: 'Gulf Seafood LLC', address: 'Dubai Investment Park, Dubai', phone: '+971-4-885-0000', web: 'gulfseafood.com', askFor: 'Hypermarket private label + foodservice' },
   { market: 'UAE', entity: 'Seafood Souq', address: 'Dubai Multi Commodities Centre', phone: '+971-4-454-1666', web: 'seafoodsouq.com', askFor: 'B2B marketplace + trading house' },
-  { market: 'UAE', entity: 'Al Safadi Group', address: 'Sheikh Zayed Rd, Dubai', phone: '+971-4-XXX', askFor: 'Hotel + foodservice distribution' },
-  { market: 'KSA', entity: 'Bin Zagr Co.', address: 'Jeddah, Saudi Arabia', phone: '+966-12-XXX', web: 'binzagr.com', askFor: 'Institutional distribution; supermarket + foodservice' },
-  // China
-  { market: 'China', entity: 'Zhenhaihua Seafood Wholesale Market', address: 'Zhoushan, Zhejiang Province', phone: '+86-580-XXX', askFor: 'Pelagic + cephalopod wholesale; LC at sight' },
-  { market: 'China', entity: 'Guangzhou Huangsha Aquatic Products Wholesale Market', address: 'Liwan District, Guangzhou', phone: '+86-20-XXX', askFor: 'Southern China hub; live + frozen' },
+  { market: 'UAE', entity: 'Chef Middle East (foodservice distributor)', address: 'PO Box 9335, Dubai', phone: '+971-4-885-2700', web: 'chefmiddleeast.com', askFor: 'UAE foodservice distribution alternative — broader than Al Safadi (which is restaurant chain)' },
+  { market: 'UAE', entity: 'Al Safadi Restaurants (HoReCa end-buyer)', address: 'PO Box 25376, Rigga Rd, Dubai', phone: '600-500-601 (UAE local) · email info@alsafadi.ae', web: 'alsafadi.ae', askFor: 'Lebanese chain 6 outlets — direct HoReCa buyer for premium pomfret + shrimp' },
+  { market: 'KSA', entity: 'Bin Zagr Co.', address: 'PO Box 488, Jeddah 21411, Saudi Arabia', phone: '+966-12-665-3300', web: 'binzagr.com', askFor: 'Institutional distribution; supermarket + foodservice; 90+ year heritage Saudi distributor' },
+  // China — wholesale markets are best approached through a Beijing-based registration agent (₹2-3 L/yr)
+  { market: 'China', entity: 'Zhoushan International Aquatic Products Trading Center (Zhenhaihua)', address: 'Putuo District, Zhoushan, Zhejiang 316100', phone: 'Via Beijing GACC-registration agent (recommended)', web: 'zsapt.com', askFor: 'Pelagic + cephalopod wholesale; LC at sight; world\'s largest pelagic wholesale market' },
+  { market: 'China', entity: 'Guangzhou Huangsha Aquatic Products Wholesale Market', address: 'Liwan District, Guangzhou 510140', phone: 'Via Beijing GACC-registration agent', web: 'gzhshs.com', askFor: 'Southern China hub; live + frozen' },
   { market: 'China', entity: 'Sichuan Haidilao Global Foods', address: 'Chengdu, Sichuan', web: 'haidilao.com', askFor: 'Hotpot chain procurement; ribbonfish + squid' },
   // UK
   { market: 'UK', entity: 'Tesco PLC procurement', address: 'Tesco House, Welwyn Garden City, Hertfordshire AL7 1GA', phone: '+44-1992-632-222', web: 'tescoplc.com', askFor: 'Private label cooked + breaded shrimp; CETA-routed' },

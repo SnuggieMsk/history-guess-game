@@ -5,10 +5,9 @@ import { simulateRoute, aggregateAnnual } from '../../../data/v2SimEngine';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
 
 export default function CompoundShockSimV2() {
-  // Run base portfolio (5 routes) under each compound shock
-  const baseRoutes = ['r4','r6','r7','r3','r1'];
-
+  // Run base portfolio (5 routes) under each compound shock — declared outside useMemo to satisfy hook-deps
   const scenarioResults = useMemo(() => {
+    const baseRoutes = ['r4','r6','r7','r3','r1'];
     return compoundShockScenarios.map(scn => {
       let totalRev = 0, totalMargin = 0;
       baseRoutes.forEach(rid => {

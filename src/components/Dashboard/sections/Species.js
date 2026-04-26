@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { species, portfolioMix } from '../../../data/species';
 import {
-  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend,
+  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid,
 } from 'recharts';
 
 const FLAG_PILL = { CORE: 'pill-good', VOLUME: 'pill-info', GAP: 'pill-warn' };

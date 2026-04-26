@@ -3,7 +3,7 @@ import { marketSnapshot, marketDestinations } from '../../../data/marketData';
 import { capexSummary, returns, pnl } from '../../../data/financials';
 import { gapSpeciesRollup } from '../../../data/gapSpecies';
 import {
-  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   PieChart, Pie, Cell,
 } from 'recharts';
 

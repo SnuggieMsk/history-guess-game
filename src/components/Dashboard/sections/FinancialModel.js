@@ -1,7 +1,7 @@
 import React from 'react';
 import { capex, capexSummary, productionPlan, pnl, workingCapital, cashFlow, returns, sensitivityY3 } from '../../../data/financials';
 import {
-  ResponsiveContainer, BarChart, Bar, LineChart, Line, ComposedChart, Area,
+  ResponsiveContainer, BarChart, Bar, Line, ComposedChart,
   XAxis, YAxis, Tooltip, CartesianGrid, Legend,
 } from 'recharts';
 

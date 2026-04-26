@@ -4,10 +4,20 @@ import { competitorFinancials, industryAverages, peerComparisonMatrix, competito
 import { competitorMAevents, founderTimelines, competitorAdvisorsAndAuditors, competitorPotentialMA } from '../../../data/v2CompeteMA';
 import IndiaCompetitorMap from '../IndiaCompetitorMap';
 import {
-  ResponsiveContainer, BarChart, Bar, LineChart, Line, ComposedChart,
-  XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell,
+  ResponsiveContainer, BarChart, Bar, LineChart, Line,
+  XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
 } from 'recharts';
+
+// Composite competitor scores 0-10 across 6 dimensions
+const competitorRadarData = [
+  { dimension: 'Scale',          Avanti:10, Apex:6, Devi:5, Gadre:3, Coastal:3, Us:1 },
+  { dimension: 'Margin %',       Avanti:5, Apex:4, Devi:5, Gadre:6, Coastal:3, Us:9 },
+  { dimension: 'Low Debt',       Avanti:9, Apex:2, Devi:6, Gadre:5, Coastal:3, Us:4 },
+  { dimension: 'Geo Diverse',    Avanti:3, Apex:4, Devi:8, Gadre:7, Coastal:6, Us:7 },
+  { dimension: 'Brand',          Avanti:7, Apex:5, Devi:5, Gadre:8, Coastal:4, Us:2 },
+  { dimension: 'Compliance',     Avanti:8, Apex:6, Devi:9, Gadre:7, Coastal:5, Us:9 },
+];
 
 const COLORS = ['#0d3b66','#a8322d','#c5a565','#2d6a4f','#7a5b8c','#b8860b','#5fb3e3','#92c7b6','#cdc4ae'];
 
@@ -76,6 +86,28 @@ export default function CompeteStoriesV2() {
           </div>
           <div className="callout" style={{ marginTop: 14 }}>
             <strong>Geographic insight:</strong> 80% of Indian seafood processing capacity is concentrated in Andhra Pradesh (Visakhapatnam → Kakinada → Bhimavaram corridor). Maharashtra hosts only Gadre (Ratnagiri), Coastal Corp (Mumbai), and IFB Agro (Vasai) at scale. Our Purandar plant is the first modern Maharashtra greenfield in 20+ years.
+          </div>
+          <div className="card" style={{marginTop:14}}>
+            <h3>Competitive radar — composite scores 0-10 across 6 dimensions</h3>
+            <ResponsiveContainer width="100%" height={380}>
+              <RadarChart data={competitorRadarData}>
+                <PolarGrid stroke="#e0d9c8"/>
+                <PolarAngleAxis dataKey="dimension" stroke="#5c6272" fontSize={11}/>
+                <PolarRadiusAxis stroke="#cdc4ae" angle={90} domain={[0, 10]}/>
+                <Radar name="Avanti" dataKey="Avanti" stroke="#0d3b66" fill="#0d3b66" fillOpacity={0.15} />
+                <Radar name="Apex"   dataKey="Apex"   stroke="#a8322d" fill="#a8322d" fillOpacity={0.15} />
+                <Radar name="Devi"   dataKey="Devi"   stroke="#c5a565" fill="#c5a565" fillOpacity={0.15} />
+                <Radar name="Gadre"  dataKey="Gadre"  stroke="#7a5b8c" fill="#7a5b8c" fillOpacity={0.15} />
+                <Radar name="Coastal" dataKey="Coastal" stroke="#b8860b" fill="#b8860b" fillOpacity={0.10} />
+                <Radar name="Us (Y5)" dataKey="Us"   stroke="#2d6a4f" fill="#2d6a4f" fillOpacity={0.30} />
+                <Tooltip contentStyle={{background:'#ffffff',border:'1px solid #e0d9c8',color:'#1a1f36'}}/>
+                <Legend wrapperStyle={{fontSize:11}}/>
+              </RadarChart>
+            </ResponsiveContainer>
+            <p style={{fontSize:11.5, color:'var(--c-text-dim)', marginTop:8}}>
+              Composite scores (illustrative; not third-party-verified). Us scores high on margin/compliance but low on scale/brand —
+              the pattern of a focused premium niche player vs incumbent generalists.
+            </p>
           </div>
         </>
       )}

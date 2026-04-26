@@ -18,8 +18,6 @@ const projectX = (lng) => ((lng - 65) / 25) * 760;
 const projectY = (lat) => ((25 - lat) / 17) * 540;
 
 export default function Sourcing() {
-  const allNodes = [...sourcingNodes, ...outboundNodes.map(o=>({...o, isOutbound:true, lat:18.4+Math.random()*0.5, lng:73}))];
-
   return (
     <>
       <div className="sec-head">

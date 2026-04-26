@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { hotRoutes } from '../../../data/v2SimRoutes';
 import { runMonteCarlo, buildHistogram } from '../../../data/v2SimMonteCarlo';
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, AreaChart, Area } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
 
 export default function MonteCarloSimV2() {
   const [routeId, setRouteId] = useState(hotRoutes[0].id);

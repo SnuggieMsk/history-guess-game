@@ -1,6 +1,6 @@
 import React from 'react';
 import { capexRevised, capexTotals, fundingPlan, fundingTotal, scenariosY5, pnlBase, dscrTable, combinedShock, returnsSummary, monitorKPIs } from '../../../data/v2Stress';
-import { ResponsiveContainer, BarChart, Bar, ComposedChart, Line, LineChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 
 export default function StressV2() {
   return (

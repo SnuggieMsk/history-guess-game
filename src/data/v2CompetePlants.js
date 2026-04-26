@@ -11,17 +11,17 @@ export const competitorPlants = [
 
   // Apex
   { id: 'apex-kakinada', company: 'Apex Frozen Foods', companyId: 'apex', plant: 'Kakinada Main Plant', state: 'Andhra Pradesh', district: 'East Godavari', lat: 16.989, lng: 82.247, type: 'Processing + export', capacityMTPM: 60, established: 1995 },
-  { id: 'apex-tn', company: 'Apex Frozen Foods', companyId: 'apex', plant: 'Tamil Nadu Plant', state: 'Tamil Nadu', district: 'Nagapattinam', lat: 10.766, lng: 79.842, type: 'Processing', capacityMTPM: 35, established: 2015 },
+  { id: 'apex-tn', company: 'Apex Frozen Foods', companyId: 'apex', plant: 'Tamil Nadu Plant', state: 'Tamil Nadu', district: 'Nagapattinam', lat: 10.762, lng: 79.838, type: 'Processing', capacityMTPM: 35, established: 2015 },
 
   // Nekkanti
-  { id: 'nekkanti-vsk', company: 'Nekkanti Sea Foods', companyId: 'nekkanti', plant: 'Visakhapatnam Plant', state: 'Andhra Pradesh', district: 'Visakhapatnam', lat: 17.687, lng: 83.218, type: 'Processing + export', capacityMTPM: 50, established: 1989 },
+  { id: 'nekkanti-vsk', company: 'Nekkanti Sea Foods', companyId: 'nekkanti', plant: 'Visakhapatnam Plant', state: 'Andhra Pradesh', district: 'Visakhapatnam', lat: 17.685, lng: 83.221, type: 'Processing + export', capacityMTPM: 50, established: 1989 },
   { id: 'nekkanti-bhimavaram', company: 'Nekkanti Sea Foods', companyId: 'nekkanti', plant: 'Bhimavaram Plant', state: 'Andhra Pradesh', district: 'West Godavari', lat: 16.544, lng: 81.521, type: 'Pre-processing', capacityMTPM: 40, established: 2010 },
-  { id: 'nekkanti-fleet', company: 'Nekkanti Sea Foods', companyId: 'nekkanti', plant: 'Deep-Sea Trawling Fleet', state: 'Andhra Pradesh', district: 'Visakhapatnam', lat: 17.687, lng: 83.218, type: 'Fishing fleet', capacityMTPM: null, established: 1990 },
+  { id: 'nekkanti-fleet', company: 'Nekkanti Sea Foods', companyId: 'nekkanti', plant: 'Deep-Sea Trawling Fleet (Vizag harbour)', state: 'Andhra Pradesh', district: 'Visakhapatnam', lat: 17.704, lng: 83.273, type: 'Fishing fleet', capacityMTPM: null, established: 1990 },
 
   // Devi
   { id: 'devi-tanuku', company: 'Devi Sea Foods', companyId: 'devi', plant: 'Tanuku HQ Plant', state: 'Andhra Pradesh', district: 'West Godavari', lat: 16.751, lng: 81.679, type: 'Processing + export', capacityMTPM: 55, established: 1992 },
   { id: 'devi-peddapuram', company: 'Devi Sea Foods', companyId: 'devi', plant: 'Peddapuram Plant', state: 'Andhra Pradesh', district: 'East Godavari', lat: 17.083, lng: 82.142, type: 'Processing', capacityMTPM: 35, established: 2005 },
-  { id: 'devi-tn', company: 'Devi Sea Foods', companyId: 'devi', plant: 'Tamil Nadu Plant', state: 'Tamil Nadu', district: 'Nagapattinam', lat: 10.766, lng: 79.842, type: 'Processing', capacityMTPM: 30, established: 2010 },
+  { id: 'devi-tn', company: 'Devi Sea Foods', companyId: 'devi', plant: 'Tamil Nadu Plant', state: 'Tamil Nadu', district: 'Nagapattinam', lat: 10.770, lng: 79.846, type: 'Processing', capacityMTPM: 30, established: 2010 },
   { id: 'devi-odisha', company: 'Devi Sea Foods', companyId: 'devi', plant: 'Odisha Plant', state: 'Odisha', district: 'Khordha', lat: 20.182, lng: 85.802, type: 'Processing', capacityMTPM: 25, established: 2015 },
   { id: 'devi-hatchery', company: 'Devi Sea Foods', companyId: 'devi', plant: 'Hatchery + Feed Cluster', state: 'Andhra Pradesh', district: 'West Godavari', lat: 16.852, lng: 81.652, type: 'Hatchery + Feed', capacityMTPM: null, established: 2000 },
 
@@ -38,7 +38,7 @@ export const competitorPlants = [
 
   // Coastal Corp
   { id: 'coastal-mumbai', company: 'Coastal Corp', companyId: 'coastalCorp', plant: 'Mumbai Plant', state: 'Maharashtra', district: 'Mumbai Suburban', lat: 19.099, lng: 72.836, type: 'Processing', capacityMTPM: 25, established: 1985 },
-  { id: 'coastal-vsk', company: 'Coastal Corp', companyId: 'coastalCorp', plant: 'Visakhapatnam Plant', state: 'Andhra Pradesh', district: 'Visakhapatnam', lat: 17.687, lng: 83.218, type: 'Processing', capacityMTPM: 30, established: 1990 },
+  { id: 'coastal-vsk', company: 'Coastal Corp', companyId: 'coastalCorp', plant: 'Visakhapatnam Plant', state: 'Andhra Pradesh', district: 'Visakhapatnam', lat: 17.692, lng: 83.215, type: 'Processing', capacityMTPM: 30, established: 1990 },
   { id: 'coastal-cochin', company: 'Coastal Corp', companyId: 'coastalCorp', plant: 'Cochin Plant', state: 'Kerala', district: 'Ernakulam', lat: 9.971, lng: 76.286, type: 'Processing', capacityMTPM: 20, established: 1995 },
 
   // Falcon
