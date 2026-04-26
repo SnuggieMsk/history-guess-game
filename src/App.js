@@ -70,6 +70,7 @@ const DprFinModelV2       = lazy(() => import('./components/Dashboard/v2/DprFinM
 const FiveYearSimV2       = lazy(() => import('./components/Dashboard/v2/FiveYearSimV2'));
 const DprAnnexuresV2      = lazy(() => import('./components/Dashboard/v2/DprAnnexuresV2'));
 const SimNarrationV2      = lazy(() => import('./components/Dashboard/v2/SimNarrationV2'));
+const CapTableExitV2      = lazy(() => import('./components/Dashboard/v2/CapTableExitV2'));
 
 // Skeleton loader for in-flight chunks
 const Loading = () => (
@@ -142,6 +143,7 @@ function App() {
           <Route path="/v2/five-year-sim" element={L(FiveYearSimV2)} />
           <Route path="/v2/dpr-annex"    element={L(DprAnnexuresV2)} />
           <Route path="/v2/sim-narration" element={L(SimNarrationV2)} />
+          <Route path="/v2/cap-table" element={L(CapTableExitV2)} />
 
           {/* V1 reference — all lazy */}
           <Route path="/exec"         element={L(ExecutiveSummary)} />

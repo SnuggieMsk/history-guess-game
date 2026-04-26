@@ -64,6 +64,7 @@ const sections = [
     { path: '/v2/schemes',   label: 'Govt Schemes',           icon: '₹' },
     { path: '/v2/stress',    label: 'Stress-Tested Financials', icon: '📈' },
     { path: '/v2/balance',   label: 'Balance Sheet + Exit',   icon: '⊞' },
+    { path: '/v2/cap-table', label: 'Cap Table + Exit Comps', icon: '⚖' },
     { path: '/v2/dpr',       label: 'PMMSY DPR Skeleton',      icon: '📄' },
     { path: '/v2/teardown',  label: 'Investor Teardown',       icon: '⎔' },
   ]},
