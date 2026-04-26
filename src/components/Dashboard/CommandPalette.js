@@ -57,12 +57,17 @@ export default function CommandPalette({ routes }) {
 
   if (!open) {
     return (
-      <button onClick={() => setOpen(true)} title="Search (⌘K / Ctrl+K)" style={{
-        position:'fixed', bottom:24, right:24, zIndex:30,
-        background:'#0d3b66', color:'#fff', border:'none', borderRadius:'50%',
-        width:48, height:48, cursor:'pointer', fontSize:20, fontWeight:600,
-        boxShadow:'0 2px 8px rgba(26,31,54,.18)',
-      }}>⌘K</button>
+      <button onClick={() => setOpen(true)}
+        title="Search (⌘K / Ctrl+K)"
+        aria-label="Open command palette to search 60+ sections"
+        type="button"
+        className="cmdk-fab"
+        style={{
+          position:'fixed', bottom:24, right:24, zIndex:30,
+          background:'#0d3b66', color:'#fff', border:'none', borderRadius:'50%',
+          width:48, height:48, cursor:'pointer', fontSize:20, fontWeight:600,
+          boxShadow:'0 2px 8px rgba(26,31,54,.18)',
+        }}>⌘K</button>
     );
   }
 
@@ -85,6 +90,10 @@ export default function CommandPalette({ routes }) {
           onChange={e => { setQuery(e.target.value); setActiveIdx(0); }}
           onKeyDown={onKeyDown}
           placeholder="Search 60+ sections — type 'lobster', 'PMMSY', 'tariff'…"
+          aria-label="Search routes by keyword"
+          role="combobox"
+          aria-expanded="true"
+          aria-controls="cmdk-results"
           style={{
             width:'100%', padding:'16px 20px',
             border:'none', borderBottom:'1px solid #e0d9c8',

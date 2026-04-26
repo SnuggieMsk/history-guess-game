@@ -75,8 +75,6 @@ const sections = [
     { path: '/v2/templates', label: 'Document Templates',     icon: '✎' },
     { path: '/v2/tech',      label: 'Software Stack',         icon: '◊' },
     { path: '/v2/insurance', label: 'Insurance Program',      icon: '⛨' },
-    { path: '/v2/vendors',   label: 'Vendor Directory',       icon: '⎆' },
-    { path: '/v2/jargon',    label: 'Jargon Cheatsheet',      icon: 'A' },
     { path: '/v2/closeout',  label: 'ESG · Wargame · JDs · Outreach', icon: '⊕' },
   ]},
   { group: 'V1 Reference',     items: [
@@ -145,7 +143,8 @@ export default function DashboardLayout() {
 
   return (
     <div className="dash-shell">
-      <aside className={`dash-side ${navOpen ? 'open' : ''}`}>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
+      <aside className={`dash-side ${navOpen ? 'open' : ''}`} aria-label="Primary navigation">
         <div className="dash-brand">
           <div className="dash-brand-mark">KS</div>
           <div>
@@ -195,11 +194,13 @@ export default function DashboardLayout() {
         </div>
       </aside>
 
-      <button className="dash-burger" onClick={() => setNavOpen(o => !o)}>
+      <button className="dash-burger" onClick={() => setNavOpen(o => !o)}
+        aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={navOpen}>
         {navOpen ? '×' : '☰'}
       </button>
 
-      <main className="dash-main">
+      <main className="dash-main" id="main-content" tabIndex="-1">
         <ErrorBoundary key={location.pathname}>
           <Outlet />
         </ErrorBoundary>
@@ -207,9 +208,10 @@ export default function DashboardLayout() {
 
       <button
         onClick={() => window.print()}
-        title="Print this section"
+        title="Print this section (Ctrl/Cmd + P)"
         className="dash-print-fab"
         aria-label="Print this section"
+        type="button"
       >⎙</button>
 
       <CommandPalette routes={sections.flatMap(g => g.items.map(it => ({ ...it, group: g.group })))} />
