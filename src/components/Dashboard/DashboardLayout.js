@@ -34,6 +34,13 @@ const sections = [
     { path: '/v2/produce',      label: 'Produce Visual Catalog', icon: '🐟' },
     { path: '/v2/portfolio-sim',label: 'Multi-Route Portfolio Sim', icon: '⚖' },
   ]},
+  { group: 'V2 · L6 Reality + Monte Carlo',     items: [
+    { path: '/v2/reality',      label: 'Reality Checks (12 fail modes)', icon: '☠' },
+    { path: '/v2/graveyard',    label: 'Graveyard + Back-test',  icon: '⚰' },
+    { path: '/v2/monte-carlo',  label: 'Monte Carlo Sim',        icon: '🎲' },
+    { path: '/v2/weather',      label: 'Weather + Climate',      icon: '🌪' },
+    { path: '/v2/distributor',  label: 'Distributor Optimizer',  icon: '🔗' },
+  ]},
   { group: 'V2 · Operations',     items: [
     { path: '/v2/ops',       label: 'Ops & Quality',          icon: '⚙' },
     { path: '/v2/live',      label: 'Live-Cargo Calc',        icon: '✈' },

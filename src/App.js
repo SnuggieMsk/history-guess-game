@@ -55,6 +55,11 @@ import RegFormsV2 from './components/Dashboard/v2/RegFormsV2';
 import SimNewsTimelineV2 from './components/Dashboard/v2/SimNewsTimelineV2';
 import ProduceCatalogV2 from './components/Dashboard/v2/ProduceCatalogV2';
 import PortfolioSimV2 from './components/Dashboard/v2/PortfolioSimV2';
+import RealityChecksV2 from './components/Dashboard/v2/RealityChecksV2';
+import MonteCarloSimV2 from './components/Dashboard/v2/MonteCarloSimV2';
+import WeatherSimV2 from './components/Dashboard/v2/WeatherSimV2';
+import DistributorOptV2 from './components/Dashboard/v2/DistributorOptV2';
+import GraveyardV2 from './components/Dashboard/v2/GraveyardV2';
 
 import './App.css';
 
@@ -94,6 +99,11 @@ function App() {
           <Route path="/v2/sim-news"     element={<SimNewsTimelineV2 />} />
           <Route path="/v2/produce"      element={<ProduceCatalogV2 />} />
           <Route path="/v2/portfolio-sim" element={<PortfolioSimV2 />} />
+          <Route path="/v2/reality"      element={<RealityChecksV2 />} />
+          <Route path="/v2/monte-carlo"  element={<MonteCarloSimV2 />} />
+          <Route path="/v2/weather"      element={<WeatherSimV2 />} />
+          <Route path="/v2/distributor"  element={<DistributorOptV2 />} />
+          <Route path="/v2/graveyard"    element={<GraveyardV2 />} />
 
           {/* V1 reference */}
           <Route path="/"             element={<ThesisV2 />} />
